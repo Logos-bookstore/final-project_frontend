@@ -1,16 +1,37 @@
 import './App.css';
-import { useContext } from 'react';
-import { NavLink, Route, Routes } from 'react-router-dom';
-import Books from './pages/Books';
-import Genre from './pages/Genre';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Profile from './pages/Profile';
-import Register from './pages/Register';
+import { Context } from './context/Context';
 
 function App() {
+  const {user, setUser} = useContext(Context);
+  const logout = () => {
+    setUser(null);
+    sessionStorage.removeItem("token");
+  };
   return (
     <>
+      <header key="header">
+        <nav>
+          <ul>
+            <li><NavLink to="/">Logo</NavLink></li>
+          </ul>
+          <ul>
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/books">Books</NavLink></li>
+            {
+              !user ?
+                <>
+                  <li><NavLink to="/register">Register</NavLink></li>
+                  <li><NavLink to="/login">Login</NavLink></li>
+                </>
+                :
+                <>
+                  <li><NavLink to="/profile">Profile</NavLink></li>
+                  <li onClick={logout}><NavLink to="/">Logout</NavLink></li>
+                </>
+            }
+          </ul>
+        </nav>
+      </header>
       <main key="main">
         <Routes>
           <Route path="/" element={<Home/>}/>
