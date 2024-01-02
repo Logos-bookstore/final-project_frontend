@@ -28,14 +28,14 @@ export default function Container({ children }) {
   }, []);
   return (
     <>
-      <Context.provider
+      <Context.Provider
         value={{
           user,
           setUser,
         }}
       >
         {children}
-      </Context.provider>
+      </Context.Provider>
     </>
   );
 }
