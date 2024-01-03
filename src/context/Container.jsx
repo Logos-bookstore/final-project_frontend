@@ -4,6 +4,7 @@ import { Context } from './Context';
 export default function Container({ children }) {
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState([]);
+  const [genreLinkActive, setGenreLinkActive] = useState(false);
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -36,6 +37,8 @@ export default function Container({ children }) {
           setUser,
           books,
           setBooks,
+          genreLinkActive,
+          setGenreLinkActive,
         }}
       >
         {children}
