@@ -7,7 +7,7 @@ export default function BooksDisplay({ books, loading }) {
   return (
     <div className='books-container'>
       {books.map((book) => {
-        return <BookCard book={book} />;
+        return <BookCard key={book._id} book={book} />;
       })}
     </div>
   );

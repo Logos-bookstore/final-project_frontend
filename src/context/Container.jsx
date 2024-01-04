@@ -4,6 +4,7 @@ import { Context } from './Context';
 export default function Container({ children }) {
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const [genreLinkActive, setGenreLinkActive] = useState(false);
 
   useEffect(() => {
@@ -12,7 +13,7 @@ export default function Container({ children }) {
       async function verify() {
         try {
           const response = await fetch(`${import.meta.env.VITE_VERIFY_TOKEN}`, {
-            method: "GET",
+            method: 'GET',
             headers: { token: token },
           });
           if (response.ok) {
@@ -37,6 +38,8 @@ export default function Container({ children }) {
           setUser,
           books,
           setBooks,
+          currentPage,
+          setCurrentPage,
           genreLinkActive,
           setGenreLinkActive,
         }}

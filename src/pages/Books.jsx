@@ -8,7 +8,7 @@ export default function Books() {
   const [genres, setGenres] = useState([]);
   const { books, setBooks } = useContext(Context);
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const { currentPage, setCurrentPage } = useContext(Context);
   const [booksPerPage] = useState(6);
   const { genreLinkActive, setGenreLinkActive } = useContext(Context);
 

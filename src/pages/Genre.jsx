@@ -1,11 +1,32 @@
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import BookCard from '../components/BookCard';
 
 export default function Genre() {
-    const {state} = useLocation();
-    return (
-        <>
-            <h4>Genre</h4>
-            <h5>{state}</h5>
-        </>
-    );
-};
+  const { state } = useLocation();
+  const [booksToGenre, setBooksToGenre] = useState([]);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_BOOKS_ONE_GENRE}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ genre: state }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        res.success && setBooksToGenre(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [state]);
+
+  return (
+    <>
+      <h4>Genre: {state}</h4>
+      <div className='books-container'>
+        {booksToGenre.map((book) => (
+          <BookCard key={book._id} book={book} />
+        ))}
+      </div>
+    </>
+  );
+}

@@ -11,10 +11,17 @@ import Register from './pages/Register';
 
 function App() {
   const { user, setUser } = useContext(Context);
+  const { setCurrentPage } = useContext(Context);
   const { setGenreLinkActive } = useContext(Context);
   const logout = () => {
     setUser(null);
     sessionStorage.removeItem('token');
+  };
+
+  // handler to display all books again (when Books-link clicked)
+  const handleBooksDisplay = () => {
+    setCurrentPage(1);
+    setGenreLinkActive(false);
   };
 
   return (
@@ -30,7 +37,7 @@ function App() {
             <li>
               <NavLink to='/'>Home</NavLink>
             </li>
-            <li onClick={() => setGenreLinkActive(false)}>
+            <li onClick={handleBooksDisplay}>
               <NavLink to='/books'>Books</NavLink>
             </li>
             {!user ? (
