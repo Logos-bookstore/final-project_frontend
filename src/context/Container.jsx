@@ -10,7 +10,7 @@ export default function Container({ children }) {
         try {
           const response = await fetch(`${import.meta.env.VITE_VERIFY_TOKEN}`, {
             method: "GET",
-            header: { token: token },
+            headers: { token: token },
           });
           if (response.ok) {
             const data = await response.json();
