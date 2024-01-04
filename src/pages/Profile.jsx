@@ -4,6 +4,10 @@ import FirstName from "../components/FirstName";
 import LastName from "../components/LastName";
 import Image from "../components/Image";
 import Upload from "../components/Upload";
+import Form from "../components/Form";
+import Email from "../components/Email";
+import Password from "../components/Password";
+import ReEnter from "../components/ReEnter";
 
 export default function Profile() {
     const {user} = useContext(Context);
@@ -28,6 +32,29 @@ export default function Profile() {
     return (
         <>
             <h2>{user?.firstName}</h2>
+            <div>
+                <div>
+                    <Form update="Your First Name">
+                        <FirstName/>
+                    </Form>
+                </div>
+                <div>
+                    <Form update="Your Last Name">
+                        <LastName/>
+                    </Form>
+                </div>
+                <div>
+                    <Form update="Your Email">
+                        <Email/>
+                    </Form>
+                </div>
+                <div>
+                    <Form update="Your Password">
+                        <Password/>
+                        <ReEnter/>
+                    </Form>
+                </div>
+            </div>
             {
                 user?.role === "admin"
                 &&

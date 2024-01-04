@@ -12,7 +12,7 @@ export default function Container({ children }) {
       async function verify() {
         try {
           const response = await fetch(`${import.meta.env.VITE_VERIFY_TOKEN}`, {
-            method: 'GET',
+            method: "GET",
             headers: { token: token },
           });
           if (response.ok) {
