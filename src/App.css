@@ -1,1 +1,34 @@
+ul {
+  list-style-type: none;
+}
 
+.genres-container {
+  display: flex;
+  gap: 15px;
+}
+
+.books-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.single-book-container {
+  width: 250px;
+  border: 1px solid gray;
+  padding: 5px;
+}
+
+.pagination-container {
+  display: flex;
+  gap: 5px;
+}
+
+.pagination-container li {
+  border-bottom: 1px solid gray;
+  color: rgb(44, 77, 125);
+}
+
+.pagination-container li:hover {
+  cursor: pointer;
+}
