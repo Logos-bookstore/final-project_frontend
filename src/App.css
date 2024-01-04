@@ -2,11 +2,6 @@ ul {
   list-style-type: none;
 }
 
-a {
-  text-decoration: none;
-  color: rgb(19, 108, 59);
-}
-
 .genres-container {
   display: flex;
   gap: 15px;

@@ -11,7 +11,7 @@ import Register from './pages/Register';
 
 function App() {
   const { user, setUser } = useContext(Context);
-  const { genreLinkActive, setGenreLinkActive } = useContext(Context);
+  const { setGenreLinkActive } = useContext(Context);
   const logout = () => {
     setUser(null);
     sessionStorage.removeItem('token');
