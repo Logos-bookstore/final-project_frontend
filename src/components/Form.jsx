@@ -9,17 +9,39 @@ export default function Form({children, update}) {
         try {
             const token = sessionStorage.getItem("token");
             if(token) {
-                let data = {};
+                let data;
                 if(e.target?.firstName?.value) {
-                    data = {firstName: e.target.firstName.value};
+                    data = {
+                        method: "PATCH",
+                        headers: {"Content-Type": "application/json", token: token},
+                        body: JSON.stringify({firstName: e.target.firstName.value})
+                    };
                 } else if(e.target?.lastName?.value) {
-                    data = {lastName: e.target.lastName.value};
+                    data = {
+                        method: "PATCH",
+                        headers: {"Content-Type": "application/json", token: token},
+                        body: JSON.stringify({lastName: e.target.lastName.value})
+                    };
                 } else if(e.target?.email?.value) {
-                    data = {email: e.target.email.value};
+                    data = {
+                        method: "PATCH",
+                        headers: {"Content-Type": "application/json", token: token},
+                        body: JSON.stringify({email: e.target.email.value})
+                    };
                 } else if(e.target?.password?.value && e.target?.reEnter?.value) {
-                    data = {password: e.target.password.value};
+                    data = {
+                        method: "PATCH",
+                        headers: {"Content-Type": "application/json", token: token},
+                        body: JSON.stringify({password: e.target.password.value})
+                    };
+                } else if(e.target?.image?.value) {
+                    data = {
+                        method: "PATCH",
+                        headers: {token: token},
+                        body: new FormData(e.target)
+                    };
                 } else {};
-                const response = await fetch(`${import.meta.env.VITE_USER_UPDATE}${user._id}`, {method: "PATCH", headers: {"Content-Type": "application/json", token: token}, body: JSON.stringify(data)});
+                const response = await fetch(`${import.meta.env.VITE_USER_UPDATE}${user._id}`, data);
                 if(response.ok) {
                     const newData = await response.json();
                     if(newData.success) {
@@ -33,13 +55,15 @@ export default function Form({children, update}) {
     };
     return (
         <>
-            <form onSubmit={updateUser}>
-                <fieldset>
-                    <legend>{update}</legend>
-                    {children}
-                    <Continue/>
-                </fieldset>
-            </form>
+            <div>
+                <form onSubmit={updateUser}>
+                    <fieldset>
+                        <legend>{update}</legend>
+                        {children}
+                        <Continue/>
+                    </fieldset>
+                </form>
+            </div>
         </>
     );
 };

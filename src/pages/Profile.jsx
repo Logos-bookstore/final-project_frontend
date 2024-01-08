@@ -31,68 +31,69 @@ export default function Profile() {
     };
     return (
         <>
+            {user?.image?.thumbnail && <img src={user?.image?.thumbnail} alt="" />}
             <h2>{user?.firstName}</h2>
             <div>
-                <div>
-                    <Form update="Your First Name">
-                        <FirstName/>
-                    </Form>
-                </div>
-                <div>
-                    <Form update="Your Last Name">
-                        <LastName/>
-                    </Form>
-                </div>
-                <div>
-                    <Form update="Your Email">
-                        <Email/>
-                    </Form>
-                </div>
-                <div>
-                    <Form update="Your Password">
-                        <Password/>
-                        <ReEnter/>
-                    </Form>
-                </div>
-            </div>
-            {
-                user?.role === "admin"
-                &&
-                <form onSubmit={uploadBook}>
-                    <div>
-                        <label htmlFor="title">Title</label>
-                        <input type="text" name="title" id="title" />
-                    </div>
-                    <FirstName/>
-                    <LastName/>
-                    <div>
-                        <label htmlFor="year">Year</label>
-                        <input type="number" name="year" id="year" />
-                    </div>
-                    <div>
-                        <label htmlFor="publisher">Publisher</label>
-                        <input type="text" name="publisher" id="publisher" />
-                    </div>
-                    <div>
-                        <label htmlFor="genre">Genre</label>
-                        <input type="text" name="genre" id="genre" />
-                    </div>
-                    <div>
-                        <label htmlFor="description">Description</label>
-                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
-                    </div>
-                    <div>
-                        <label htmlFor="price">Price</label>
-                        <input type="number" step="any" name="price" id="price" />
-                    </div>
-                    <div>
-                        <label htmlFor="isbn">ISBN</label>
-                        <input type="text" name="isbn" id="isbn" />
-                    </div>
+                <Form update="Upload a Profile Image">
                     <Image/>
-                    <Upload/>
-                </form>
-            }
+                </Form>
+                <Form update="Update Your First Name">
+                    <FirstName/>
+                </Form>
+                <Form update="Update Your Last Name">
+                    <LastName/>
+                </Form>
+                <Form update="Update Your Email">
+                    <Email/>
+                </Form>
+                <Form update="Update Your Password">
+                    <Password/>
+                    <ReEnter/>
+                </Form>
+            </div>
+            <div>
+                {
+                    user?.role === "admin"
+                    &&
+                    <form onSubmit={uploadBook}>
+                        <fieldset>
+                            <legend>Upload a Book</legend>
+                            <div>
+                                <label htmlFor="title">Title</label>
+                                <input type="text" name="title" id="title" />
+                            </div>
+                            <FirstName/>
+                            <LastName/>
+                            <div>
+                                <label htmlFor="year">Year</label>
+                                <input type="number" name="year" id="year" />
+                            </div>
+                            <div>
+                                <label htmlFor="publisher">Publisher</label>
+                                <input type="text" name="publisher" id="publisher" />
+                            </div>
+                            <div>
+                                <label htmlFor="genre">Genre</label>
+                                <input type="text" name="genre" id="genre" />
+                            </div>
+                            <div>
+                                <label htmlFor="description">Description</label>
+                                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                            </div>
+                            <div>
+                                <label htmlFor="price">Price</label>
+                                <input type="number" step="any" name="price" id="price" />
+                            </div>
+                            <div>
+                                <label htmlFor="isbn">ISBN</label>
+                                <input type="text" name="isbn" id="isbn" />
+                            </div>
+                            <Image/>
+                            <Upload/>
+                        </fieldset>
+                    </form>
+                }
+            </div>
         </>
     );
 };
