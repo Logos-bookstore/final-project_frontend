@@ -6,6 +6,9 @@ export default function Container({ children }) {
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [genreLinkActive, setGenreLinkActive] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
+  const [searchResult, setSearchResult] = useState([]);
+  const [booksToGenre, setBooksToGenre] = useState([]);
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -42,6 +45,12 @@ export default function Container({ children }) {
           setCurrentPage,
           genreLinkActive,
           setGenreLinkActive,
+          searchActive,
+          setSearchActive,
+          searchResult,
+          setSearchResult,
+          booksToGenre,
+          setBooksToGenre
         }}
       >
         {children}

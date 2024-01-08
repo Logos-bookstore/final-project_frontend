@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import { Context } from "./context/Context";
 import Books from "./pages/Books";
@@ -8,18 +8,43 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
+import NotFound from "./pages/NotFound";
+import SearchResult from "./pages/SearchResult";
 
 function App() {
+  const navigate = useNavigate();
   const { user, setUser } = useContext(Context);
   const { setCurrentPage } = useContext(Context);
   const { setGenreLinkActive } = useContext(Context);
+  const {searchActive, setSearchActive} = useContext(Context);
+  const {setBooksToGenre} = useContext(Context);
+
   const logout = () => {
     setUser(null);
     sessionStorage.removeItem("token");
   };
 
+  const handleSearch = async e => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BOOK_SEARCH}${e.target.search.value}`);
+      if(response.ok) {
+        const data = await response.json();
+        if(data.success) {
+          setBooksToGenre(data.data);
+          setSearchActive(true);
+          navigate(`/books/search?q=${e.target.search.value}`);
+          e.target.search.value = "";
+        }
+      }
+    } catch (error) {
+      //
+    }
+  };
+
   // handler to display all books again (when Books-link clicked)
   const handleBooksDisplay = () => {
+    setSearchActive(false);
     setCurrentPage(1);
     setGenreLinkActive(false);
   };
@@ -31,6 +56,14 @@ function App() {
           <ul>
             <li>
               <NavLink to="/">Logo</NavLink>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <form onSubmit={handleSearch}>
+                <input type="text" name="search" id="search" />
+                <button type="submit">search</button>
+              </form>
             </li>
           </ul>
           <ul>
@@ -66,7 +99,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/books" element={<Books />}>
-            <Route path=":genre" element={<Genre />} />
+            <Route path=":genre" element={!searchActive ? <Genre /> : <SearchResult/>} />
           </Route>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />

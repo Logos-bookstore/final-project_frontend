@@ -11,6 +11,7 @@ export default function Books() {
   const { currentPage, setCurrentPage } = useContext(Context);
   const [booksPerPage] = useState(6);
   const { genreLinkActive, setGenreLinkActive } = useContext(Context);
+  const {searchActive, setSearchActive} = useContext(Context);
 
   useEffect(() => {
     async function getGenres() {
@@ -20,7 +21,6 @@ export default function Books() {
         if (response.ok) {
           const data = await response.json();
           if (data.success) {
-            console.log(data);
             setGenres(data.data);
             setLoading(false);
           }
@@ -33,7 +33,8 @@ export default function Books() {
   }, []);
 
   useEffect(() => {
-    async function fetchBooks() {
+    if(!searchActive) {
+      async function fetchBooks() {
       try {
         const response = await fetch(`${import.meta.env.VITE_FETCH_ALL_BOOKS}`);
         if (response.ok) {
@@ -47,6 +48,7 @@ export default function Books() {
       }
     }
     fetchBooks();
+    }
   }, []);
 
   // get current books
@@ -63,7 +65,7 @@ export default function Books() {
       <div className='genres-container'>
         {genres.map((genre) => {
           return (
-            <h3 key={genre._id} onClick={() => setGenreLinkActive(true)}>
+            <h3 key={genre._id} onClick={() => {setGenreLinkActive(true); setSearchActive(false)}}>
               <NavLink to={`/books/${genre.genre}`} state={genre.genre}>
                 {genre.genre}
               </NavLink>
@@ -71,7 +73,7 @@ export default function Books() {
           );
         })}
       </div>
-      {!genreLinkActive && (
+      {!genreLinkActive && !searchActive ? (
         <>
           <BooksDisplay books={currentBooks} loading={loading} />
           <Pagination
@@ -80,8 +82,11 @@ export default function Books() {
             paginate={paginate}
           />
         </>
+      ) : (
+        <>
+          <Outlet />
+        </>
       )}
-      <Outlet />
     </>
   );
 }

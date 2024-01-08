@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import BookCard from '../components/BookCard';
+import { Context } from '../context/Context';
 
 export default function Genre() {
   const { state } = useLocation();
-  const [booksToGenre, setBooksToGenre] = useState([]);
-
+  const {booksToGenre, setBooksToGenre} = useContext(Context);
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BOOKS_ONE_GENRE}`, {
       method: 'POST',
