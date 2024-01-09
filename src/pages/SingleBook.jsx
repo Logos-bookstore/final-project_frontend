@@ -12,16 +12,12 @@ export default function SingleBook() {
 
   const fetchReviews = async () => {
     try {
-      const book = JSON.parse(sessionStorage.getItem('singleBook'));
-      console.log(book);
-      if (book) {
-        const res = await fetch(
-          `${import.meta.env.VITE_REVIEWS_SINGLE_BOOK}/${id}`
-        );
-        if (res.ok) {
-          const data = await res.json();
-          if (data.success) setReviews(data.data);
-        }
+      const res = await fetch(
+        `${import.meta.env.VITE_REVIEWS_SINGLE_BOOK}/${id}`
+      );
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) setReviews(data.data);
       }
     } catch (error) {
       console.log(error);
@@ -30,14 +26,11 @@ export default function SingleBook() {
 
   const fetchBook = async () => {
     try {
-      const book = JSON.parse(sessionStorage.getItem('singleBook'));
-      if (book) {
-        const res = await fetch(`${import.meta.env.VITE_SINGLE_BOOK}/${id}`);
-        if (res.ok) {
-          const data = await res.json();
-          console.log(data.data);
-          if (data.success) setSingleBook(data.data);
-        }
+      const res = await fetch(`${import.meta.env.VITE_SINGLE_BOOK}/${id}`);
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data.data);
+        if (data.success) setSingleBook(data.data);
       }
     } catch (error) {
       console.log(error);
