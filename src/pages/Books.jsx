@@ -11,7 +11,7 @@ export default function Books() {
   const { currentPage, setCurrentPage } = useContext(Context);
   const [booksPerPage] = useState(6);
   const { genreLinkActive, setGenreLinkActive } = useContext(Context);
-  const {searchActive, setSearchActive} = useContext(Context);
+  const { searchActive, setSearchActive } = useContext(Context);
 
   useEffect(() => {
     async function getGenres() {
@@ -33,21 +33,23 @@ export default function Books() {
   }, []);
 
   useEffect(() => {
-    if(!searchActive) {
+    if (!searchActive) {
       async function fetchBooks() {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_FETCH_ALL_BOOKS}`);
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success) {
-            setBooks(data.data);
+        try {
+          const response = await fetch(
+            `${import.meta.env.VITE_FETCH_ALL_BOOKS}`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            if (data.success) {
+              setBooks(data.data);
+            }
           }
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
       }
-    }
-    fetchBooks();
+      fetchBooks();
     }
   }, []);
 
@@ -65,8 +67,17 @@ export default function Books() {
       <div className='genres-container'>
         {genres.map((genre) => {
           return (
-            <h3 key={genre._id} onClick={() => {setGenreLinkActive(true); setSearchActive(false)}}>
-              <NavLink to={`/books/${genre.genre}`} state={genre.genre}>
+            <h3
+              key={genre._id}
+              onClick={() => {
+                setGenreLinkActive(true);
+                setSearchActive(false);
+              }}
+            >
+              <NavLink
+                to={`/books/${genre.genre.split(' ').join('-')}`}
+                state={genre.genre}
+              >
                 {genre.genre}
               </NavLink>
             </h3>
