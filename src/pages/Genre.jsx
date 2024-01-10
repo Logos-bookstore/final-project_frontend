@@ -18,7 +18,6 @@ export default function Genre() {
       })
       .catch((err) => console.log(err));
   }, [state]);
-
   return (
     <>
       <h4>Genre: {state}</h4>

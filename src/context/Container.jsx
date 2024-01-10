@@ -5,8 +5,6 @@ export default function Container({ children }) {
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [genreLinkActive, setGenreLinkActive] = useState(false);
-  const [searchActive, setSearchActive] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
   const [booksToGenre, setBooksToGenre] = useState([]);
 
@@ -43,10 +41,6 @@ export default function Container({ children }) {
           setBooks,
           currentPage,
           setCurrentPage,
-          genreLinkActive,
-          setGenreLinkActive,
-          searchActive,
-          setSearchActive,
           searchResult,
           setSearchResult,
           booksToGenre,
