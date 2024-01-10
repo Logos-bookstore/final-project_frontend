@@ -3,17 +3,17 @@ import { useContext, useEffect } from 'react';
 import { Context } from '../context/Context';
 
 export default function SearchResult() {
-    const {booksToGenre, query, setBooksToGenre} = useContext(Context);
+    const {booksToGenre, setBooksToGenre} = useContext(Context);
     const queryString = new URLSearchParams(window.location.search);
   const setQueryString = () => {
     let result;
     for (const q of queryString) {
-      console.log(q);
+      //console.log(q);
       result = q[1];
     }
     return result;
   };
-  const ourUrl = setQueryString();
+  const ourUrl = setQueryString().split(' ').join('+');
     useEffect(() => {
             async function bookSearch() {
                 try {
