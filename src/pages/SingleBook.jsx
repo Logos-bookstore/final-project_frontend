@@ -8,7 +8,7 @@ export default function SingleBook() {
   const [reviews, setReviews] = useState(null);
   const [singleBook, setSingleBook] = useState(null);
   const { id } = useParams();
-  console.log(id);
+  //console.log(id);
 
   const fetchReviews = async () => {
     try {
@@ -29,7 +29,6 @@ export default function SingleBook() {
       const res = await fetch(`${import.meta.env.VITE_SINGLE_BOOK}/${id}`);
       if (res.ok) {
         const data = await res.json();
-        console.log(data.data);
         if (data.success) setSingleBook(data.data);
       }
     } catch (error) {

@@ -29,7 +29,7 @@ export default function Books() {
               key={genre._id}
             >
               <NavLink
-                to={`/books/genre/${genre.genre.split(' ').join('-')}`}
+                to={`/books/genre/${genre.genre.split(' ').join('_')}`}
                 state={genre.genre}
               >
                 {genre.genre}

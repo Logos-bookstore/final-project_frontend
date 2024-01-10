@@ -25,7 +25,9 @@ function App() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    navigate(`/books/request/search?q=${e.target.search.value}`);
+    const plused = e.target.search.value.split(' ').join('+');
+    //console.log(plused);
+    navigate(`/books/request/search?q=${plused}`);
   };
 
   // handler to display all books again (when Books-link clicked)
