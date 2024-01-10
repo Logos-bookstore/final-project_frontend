@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
+import { NavLink, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import './App.css';
 import { Context } from './context/Context';
 import Books from './pages/Books';
@@ -11,14 +11,12 @@ import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import SearchResult from './pages/SearchResult';
 import SingleBook from './pages/SingleBook';
+import Selection from './pages/Selection';
 
 function App() {
   const navigate = useNavigate();
   const { user, setUser } = useContext(Context);
   const { setCurrentPage } = useContext(Context);
-  const { setGenreLinkActive } = useContext(Context);
-  const { searchActive, setSearchActive } = useContext(Context);
-  const { setBooksToGenre } = useContext(Context);
 
   const logout = () => {
     setUser(null);
@@ -27,29 +25,13 @@ function App() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_BOOK_SEARCH}${e.target.search.value}`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        if (data.success) {
-          setBooksToGenre(data.data);
-          setSearchActive(true);
-          navigate(`/books/search?q=${e.target.search.value}`);
-          e.target.search.value = '';
-        }
-      }
-    } catch (error) {
-      //
-    }
+    navigate(`/books/request/search?q=${e.target.search.value}`);
   };
 
   // handler to display all books again (when Books-link clicked)
   const handleBooksDisplay = () => {
-    setSearchActive(false);
     setCurrentPage(1);
-    setGenreLinkActive(false);
+    navigate("/books/selection");
   };
 
   return (
@@ -103,11 +85,14 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/books' element={<Books />}>
             <Route
-              path=':genre'
-              element={!searchActive ? <Genre /> : <SearchResult />}
+              path='/books/genre/:genre'
+              element={<Genre />}
             />
+            <Route path='/books/selection' element={<Selection/>} />
+            <Route path='/books/singlebook/:id' element={<SingleBook />} />
+            <Route path='/books/request/:search' element={<SearchResult />}/>
           </Route>
-          <Route path='/singlebook/:id' element={<SingleBook />} />
+          
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<Profile />} />
