@@ -1,8 +1,7 @@
-// CHANGE TO OIN VERSION !!
-
 import React, { useEffect, useState } from 'react';
 import BookCard from '../components/BookCard';
 import { useParams } from 'react-router-dom';
+import { ReviewStars } from '../components/ReviewStars';
 
 export default function SingleBook() {
   const [reviews, setReviews] = useState(null);
@@ -56,6 +55,7 @@ export default function SingleBook() {
                 return (
                   <div key={review._id}>
                     <h3>{review?.userId?.firstName}</h3>
+                    <ReviewStars rating={review.rating} />
                     <p>{review?.text}</p>
                   </div>
                 );
