@@ -8,6 +8,7 @@ import Form from "../components/Form";
 import Email from "../components/Email";
 import Password from "../components/Password";
 import ReEnter from "../components/ReEnter";
+import CombinedName from "../components/CombinedName";
 
 export default function Profile() {
     const {user} = useContext(Context);
@@ -62,8 +63,7 @@ export default function Profile() {
                                 <label htmlFor="title">Title</label>
                                 <input type="text" name="title" id="title" />
                             </div>
-                            <FirstName/>
-                            <LastName/>
+                            <CombinedName/>
                             <div>
                                 <label htmlFor="year">Year</label>
                                 <input type="number" name="year" id="year" />
