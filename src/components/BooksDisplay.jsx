@@ -12,7 +12,7 @@ export default function BooksDisplay({ books, loading }) {
         return (
           <div key={book._id}>
             <BookCard key={book._id} book={book} />
-            <CartBtn key={uuidv4()} />
+            <CartBtn key={uuidv4()} book={book} />
           </div>
         );
       })}

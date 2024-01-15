@@ -1,6 +1,7 @@
 import BookCard from '../components/BookCard';
 import { useContext, useEffect } from 'react';
 import { Context } from '../context/Context';
+import CartBtn from '../components/CartBtn';
 
 export default function SearchResult() {
     const {booksToGenre, setBooksToGenre} = useContext(Context);
@@ -37,7 +38,12 @@ export default function SearchResult() {
             <h4>Search Result:</h4>
             <div className="books-container">
                 {booksToGenre.map((book) => (
-                    <BookCard key={book._id} book={book} />
+                    <>
+                      <div>
+                        <BookCard key={book._id} book={book} />
+                        <CartBtn book={book}/>
+                      </div>
+                    </>
                 ))}
             </div>
         </>
