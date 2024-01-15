@@ -13,6 +13,7 @@ import SearchResult from './pages/SearchResult';
 import SingleBook from './pages/SingleBook';
 import Selection from './pages/Selection';
 import Cart from './pages/Cart';
+import DeletedAccount from "./pages/DeletedAccount";
 
 function App() {
   const navigate = useNavigate();
@@ -21,12 +22,12 @@ function App() {
 
   const logout = () => {
     setUser(null);
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem("token");
   };
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    const plused = e.target.search.value.split(' ').join('+');
+    const plused = e.target.search.value.split(" ").join("+");
     //console.log(plused);
     navigate(`/books/request/search?q=${plused}`);
   };
@@ -39,35 +40,35 @@ function App() {
 
   return (
     <>
-      <header key='header'>
+      <header key="header">
         <nav>
           <ul>
             <li>
-              <NavLink to='/'>Logo</NavLink>
+              <NavLink to="/">Logo</NavLink>
             </li>
           </ul>
           <ul>
             <li>
               <form onSubmit={handleSearch}>
-                <input type='text' name='search' id='search' />
-                <button type='submit'>search</button>
+                <input type="text" name="search" id="search" />
+                <button type="submit">search</button>
               </form>
             </li>
           </ul>
           <ul>
             <li>
-              <NavLink to='/'>Home</NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li onClick={handleBooksDisplay}>
-              <NavLink to='/books'>Books</NavLink>
+              <NavLink to="/books">Books</NavLink>
             </li>
             {!user ? (
               <>
                 <li>
-                  <NavLink to='/register'>Register</NavLink>
+                  <NavLink to="/register">Register</NavLink>
                 </li>
                 <li>
-                  <NavLink to='/login'>Login</NavLink>
+                  <NavLink to="/login">Login</NavLink>
                 </li>
                 <li>
                   <NavLink to='/cart'>Cart</NavLink>
@@ -76,37 +77,34 @@ function App() {
             ) : (
               <>
                 <li>
-                  <NavLink to='/profile'>Profile</NavLink>
+                  <NavLink to="/profile">Profile</NavLink>
                 </li>
                 <li>
                   <NavLink to='/cart'>Cart</NavLink>
                 </li>
                 <li onClick={logout}>
-                  <NavLink to='/'>Logout</NavLink>
+                  <NavLink to="/">Logout</NavLink>
                 </li>
               </>
             )}
           </ul>
         </nav>
       </header>
-      <main key='main'>
+      <main key="main">
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/books' element={<Books />}>
-            <Route
-              path='/books/genre/:genre'
-              element={<Genre />}
-            />
-            <Route path='/books/selection' element={<Selection/>} />
-            <Route path='/books/singlebook/:id' element={<SingleBook />} />
-            <Route path='/books/request/:search' element={<SearchResult />}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/books" element={<Books />}>
+            <Route path="/books/genre/:genre" element={<Genre />} />
+            <Route path="/books/selection" element={<Selection />} />
+            <Route path="/books/singlebook/:id" element={<SingleBook />} />
+            <Route path="/books/request/:search" element={<SearchResult />} />
           </Route>
-          
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/cart' element={<Cart/>} />
-          <Route path='*' element={<NotFound />} />
+          <Route path="/deletedAccount" element={<DeletedAccount />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </>

@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { ReviewStars } from './ReviewStars';
 
 export default function BookCard({ book }) {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function BookCard({ book }) {
       <img src={book.image.thumbnail} alt='' onClick={handleGoToDetailsPage} />
       <h2 onClick={handleGoToDetailsPage}>{book.title}</h2>
       <h3>{book.author}</h3>
+      <ReviewStars rating={book.avgRating} />
       <p>{book.year}</p>
       <p>{book.publisher}</p>
       <p>{book.price} €</p>
