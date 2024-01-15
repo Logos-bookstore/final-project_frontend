@@ -6,7 +6,7 @@ import { Context } from '../context/Context';
 
 export default function Genre() {
   const { state } = useLocation();
-  const {booksToGenre, setBooksToGenre} = useContext(Context);
+  const { booksToGenre, setBooksToGenre } = useContext(Context);
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BOOKS_ONE_GENRE}`, {
       method: 'POST',
@@ -25,15 +25,12 @@ export default function Genre() {
       <div className='books-container'>
         {booksToGenre.map((book) => {
           return (
-            <>
-              <div>
-                <BookCard key={book._id} book={book} />
-                <CartBtn book={book}/>
-              </div>
-            </>
+            <div key={book._id}>
+              <BookCard book={book} />
+              <CartBtn book={book} />
+            </div>
           );
-        }
-        )}
+        })}
       </div>
     </>
   );
