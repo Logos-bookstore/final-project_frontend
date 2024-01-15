@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import BookCard from '../components/BookCard';
 import { useParams } from 'react-router-dom';
+import CartBtn from '../components/CartBtn';
 
 export default function SingleBook() {
   const [reviews, setReviews] = useState(null);
@@ -45,8 +46,10 @@ export default function SingleBook() {
     <>
       {singleBook && (
         <div>
-          <BookCard book={singleBook} />
-
+          <div>
+            <BookCard book={singleBook} />
+            <CartBtn book={singleBook}/>
+          </div>
           <h3>Book description</h3>
           <p>{singleBook.description}</p>
           <h3>Reviews</h3>

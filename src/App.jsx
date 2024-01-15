@@ -12,6 +12,7 @@ import NotFound from './pages/NotFound';
 import SearchResult from './pages/SearchResult';
 import SingleBook from './pages/SingleBook';
 import Selection from './pages/Selection';
+import Cart from './pages/Cart';
 
 function App() {
   const navigate = useNavigate();
@@ -68,11 +69,17 @@ function App() {
                 <li>
                   <NavLink to='/login'>Login</NavLink>
                 </li>
+                <li>
+                  <NavLink to='/cart'>Cart</NavLink>
+                </li>
               </>
             ) : (
               <>
                 <li>
                   <NavLink to='/profile'>Profile</NavLink>
+                </li>
+                <li>
+                  <NavLink to='/cart'>Cart</NavLink>
                 </li>
                 <li onClick={logout}>
                   <NavLink to='/'>Logout</NavLink>
@@ -98,6 +105,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/cart' element={<Cart/>} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </main>

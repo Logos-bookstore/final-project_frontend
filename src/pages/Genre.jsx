@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import BookCard from '../components/BookCard';
+import CartBtn from '../components/CartBtn';
 import { Context } from '../context/Context';
 
 export default function Genre() {
@@ -22,9 +23,17 @@ export default function Genre() {
     <>
       <h4>Genre: {state}</h4>
       <div className='books-container'>
-        {booksToGenre.map((book) => (
-          <BookCard key={book._id} book={book} />
-        ))}
+        {booksToGenre.map((book) => {
+          return (
+            <>
+              <div>
+                <BookCard key={book._id} book={book} />
+                <CartBtn book={book}/>
+              </div>
+            </>
+          );
+        }
+        )}
       </div>
     </>
   );
