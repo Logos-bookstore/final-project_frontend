@@ -40,7 +40,20 @@ export default function Form({children, update}) {
                         headers: {token: token},
                         body: new FormData(e.target)
                     };
-                } else {};
+                } else if(e.target.street.value && e.target.zip.value && e.target.city.value && e.target.country.value) {
+                    let address = {
+                        street: e.target.street.value,
+                        zip: e.target.zip.value,
+                        city: e.target.city.value,
+                        country: e.target.country.value
+                    };
+                    console.log(address)
+                    data = {
+                        method: "PATCH",
+                        headers: {"Content-Type": "application/json", token: token},
+                        body: JSON.stringify({address: address})
+                    };
+                };
                 const response = await fetch(`${import.meta.env.VITE_USER_UPDATE}${user._id}`, data);
                 if(response.ok) {
                     const newData = await response.json();

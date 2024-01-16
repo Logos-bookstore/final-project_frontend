@@ -3,7 +3,6 @@ import { json } from "react-router-dom";
 export default function CartBtn({book, singleBook}) {
   const handleCart = () => {
     let cart = JSON.parse(localStorage.getItem("cart"));
-    console.log(cart)
     if(cart) {
       if(book) {
         cart = [...cart, book._id];

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/Context";
 import FirstName from "../components/FirstName";
 import LastName from "../components/LastName";
@@ -13,7 +13,52 @@ import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const { user, setUser } = useContext(Context);
+  const [userOrders, setUserOrders] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = sessionStorage.getItem('token');
+    if (token) {
+      async function verify() {
+        try {
+          const response = await fetch(`${import.meta.env.VITE_VERIFY_TOKEN}`, {
+            method: 'GET',
+            headers: { token: token },
+          });
+          if (response.ok) {
+            const data = await response.json();
+            if (data.success) {
+              setUser(data.data);
+            }
+          }
+        } catch (error) {
+          //
+        }
+      }
+      verify();
+
+      async function userOrders() {
+        try {
+          const response = await fetch(`${import.meta.env.VITE_USER_ORDERS}`, {method: "GET", headers: {token: token}});
+          if(response.ok) {
+            const data = await response.json();
+            if(data.success) {console.log(data.data); setUserOrders(data.data)};
+          }
+        } catch (error) {
+          //
+        }
+      };
+      userOrders();
+    }
+  }, []);
+/*
+  useEffect(() => {
+    const token = sessionStorage.getItem('token');
+    if(token) {
+      
+    };
+  }, []);
+*/
   async function uploadBook(e) {
     e.preventDefault();
     try {
@@ -55,7 +100,6 @@ export default function Profile() {
       }
     } catch (error) {}
   };
-
   return (
     <>
       {user?.image?.thumbnail && <img src={user?.image?.thumbnail} alt="" />}
@@ -77,6 +121,30 @@ export default function Profile() {
           <Password />
           <ReEnter />
         </Form>
+      </div>
+      <div>
+        {
+          userOrders.map(item => {
+            return (
+              <>
+                <div>
+                  {
+                    item.books.map( book => {
+                      return (
+                        <>
+                          <img src={book.image.thumbnail} alt="cover" />
+                          <p>{book.title}</p>
+                          <p>{book.author}</p>
+                          <p>{book.price} €</p>
+                        </>
+                      );
+                    })
+                  }
+                </div>
+              </>
+            );
+          })
+        }
       </div>
       <div>
         {user?.role === "admin" && (
