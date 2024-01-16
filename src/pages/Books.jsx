@@ -21,7 +21,6 @@ export default function Books() {
   }, []);
   return (
     <>
-      <h2>Books</h2>
       <div className='genres-container'>
         {genres.map((genre) => {
           return (
