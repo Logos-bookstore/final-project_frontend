@@ -21,7 +21,6 @@ export default function Genre() {
   }, [state]);
   return (
     <>
-      <h4>Genre: {state}</h4>
       <div className='books-container'>
         {booksToGenre.map((book) => {
           return (

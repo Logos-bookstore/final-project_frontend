@@ -35,7 +35,6 @@ export default function SearchResult() {
   }, [ourUrl]);
   return (
     <>
-      <h4>Search Result:</h4>
       <div className='books-container'>
         {booksToGenre.map((book) => (
           <div key={book._id}>
