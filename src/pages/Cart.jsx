@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../context/Context";
 
 export default function Cart() {
-    const [shoppingCart, setShoppingCart] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
+    const navigate = useNavigate();
+    const {user, totalPrice, setTotalPrice, shoppingCart, setShoppingCart} = useContext(Context);
 
     useEffect(() => {
         async function loadCart() {
@@ -49,25 +51,35 @@ export default function Cart() {
         }
     };
 
+    const handleGoToCashier = () => {
+        navigate('/checkout');
+    };
+
     return (
         <>
             <h2>Cart</h2>
             <div>
-                {shoppingCart.length > 0 ? (
-                    shoppingCart.map((item, index) => (
+                {shoppingCart.length > 0 ? <>
+                    {shoppingCart.map((item, index) => (
                         <div key={index}>
                             <img src={item?.image?.thumbnail} alt="cover" />
                             <h2>{item?.title}</h2>
                             <h3>{item?.author}</h3>
-                            <p>{item?.price}</p>
+                            <p>{item?.price} €</p>
                             <button onClick={() => handleDeleteItem(item._id)}>Remove from Cart</button>
                         </div>
-                    ))
-                ) : (
+                    ))}<div>Total Price: {totalPrice} €</div>
+                </> :
                     <div>Your cart is empty.</div>
-                )}
+                }
             </div>
-            <div>Total Price: {totalPrice}</div>
+            
+            {
+                (shoppingCart.length > 0 && user) && <button onClick={handleGoToCashier}>Buy</button>
+            }
+            {
+                !user && <p>Please log in if you want to buy books or create an account.</p>
+            }
         </>
     );
 };

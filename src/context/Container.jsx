@@ -7,6 +7,9 @@ export default function Container({ children }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchResult, setSearchResult] = useState([]);
   const [booksToGenre, setBooksToGenre] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [shoppingCart, setShoppingCart] = useState([]);
+  const [orderReceived, setOrderReceived] = useState("");
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -44,7 +47,13 @@ export default function Container({ children }) {
           searchResult,
           setSearchResult,
           booksToGenre,
-          setBooksToGenre
+          setBooksToGenre,
+          totalPrice,
+          setTotalPrice,
+          shoppingCart,
+          setShoppingCart,
+          orderReceived,
+          setOrderReceived
         }}
       >
         {children}
