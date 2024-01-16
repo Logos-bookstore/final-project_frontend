@@ -47,8 +47,20 @@ export default function SingleBook() {
         <div>
           <div>
             <BookCard book={singleBook} />
-            <CartBtn book={singleBook}/>
+            <CartBtn book={singleBook} />
           </div>
+          <h2>{singleBook.title}</h2>
+          <p>{singleBook.author}</p>
+          <h3>Details</h3>
+          <p>
+            Publisher: <span>{singleBook.publisher}</span>
+          </p>
+          <p>
+            Year: <span>{singleBook.year}</span>
+          </p>
+          <p>
+            ISBN: <span>{singleBook.ISBN}</span>
+          </p>
           <h3>Book description</h3>
           <p>{singleBook.description}</p>
           <h3>Reviews</h3>
