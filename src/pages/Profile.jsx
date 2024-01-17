@@ -42,7 +42,9 @@ export default function Profile() {
           const response = await fetch(`${import.meta.env.VITE_USER_ORDERS}`, {method: "GET", headers: {token: token}});
           if(response.ok) {
             const data = await response.json();
-            if(data.success) {console.log(data.data); setUserOrders(data.data)};
+            if(data.success) {
+              setUserOrders(data.data)
+            };
           }
         } catch (error) {
           //
@@ -51,14 +53,7 @@ export default function Profile() {
       userOrders();
     }
   }, []);
-/*
-  useEffect(() => {
-    const token = sessionStorage.getItem('token');
-    if(token) {
-      
-    };
-  }, []);
-*/
+
   async function uploadBook(e) {
     e.preventDefault();
     try {
@@ -140,6 +135,7 @@ export default function Profile() {
                       );
                     })
                   }
+                  <p>{item?.date}</p>
                 </div>
               </>
             );
