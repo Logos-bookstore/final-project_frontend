@@ -169,6 +169,7 @@ export default function Profile() {
           userOrders.map((item) => {
             return (
               <div key={item._id}>
+                <p>{item.date}</p>
                 {item.books.map((book) => {
                   return (
                     <div className="order-item" key={book._id}>
