@@ -26,7 +26,7 @@ export default function SingleBook() {
 
   const fetchBook = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_SINGLE_BOOK}/${id}`);
+      const res = await fetch(`${import.meta.env.VITE_BOOK_BY_ID}/${id}`);
       if (res.ok) {
         const data = await res.json();
         if (data.success) setSingleBook(data.data);
