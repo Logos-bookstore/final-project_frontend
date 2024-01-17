@@ -41,11 +41,18 @@ export default function Checkout() {
 
     const handleBuy = async () => {
             try {
+                let date = new Date();
+                let year = date.getFullYear();
+                let day = date.getDate();
+                let month = date.getMonth();
+                let hour = date.getHours();
+                let minutes = date.getMinutes();
                 let bookIds = [];
                 for(let i = 0; i < shoppingCart.length; i++) {
                     bookIds.push(shoppingCart[i]._id);
                 };
                 let order = {
+                    date: `${day}.${month + 1}.${year} - ${hour}:${minutes}`,
                     books: bookIds,
                     totalPrice: totalPrice,
                     userId: user._id

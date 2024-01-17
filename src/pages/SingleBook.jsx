@@ -8,7 +8,6 @@ export default function SingleBook() {
   const [reviews, setReviews] = useState(null);
   const [singleBook, setSingleBook] = useState(null);
   const { id } = useParams();
-  //console.log(id);
 
   const fetchReviews = async () => {
     try {
