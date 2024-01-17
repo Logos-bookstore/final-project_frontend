@@ -56,7 +56,10 @@ export default function SingleBook() {
             Publisher: <span>{singleBook.publisher}</span>
           </p>
           <p>
-            Year: <span>{singleBook.year}</span>
+            Published: <span>{singleBook.year}</span>
+          </p>
+          <p>
+            Number of pages: <span>{singleBook?.pages}</span>
           </p>
           <p>
             ISBN: <span>{singleBook.ISBN}</span>
