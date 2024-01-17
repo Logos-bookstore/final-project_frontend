@@ -172,7 +172,7 @@ export default function Profile() {
                   return (
                     <div className='order-item' key={book._id}>
                       <img src={book.image.thumbnail} alt='cover' />
-                      <p>{book.title}</p>
+                      <p>"{book.title}", </p>
                       <p>{book.author}</p>
                       <p>{book.price} €</p>
 
