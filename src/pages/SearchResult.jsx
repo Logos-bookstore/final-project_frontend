@@ -9,7 +9,6 @@ export default function SearchResult() {
   const setQueryString = () => {
     let result;
     for (const q of queryString) {
-      //console.log(q);
       result = q[1];
     }
     return result;
