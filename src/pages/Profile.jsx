@@ -11,6 +11,7 @@ import ReEnter from '../components/ReEnter';
 import CombinedName from '../components/CombinedName';
 import { useNavigate } from 'react-router-dom';
 import AddReviewForm from '../components/AddReviewForm';
+import EditReviewForm from '../components/EditReviewForm';
 
 export default function Profile() {
   const { user, setUser } = useContext(Context);
@@ -19,7 +20,7 @@ export default function Profile() {
   // states for writing/editing reviews:
   const [userReviews, setUserReviews] = useState([]);
   const [bookToReview, setBookToReview] = useState('');
-  const [reviewExists, setReviewExists] = useState(false);
+  const [reviewsChange, setReviewsChange] = useState(false); // to fetch reviews after submitting a review
   const [renderOrders, setRenderOrders] = useState(false);
   const [really, setReally] = useState(false);
 
@@ -55,9 +56,7 @@ export default function Profile() {
           );
           if (response.ok) {
             const data = await response.json();
-            if (data.success) {
-              setUserReviews(data.data);
-            }
+            if (data.success) setUserReviews(data.data);
           }
         } catch (error) {
           console.log(error);
@@ -70,6 +69,7 @@ export default function Profile() {
   // fetch reviews again, whenever one gets submitted:
   useEffect(() => {
     const token = sessionStorage.getItem('token');
+    console.log(token);
     if (token) {
       async function userReviews() {
         try {
@@ -82,9 +82,7 @@ export default function Profile() {
           );
           if (response.ok) {
             const data = await response.json();
-            if (data.success) {
-              setUserReviews(data.data);
-            }
+            if (data.success) setUserReviews(data.data);
           }
         } catch (error) {
           console.log(error);
@@ -92,7 +90,7 @@ export default function Profile() {
       }
       userReviews();
     }
-  }, [reviewExists]);
+  }, [reviewsChange]);
 
   async function uploadBook(e) {
     e.preventDefault();
@@ -177,7 +175,22 @@ export default function Profile() {
                       <p>Qty: {item?.quantity.find(qty => item?.quantity.indexOf(qty) === item.books.indexOf(book))}</p>
                       {userReviews.find((rev) => rev.book === book._id) ? (
                         <>
-                          <button>Edit your review</button>
+                          <button
+                            onClick={() =>
+                              setBookToReview(
+                                bookToReview === '' ? book.title : ''
+                              )
+                            }
+                          >
+                            Edit your review
+                          </button>
+                          {bookToReview === book.title && (
+                            <EditReviewForm
+                              book={book}
+                              setBookToReview={setBookToReview}
+                              userReviews={userReviews}
+                            />
+                          )}
                         </>
                       ) : (
                         <>
@@ -193,8 +206,7 @@ export default function Profile() {
                           {bookToReview === book.title && (
                             <AddReviewForm
                               book={book}
-                              reviewExists={reviewExists}
-                              setReviewExists={setReviewExists}
+                              setReviewsChange={setReviewsChange}
                               setBookToReview={setBookToReview}
                             />
                           )}

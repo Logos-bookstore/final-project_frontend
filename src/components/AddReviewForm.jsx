@@ -1,22 +1,32 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Context } from '../context/Context';
 
 export default function AddReviewForm({
   book,
-  reviewExists,
-  setReviewExists,
+  setReviewsChange,
   setBookToReview,
 }) {
   const { user } = useContext(Context);
+  const [ratingError, setRatingError] = useState('');
 
   const handleAddReview = async (e) => {
     e.preventDefault();
-    const newReview = {
-      book: book._id,
-      text: e.target.review.value,
-      rating: Number(e.target.rating.value),
-      userId: user._id,
-    };
+    let newReview;
+    if (e.target.review.value) {
+      newReview = {
+        book: book._id,
+        text: e.target.review.value,
+        rating: Number(e.target.rating.value),
+        userId: user._id,
+      };
+    } else {
+      newReview = {
+        book: book._id,
+        rating: Number(e.target.rating.value),
+        userId: user._id,
+      };
+    }
+
     try {
       const token = sessionStorage.getItem('token');
       if (token) {
@@ -28,9 +38,12 @@ export default function AddReviewForm({
         if (res.ok) {
           const data = await res.json();
           if (data.success) {
-            setReviewExists(reviewExists ? false : true);
             setBookToReview('');
-          } // Toaster for 'review submitted successfully ?
+            setReviewsChange(true);
+          } // maybe add Toaster for 'review submitted successfully' ?
+          else {
+            setRatingError(data.message);
+          }
         }
       }
     } catch (error) {
@@ -38,28 +51,64 @@ export default function AddReviewForm({
     }
   };
 
+  // handler to make error MSG disappear again:
+  const handleErrorOnFocus = () => {
+    if (ratingError !== '') setRatingError('');
+  };
+
   return (
     <form onSubmit={(e) => handleAddReview(e)}>
       <p>Your rating</p>
+      {ratingError !== '' && <p>{ratingError}</p>}
       <div className='rating-options-container'>
         <div>
-          <input type='radio' name='rating' id='1' value='1' />
+          <input
+            type='radio'
+            name='rating'
+            id='1'
+            value='1'
+            onClick={handleErrorOnFocus}
+          />
           <label htmlFor='1'>1</label>
         </div>
         <div>
-          <input type='radio' name='rating' id='2' value='2' />
+          <input
+            type='radio'
+            name='rating'
+            id='2'
+            value='2'
+            onClick={handleErrorOnFocus}
+          />
           <label htmlFor='2'>2</label>
         </div>
         <div>
-          <input type='radio' name='rating' id='3' value='3' />
+          <input
+            type='radio'
+            name='rating'
+            id='3'
+            value='3'
+            onClick={handleErrorOnFocus}
+          />
           <label htmlFor='3'>3</label>
         </div>
         <div>
-          <input type='radio' name='rating' id='4' value='4' />
+          <input
+            type='radio'
+            name='rating'
+            id='4'
+            value='4'
+            onClick={handleErrorOnFocus}
+          />
           <label htmlFor='4'>4</label>
         </div>
         <div>
-          <input type='radio' name='rating' id='5' value='5' />
+          <input
+            type='radio'
+            name='rating'
+            id='5'
+            value='5'
+            onClick={handleErrorOnFocus}
+          />
           <label htmlFor='5'>5</label>
         </div>
       </div>
