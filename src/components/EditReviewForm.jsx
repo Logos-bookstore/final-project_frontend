@@ -17,9 +17,9 @@ export default function EditReviewForm({ book, setBookToReview, userReviews }) {
       const token = sessionStorage.getItem('token');
       if (token) {
         const reviewToEdit = userReviews.find((rev) => rev.book === book._id);
-        const reviewId = reviewToEdit._id;
+        //const reviewId = reviewToEdit._id;
         const res = await fetch(
-          `${import.meta.env.VITE_EDIT_REVIEW}/${reviewId}`,
+          `${import.meta.env.VITE_EDIT_REVIEW}/${reviewToEdit._id}`,
           {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json', token: token },

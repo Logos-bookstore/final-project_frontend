@@ -23,7 +23,6 @@ export default function Profile() {
   const [reviewsChange, setReviewsChange] = useState(false); // to fetch reviews after submitting a review
   const [renderOrders, setRenderOrders] = useState(false);
   const [really, setReally] = useState(false);
-  console.log(userReviews);
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -37,7 +36,6 @@ export default function Profile() {
           if (response.ok) {
             const data = await response.json();
             if (data.success) {
-              console.log(data.data);
               setUserOrders(data.data);
             }
           }
@@ -58,10 +56,7 @@ export default function Profile() {
           );
           if (response.ok) {
             const data = await response.json();
-            if (data.success) {
-              console.log(data.data);
-              setUserReviews(data.data);
-            }
+            if (data.success) setUserReviews(data.data);
           }
         } catch (error) {
           console.log(error);
