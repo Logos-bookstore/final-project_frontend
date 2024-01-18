@@ -35,7 +35,6 @@ export default function Profile() {
           if (response.ok) {
             const data = await response.json();
             if (data.success) {
-              console.log(data.data);
               setUserOrders(data.data);
             }
           }
@@ -57,7 +56,6 @@ export default function Profile() {
           if (response.ok) {
             const data = await response.json();
             if (data.success) {
-              console.log(data.data);
               setUserReviews(data.data);
             }
           }
@@ -85,7 +83,6 @@ export default function Profile() {
           if (response.ok) {
             const data = await response.json();
             if (data.success) {
-              console.log(data.data);
               setUserReviews(data.data);
             }
           }
@@ -177,7 +174,7 @@ export default function Profile() {
                       <p>"{book.title}", </p>
                       <p>{book.author}</p>
                       <p>{book.price} €</p>
-
+                      <p>Qty: {item?.quantity.find(qty => item?.quantity.indexOf(qty) === item.books.indexOf(book))}</p>
                       {userReviews.find((rev) => rev.book === book._id) ? (
                         <>
                           <button>Edit your review</button>
