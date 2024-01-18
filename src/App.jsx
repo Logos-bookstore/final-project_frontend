@@ -1,21 +1,21 @@
-import { useContext } from 'react';
-import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
-import './App.css';
-import { Context } from './context/Context';
-import Books from './pages/Books';
-import Genre from './pages/Genre';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Profile from './pages/Profile';
-import Register from './pages/Register';
-import NotFound from './pages/NotFound';
-import SearchResult from './pages/SearchResult';
-import SingleBook from './pages/SingleBook';
-import Selection from './pages/Selection';
-import Cart from './pages/Cart';
+import { useContext } from "react";
+import { NavLink, Route, Routes, useNavigate } from "react-router-dom";
+import "./App.css";
+import { Context } from "./context/Context";
+import Books from "./pages/Books";
+import Genre from "./pages/Genre";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
+import NotFound from "./pages/NotFound";
+import SearchResult from "./pages/SearchResult";
+import SingleBook from "./pages/SingleBook";
+import Selection from "./pages/Selection";
+import Cart from "./pages/Cart";
 import DeletedAccount from "./pages/DeletedAccount";
-import Checkout from './pages/Checkout';
-import Thankyou from './pages/Thankyou';
+import Checkout from "./pages/Checkout";
+import Thankyou from "./pages/Thankyou";
 
 function App() {
   const navigate = useNavigate();
@@ -73,7 +73,7 @@ function App() {
                   <NavLink to="/login">Login</NavLink>
                 </li>
                 <li>
-                  <NavLink to='/cart'>Cart</NavLink>
+                  <NavLink to="/cart">Cart</NavLink>
                 </li>
               </>
             ) : (
@@ -82,7 +82,7 @@ function App() {
                   <NavLink to="/profile">Profile</NavLink>
                 </li>
                 <li>
-                  <NavLink to='/cart'>Cart</NavLink>
+                  <NavLink to="/cart">Cart</NavLink>
                 </li>
                 <li onClick={logout}>
                   <NavLink to="/">Logout</NavLink>
@@ -101,12 +101,12 @@ function App() {
             <Route path="/books/singlebook/:id" element={<SingleBook />} />
             <Route path="/books/request/:search" element={<SearchResult />} />
           </Route>
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/cart' element={<Cart/>} />
-          <Route path='/checkout' element={<Checkout/>} />
-          <Route path='/thankyou' element={<Thankyou/>} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/thankyou" element={<Thankyou />} />
           <Route path="/deletedAccount" element={<DeletedAccount />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
