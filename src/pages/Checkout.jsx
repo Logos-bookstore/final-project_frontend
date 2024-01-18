@@ -12,13 +12,17 @@ export default function Checkout() {
             let price = 0;
             let cart = JSON.parse(localStorage.getItem("cart"));
             if (cart) {
-                const promises = cart.map(id => booksById(id));
+                const promises = cart.map(id => booksById(id.split(' ')[0]));
                 cartArray = await Promise.all(promises);
                 setShoppingCart(cartArray.filter(item => item)); // Filter out undefined items
             }
-            for(let i = 0; i < cartArray.length; i++) {
+            /*for(let i = 0; i < cartArray.length; i++) {
                 price += cartArray[i].price;
-            };
+            };*/
+            let quantities = cart.map(q => q.split(' ')[1])
+            for(let i = 0; i < cartArray.length; i++) {
+                price += cartArray[i].price * quantities[i];
+            }
             setTotalPrice(price.toFixed(2));
         }
 
@@ -41,6 +45,9 @@ export default function Checkout() {
 
     const handleBuy = async () => {
             try {
+                let cart = JSON.parse(localStorage.getItem("cart"));
+                let quantities = cart.map(q => q.split(' ')[1])
+
                 let date = new Date();
                 let year = date.getFullYear();
                 let day = date.getDate();
@@ -48,15 +55,18 @@ export default function Checkout() {
                 let hour = date.getHours();
                 let minutes = date.getMinutes();
                 let bookIds = [];
+
                 for(let i = 0; i < shoppingCart.length; i++) {
                     bookIds.push(shoppingCart[i]._id);
                 };
                 let order = {
                     date: `${day}.${month + 1}.${year} - ${hour}:${minutes}`,
                     books: bookIds,
+                    quantity: quantities,
                     totalPrice: totalPrice,
                     userId: user._id
                 }
+
                 const token = sessionStorage.getItem('token');
                 if(token) {
                     const response = await fetch(`${import.meta.env.VITE_PLACE_ORDER}`, {method: "POST", headers: {"Content-Type": "application/json", token: token}, body: JSON.stringify({order: order})});
@@ -70,6 +80,7 @@ export default function Checkout() {
                         }
                     }
                 }
+
             } catch (error) {
                 //
             };
