@@ -19,7 +19,7 @@ export default function Profile() {
   // states for writing/editing reviews:
   const [userReviews, setUserReviews] = useState([]);
   const [bookToReview, setBookToReview] = useState('');
-  const [reviewsChange, setReviewsChange] = useState(false); // to fetch reviews after submitting a review
+  const [reviewsChange, setReviewsChange] = useState(null); // to fetch reviews after submitting a review
   const [renderOrders, setRenderOrders] = useState(false);
   const [really, setReally] = useState(false);
 

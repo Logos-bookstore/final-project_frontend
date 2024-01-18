@@ -41,7 +41,7 @@ export default function ReviewForm({
           const data = await res.json();
           if (data.success) {
             setBookToReview('');
-            setReviewsChange(true);
+            setReviewsChange(new Date());
           } // maybe add Toaster for 'review submitted successfully' ?
           else {
             setRatingError(data.message);
