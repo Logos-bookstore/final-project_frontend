@@ -172,7 +172,7 @@ export default function Profile() {
                       <p>"{book.title}", </p>
                       <p>{book.author}</p>
                       <p>{book.price} €</p>
-
+                      <p>Qty: {item?.quantity.find(qty => item?.quantity.indexOf(qty) === item.books.indexOf(book))}</p>
                       {userReviews.find((rev) => rev.book === book._id) ? (
                         <>
                           <button
