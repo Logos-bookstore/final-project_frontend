@@ -19,10 +19,15 @@ export default function Genre() {
       })
       .catch((err) => console.log(err));
   }, [state]);
+
+  const sortedBooks = booksToGenre.sort((a, b) =>
+    a.author.split(' ').at(-1).localeCompare(b.author.split(' ').at(-1))
+  );
+
   return (
     <>
       <div className='books-container'>
-        {booksToGenre.map((book) => {
+        {sortedBooks.map((book) => {
           return (
             <div key={book._id}>
               <BookCard book={book} />
