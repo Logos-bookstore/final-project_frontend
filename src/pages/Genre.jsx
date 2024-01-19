@@ -3,10 +3,14 @@ import { useLocation } from 'react-router-dom';
 import BookCard from '../components/BookCard';
 import CartBtn from '../components/CartBtn';
 import { Context } from '../context/Context';
+import DeleteBtnAdmin from '../components/DeleteBtnAdmin';
+import DeleteBook from '../components/DeleteBook';
 
 export default function Genre() {
   const { state } = useLocation();
-  const { booksToGenre, setBooksToGenre } = useContext(Context);
+  const { booksToGenre, setBooksToGenre, user, bookToDelete } =
+    useContext(Context);
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BOOKS_ONE_GENRE}`, {
       method: 'POST',
@@ -32,6 +36,8 @@ export default function Genre() {
             <div key={book._id}>
               <BookCard book={book} />
               <CartBtn book={book} />
+              {user?.role === 'admin' && <DeleteBtnAdmin book={book} />}
+              {bookToDelete?._id === book._id && <DeleteBook book={book} />}
             </div>
           );
         })}

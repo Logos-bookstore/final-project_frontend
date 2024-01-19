@@ -2,9 +2,12 @@ import BookCard from '../components/BookCard';
 import { useContext, useEffect } from 'react';
 import { Context } from '../context/Context';
 import CartBtn from '../components/CartBtn';
+import DeleteBtnAdmin from '../components/DeleteBtnAdmin';
+import DeleteBook from '../components/DeleteBook';
 
 export default function SearchResult() {
-  const { booksToGenre, setBooksToGenre } = useContext(Context);
+  const { user, booksToGenre, setBooksToGenre, bookToDelete } =
+    useContext(Context);
   const queryString = new URLSearchParams(window.location.search);
   const setQueryString = () => {
     let result;
@@ -43,6 +46,8 @@ export default function SearchResult() {
           <div key={book._id}>
             <BookCard book={book} />
             <CartBtn book={book} />
+            {user?.role === 'admin' && <DeleteBtnAdmin book={book} />}
+            {bookToDelete?._id === book._id && <DeleteBook book={book} />}
           </div>
         ))}
       </div>
