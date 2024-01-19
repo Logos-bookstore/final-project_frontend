@@ -16,6 +16,8 @@ import Cart from "./pages/Cart";
 import DeletedAccount from "./pages/DeletedAccount";
 import Checkout from "./pages/Checkout";
 import Thankyou from "./pages/Thankyou";
+import About from "./pages/About";
+import { FaGithub } from "react-icons/fa";
 
 function App() {
   const navigate = useNavigate();
@@ -39,6 +41,8 @@ function App() {
     setCurrentPage(1);
     navigate("/books/selection");
   };
+
+  const currentYear = new Date().getFullYear();
 
   return (
     <>
@@ -108,10 +112,29 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/thankyou" element={<Thankyou />} />
           <Route path="/deletedAccount" element={<DeletedAccount />} />
+          <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <footer></footer>
+      <footer>
+        <div className="footer-content">
+          <div className="footer-item">
+            <a
+              href="https://github.com/pozniej-znajde-wolne-haslo/final-project_backend"
+              target="_blank"
+              className="footer-link"
+            >
+              <FaGithub className="icon" />
+            </a>
+          </div>
+          <div className="footer-item">
+            <NavLink to="/about">About</NavLink>
+          </div>
+          <div className="footer-item">
+            <span className="footer-text">&copy; {currentYear} Book Store</span>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
