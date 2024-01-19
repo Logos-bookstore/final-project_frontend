@@ -10,8 +10,7 @@ import Password from '../components/Password';
 import ReEnter from '../components/ReEnter';
 import CombinedName from '../components/CombinedName';
 import { useNavigate } from 'react-router-dom';
-import AddReviewForm from '../components/AddReviewForm';
-import EditReviewForm from '../components/EditReviewForm';
+import ReviewForm from '../components/ReviewForm';
 
 export default function Profile() {
   const { user, setUser } = useContext(Context);
@@ -20,7 +19,7 @@ export default function Profile() {
   // states for writing/editing reviews:
   const [userReviews, setUserReviews] = useState([]);
   const [bookToReview, setBookToReview] = useState('');
-  const [reviewsChange, setReviewsChange] = useState(false); // to fetch reviews after submitting a review
+  const [reviewsChange, setReviewsChange] = useState(null); // to fetch reviews after submitting a review
   const [renderOrders, setRenderOrders] = useState(false);
   const [really, setReally] = useState(false);
 
@@ -172,45 +171,31 @@ export default function Profile() {
                       <p>"{book.title}", </p>
                       <p>{book.author}</p>
                       <p>{book.price} €</p>
-                      <p>Qty: {item?.quantity.find(qty => item?.quantity.indexOf(qty) === item.books.indexOf(book))}</p>
-                      {userReviews.find((rev) => rev.book === book._id) ? (
-                        <>
-                          <button
-                            onClick={() =>
-                              setBookToReview(
-                                bookToReview === '' ? book.title : ''
-                              )
-                            }
-                          >
-                            Edit your review
-                          </button>
-                          {bookToReview === book.title && (
-                            <EditReviewForm
-                              book={book}
-                              setBookToReview={setBookToReview}
-                              userReviews={userReviews}
-                            />
-                          )}
-                        </>
-                      ) : (
-                        <>
-                          <button
-                            onClick={() =>
-                              setBookToReview(
-                                bookToReview === '' ? book.title : ''
-                              )
-                            }
-                          >
-                            Write a review
-                          </button>
-                          {bookToReview === book.title && (
-                            <AddReviewForm
-                              book={book}
-                              setReviewsChange={setReviewsChange}
-                              setBookToReview={setBookToReview}
-                            />
-                          )}
-                        </>
+                      <p>
+                        Qty:{' '}
+                        {item?.quantity.find(
+                          (qty) =>
+                            item?.quantity.indexOf(qty) ===
+                            item.books.indexOf(book)
+                        )}
+                      </p>
+                      <button
+                        onClick={() =>
+                          setBookToReview(bookToReview === '' ? book.title : '')
+                        }
+                      >
+                        {userReviews.find((rev) => rev.book === book._id)
+                          ? 'Edit your review'
+                          : 'Write a review'}
+                      </button>
+
+                      {bookToReview === book.title && (
+                        <ReviewForm
+                          book={book}
+                          setBookToReview={setBookToReview}
+                          setReviewsChange={setReviewsChange}
+                          userReviews={userReviews}
+                        />
                       )}
                     </div>
                   );
