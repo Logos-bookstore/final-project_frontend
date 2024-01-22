@@ -9,7 +9,7 @@ import Email from '../components/Email';
 import Password from '../components/Password';
 import ReEnter from '../components/ReEnter';
 import CombinedName from '../components/CombinedName';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import ReviewForm from '../components/ReviewForm';
 
 export default function Profile() {
@@ -169,7 +169,7 @@ export default function Profile() {
                     <div className='order-item' key={book._id}>
                       <img src={book.image.thumbnail} alt='cover' />
                       <p>"{book.title}", </p>
-                      <p>{book.author}</p>
+                      <p>{book.author}, </p>
                       <p>{book.price} €</p>
                       <p>
                         Qty:{' '}
@@ -206,51 +206,56 @@ export default function Profile() {
       </div>
       <div>
         {user?.role === 'admin' && (
-          <form onSubmit={uploadBook}>
-            <fieldset>
-              <legend>Upload a Book</legend>
-              <div>
-                <label htmlFor='title'>Title</label>
-                <input type='text' name='title' id='title' />
-              </div>
-              <CombinedName />
-              <div>
-                <label htmlFor='year'>Year</label>
-                <input type='number' name='year' id='year' />
-              </div>
-              <div>
-                <label htmlFor='publisher'>Publisher</label>
-                <input type='text' name='publisher' id='publisher' />
-              </div>
-              <div>
-                <label htmlFor='genre'>Genre</label>
-                <input type='text' name='genre' id='genre' />
-              </div>
-              <div>
-                <label htmlFor='description'>Description</label>
-                <textarea
-                  name='description'
-                  id='description'
-                  cols='30'
-                  rows='10'
-                ></textarea>
-              </div>
-              <div>
-                <label htmlFor='pages'>Number of pages</label>
-                <input type='number' step='any' name='pages' id='pages' />
-              </div>
-              <div>
-                <label htmlFor='price'>Price</label>
-                <input type='number' step='any' name='price' id='price' />
-              </div>
-              <div>
-                <label htmlFor='isbn'>ISBN</label>
-                <input type='text' name='isbn' id='isbn' />
-              </div>
-              <Image />
-              <Upload />
-            </fieldset>
-          </form>
+          <>
+            <form onSubmit={uploadBook}>
+              <fieldset>
+                <legend>Upload a Book</legend>
+                <div>
+                  <label htmlFor='title'>Title</label>
+                  <input type='text' name='title' id='title' />
+                </div>
+                <CombinedName />
+                <div>
+                  <label htmlFor='year'>Year</label>
+                  <input type='number' name='year' id='year' />
+                </div>
+                <div>
+                  <label htmlFor='publisher'>Publisher</label>
+                  <input type='text' name='publisher' id='publisher' />
+                </div>
+                <div>
+                  <label htmlFor='genre'>Genre</label>
+                  <input type='text' name='genre' id='genre' />
+                </div>
+                <div>
+                  <label htmlFor='description'>Description</label>
+                  <textarea
+                    name='description'
+                    id='description'
+                    cols='30'
+                    rows='10'
+                  ></textarea>
+                </div>
+                <div>
+                  <label htmlFor='pages'>Number of pages</label>
+                  <input type='number' step='any' name='pages' id='pages' />
+                </div>
+                <div>
+                  <label htmlFor='price'>Price</label>
+                  <input type='number' step='any' name='price' id='price' />
+                </div>
+                <div>
+                  <label htmlFor='isbn'>ISBN</label>
+                  <input type='text' name='isbn' id='isbn' />
+                </div>
+                <Image />
+                <Upload />
+              </fieldset>
+            </form>
+            <NavLink to='/books/selection'>
+              Remove books from assortment
+            </NavLink>
+          </>
         )}
       </div>
       <div>

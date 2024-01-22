@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import BookCard from '../components/BookCard';
 import { useParams } from 'react-router-dom';
 import CartBtn from '../components/CartBtn';
 import { ReviewStars } from '../components/ReviewStars';
+import DeleteBtnAdmin from '../components/DeleteBtnAdmin';
+import DeleteBook from '../components/DeleteBook';
+import { Context } from '../context/Context';
 
 export default function SingleBook() {
   const [reviews, setReviews] = useState(null);
   const [singleBook, setSingleBook] = useState(null);
+  const { user, bookToDelete } = useContext(Context);
   const { id } = useParams();
 
   const fetchReviews = async () => {
@@ -25,7 +29,7 @@ export default function SingleBook() {
 
   const fetchBook = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_BOOK_BY_ID}/${id}`);
+      const res = await fetch(`${import.meta.env.VITE_BOOK_BY_ID}${id}`);
       if (res.ok) {
         const data = await res.json();
         if (data.success) setSingleBook(data.data);
@@ -47,6 +51,10 @@ export default function SingleBook() {
           <div>
             <BookCard book={singleBook} />
             <CartBtn book={singleBook} />
+            {user?.role === 'admin' && <DeleteBtnAdmin book={singleBook} />}
+            {bookToDelete?._id === singleBook._id && (
+              <DeleteBook book={singleBook} />
+            )}
           </div>
           <h2>{singleBook.title}</h2>
           <p>{singleBook.author}</p>
