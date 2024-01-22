@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
-    //const [randomBook, setRandomBook] = useState([]);
+    const [randomBook, setRandomBook] = useState([]);
     useEffect(() => {
         async function random() {
             try {
-                const response = await fetch('http://localhost:8000/api/books/random');
+                const response = await fetch(`${import.meta.env.VITE_RANDOM_BOOK}`);
                 if(response.ok) {
                     const data = await response.json();
-                    if(data.success) console.log(data.data);
+                    if(data.success) setRandomBook(data.data);
                 }
             } catch (error) {
                 //
@@ -16,9 +17,14 @@ export default function Home() {
         };
         random();
     }, []);
+    const navigate = useNavigate();
+    const handleGoToDetailsPage = () => {
+        navigate(`/books/singlebook/${randomBook._id}`); 
+    };
     return (
         <>
-            <h1>Home</h1>
+            <h1>Bookstore Name</h1>
+           <img src={randomBook?.image?.thumbnail} alt="cover" onClick={handleGoToDetailsPage}/>
         </>
     );
 };
