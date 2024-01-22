@@ -40,8 +40,10 @@ export default function Cart() {
         loadCart();
 
         let oldCart = JSON.parse(localStorage.getItem('cart'));
-        let newCart = oldCart.map(bookId => bookId = `${bookId.slice(0, bookId.indexOf(' '))} ${1}`);
-        localStorage.setItem('cart', JSON.stringify(newCart));
+        if(oldCart) {
+            let newCart = oldCart.map(bookId => bookId = `${bookId.slice(0, bookId.indexOf(' '))} ${1}`);
+            localStorage.setItem('cart', JSON.stringify(newCart));
+        }
     }, []);
 
     const handleDeleteItem = (id) => {

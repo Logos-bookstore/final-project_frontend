@@ -47,7 +47,6 @@ export default function Form({children, update}) {
                         city: e.target.city.value,
                         country: e.target.country.value
                     };
-                    console.log(address)
                     data = {
                         method: "PATCH",
                         headers: {"Content-Type": "application/json", token: token},
@@ -58,6 +57,7 @@ export default function Form({children, update}) {
                 if(response.ok) {
                     const newData = await response.json();
                     if(newData.success) {
+                        console.log(newData.data)
                         setUser(newData.data);
                     }
                 }

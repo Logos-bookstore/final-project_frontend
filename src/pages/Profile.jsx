@@ -68,7 +68,6 @@ export default function Profile() {
   // fetch reviews again, whenever one gets submitted:
   useEffect(() => {
     const token = sessionStorage.getItem('token');
-    console.log(token);
     if (token) {
       async function userReviews() {
         try {
