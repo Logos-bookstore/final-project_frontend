@@ -131,7 +131,10 @@ function App() {
             <NavLink to="/about">About</NavLink>
           </div>
           <div className="footer-item">
-            <span className="footer-text">&copy; {currentYear} Book Store</span>
+            <span className="footer-text">
+              {" "}
+              &copy; {currentYear} Book Store
+            </span>
           </div>
         </div>
       </footer>
