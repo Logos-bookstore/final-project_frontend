@@ -6,11 +6,13 @@ import { ReviewStars } from '../components/ReviewStars';
 import DeleteBtnAdmin from '../components/DeleteBtnAdmin';
 import DeleteBook from '../components/DeleteBook';
 import { Context } from '../context/Context';
+import UpdateBtnAdmin from '../components/UpdateBtnAdmin';
+import UpdateBook from '../components/UpdateBook';
 
 export default function SingleBook() {
   const [reviews, setReviews] = useState(null);
   const [singleBook, setSingleBook] = useState(null);
-  const { user, bookToDelete } = useContext(Context);
+  const { user, bookToUpdate, bookToDelete } = useContext(Context);
   const { id } = useParams();
 
   const fetchReviews = async () => {
@@ -51,7 +53,11 @@ export default function SingleBook() {
           <div>
             <BookCard book={singleBook} />
             <CartBtn book={singleBook} />
+            {user?.role === 'admin' && <UpdateBtnAdmin book={singleBook} />}
             {user?.role === 'admin' && <DeleteBtnAdmin book={singleBook} />}
+            {bookToUpdate?._id === singleBook._id && (
+              <UpdateBook book={singleBook} />
+            )}
             {bookToDelete?._id === singleBook._id && (
               <DeleteBook book={singleBook} />
             )}

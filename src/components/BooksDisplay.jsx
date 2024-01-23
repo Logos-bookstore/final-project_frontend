@@ -5,9 +5,11 @@ import BookCard from './BookCard';
 import CartBtn from './CartBtn';
 import DeleteBtnAdmin from './DeleteBtnAdmin';
 import DeleteBook from './DeleteBook';
+import UpdateBook from './UpdateBook';
+import UpdateBtnAdmin from './UpdateBtnAdmin';
 
 export default function BooksDisplay({ books, loading }) {
-  const { user, bookToDelete } = useContext(Context);
+  const { user, bookToUpdate, bookToDelete } = useContext(Context);
 
   if (loading) {
     return <h2>Loading...</h2>;
@@ -19,7 +21,13 @@ export default function BooksDisplay({ books, loading }) {
           <div key={book._id}>
             <BookCard key={book._id} book={book} />
             <CartBtn key={uuidv4()} book={book} />
-            {user?.role === 'admin' && <DeleteBtnAdmin book={book} />}
+            {user?.role === 'admin' && (
+              <>
+                <UpdateBtnAdmin book={book} />
+                <DeleteBtnAdmin book={book} />
+              </>
+            )}
+            {bookToUpdate?._id === book._id && <UpdateBook book={book} />}
             {bookToDelete?._id === book._id && <DeleteBook book={book} />}
           </div>
         );

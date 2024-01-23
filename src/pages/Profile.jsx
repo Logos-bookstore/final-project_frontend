@@ -68,7 +68,6 @@ export default function Profile() {
   // fetch reviews again, whenever one gets submitted:
   useEffect(() => {
     const token = sessionStorage.getItem('token');
-    console.log(token);
     if (token) {
       async function userReviews() {
         try {
@@ -252,9 +251,14 @@ export default function Profile() {
                 <Upload />
               </fieldset>
             </form>
-            <NavLink to='/books/selection'>
-              Remove books from assortment
-            </NavLink>
+            <p>
+              <NavLink to='/books/selection'>Update a book</NavLink>
+            </p>
+            <p>
+              <NavLink to='/books/selection'>
+                Remove a book from assortment
+              </NavLink>
+            </p>
           </>
         )}
       </div>
