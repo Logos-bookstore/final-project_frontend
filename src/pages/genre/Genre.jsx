@@ -10,8 +10,7 @@ import UpdateBook from '../../components/UpdateBook';
 
 export default function Genre() {
   const { state } = useLocation();
-  const { booksToGenre, setBooksToGenre, user, bookToUpdate, bookToDelete } =
-    useContext(Context);
+  const { booksToGenre, setBooksToGenre, user, bookToUpdate, bookToDelete } = useContext(Context);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BOOKS_ONE_GENRE}`, {

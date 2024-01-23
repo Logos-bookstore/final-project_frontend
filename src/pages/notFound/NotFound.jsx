@@ -1,7 +1,7 @@
 export default function NotFound() {
   return (
     <>
-      <h3>Not Found</h3>
+      <h3 className="notFound-msg">Not Found</h3>
     </>
   );
 }

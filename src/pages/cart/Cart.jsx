@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Context } from "../context/Context";
+import { Context } from "../../context/Context";
 
 export default function Cart() {
     const navigate = useNavigate();
@@ -40,8 +40,10 @@ export default function Cart() {
         loadCart();
 
         let oldCart = JSON.parse(localStorage.getItem('cart'));
-        let newCart = oldCart.map(bookId => bookId = `${bookId.slice(0, bookId.indexOf(' '))} ${1}`);
-        localStorage.setItem('cart', JSON.stringify(newCart));
+        if(oldCart) {
+            let newCart = oldCart.map(bookId => bookId = `${bookId.slice(0, bookId.indexOf(' '))} ${1}`);
+            localStorage.setItem('cart', JSON.stringify(newCart));
+        }
     }, []);
 
     const handleDeleteItem = (id) => {
@@ -82,41 +84,41 @@ export default function Cart() {
 
     return (
         <>
-            <h2>Cart</h2>
-            <div>
+            <h2 className="cart-title">Cart</h2>
+            <div className="cart-container">
                 {shoppingCart.length > 0 ? <>
                     {shoppingCart.map((item, index) => (
-                        <div key={index}>
-                            <img src={item?.image?.thumbnail} alt="cover" />
-                            <h2>{item?.title}</h2>
-                            <h3>{item?.author}</h3>
-                            <p>{item?.price} €</p>
-                            <button onClick={() => handleDeleteItem(item._id)}>Remove from Cart</button>
-                                <label htmlFor="quantity">Qty</label>
-                                <select onChange={(e) => handleQuantity(e, item._id)} name="quantity" id="quantity">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                        <div className="cart-item" key={index}>
+                            <img className="cart-cover" src={item?.image?.thumbnail} alt="cover" />
+                            <h2 className="cart-bookTitle">{item?.title}</h2>
+                            <h3 className="cart-author">{item?.author}</h3>
+                            <p className="cart-price">{item?.price} €</p>
+                            <button className="cart-delete" onClick={() => handleDeleteItem(item._id)}>Remove from Cart</button>
+                                <label className="cart-label" htmlFor="quantity">Qty</label>
+                                <select className="cart-select" onChange={(e) => handleQuantity(e, item._id)} name="quantity" id="quantity">
+                                    <option className="cart-option" value="1">1</option>
+                                    <option className="cart-option" value="2">2</option>
+                                    <option className="cart-option" value="3">3</option>
+                                    <option className="cart-option" value="4">4</option>
+                                    <option className="cart-option" value="5">5</option>
+                                    <option className="cart-option" value="6">6</option>
+                                    <option className="cart-option" value="7">7</option>
+                                    <option className="cart-option" value="8">8</option>
+                                    <option className="cart-option" value="9">9</option>
+                                    <option className="cart-option" value="10">10</option>
                                 </select>
                         </div>
-                    ))}<div>Total Price: {totalPrice} €</div>
+                    ))}<div className="cart-totalPrice">Total Price: {totalPrice} €</div>
                 </> :
-                    <div>Your cart is empty.</div>
+                    <div className="cart-empty">Your cart is empty.</div>
                 }
             </div>
             
             {
-                (shoppingCart.length > 0 && user) && <button onClick={handleGoToCashier}>Buy</button>
+                (shoppingCart.length > 0 && user) && <button className="cart-buy" onClick={handleGoToCashier}>Buy</button>
             }
             {
-                !user && <p>Please log in if you want to buy books or create an account.</p>
+                !user && <p className="cart-please">Please log in if you want to buy books or create an account.</p>
             }
         </>
     );

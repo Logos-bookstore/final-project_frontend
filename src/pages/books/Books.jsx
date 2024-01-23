@@ -25,6 +25,7 @@ export default function Books() {
         {genres.map((genre) => {
           return (
             <h3
+              className='books-title'
               key={genre._id}
             >
               <NavLink

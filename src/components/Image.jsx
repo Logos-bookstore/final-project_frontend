@@ -1,9 +1,9 @@
 export default function Image() {
   return (
     <>
-      <div>
-        <label htmlFor="image">Image</label>
-        <input type="file" name="image" id="image" />
+      <div className="image-container">
+        <label className="image-label" htmlFor="image">Image</label>
+        <input className="image-input" type="file" name="image" id="image" />
       </div>
     </>
   );

@@ -96,66 +96,73 @@ export default function ReviewForm({
 
   return (
     <form
+      className='reviewForm-form'
       onSubmit={(e) =>
         exisitingReview ? handleEditReview(e) : handleAddReview(e)
       }
     >
-      <p>{exisitingReview ? 'New rating' : 'Your rating'}</p>
+      <p className='reviewForm-existingReview'>{exisitingReview ? 'New rating' : 'Your rating'}</p>
       {ratingError !== '' && <p>{ratingError}</p>}
       <div className='rating-options-container'>
-        <div>
+        <div className='reviewForm-one'>
           <input
+            className='reviewForm-input'
             type='radio'
             name='rating'
             id='1'
             value='1'
             onClick={handleErrorOnFocus}
           />
-          <label htmlFor='1'>1</label>
+          <label className='reviewForm-label' htmlFor='1'>1</label>
         </div>
-        <div>
+        <div className='reviewForm-two'>
           <input
+            className='reviewForm-input'
             type='radio'
             name='rating'
             id='2'
             value='2'
             onClick={handleErrorOnFocus}
           />
-          <label htmlFor='2'>2</label>
+          <label className='reviewForm-label' htmlFor='2'>2</label>
         </div>
         <div>
           <input
+            className='reviewForm-input'
             type='radio'
             name='rating'
             id='3'
             value='3'
             onClick={handleErrorOnFocus}
           />
-          <label htmlFor='3'>3</label>
+          <label className='reviewForm-label' htmlFor='3'>3</label>
         </div>
         <div>
           <input
+            className='reviewForm-input'
             type='radio'
             name='rating'
             id='4'
             value='4'
             onClick={handleErrorOnFocus}
           />
-          <label htmlFor='4'>4</label>
+          <label className='reviewForm-label' htmlFor='4'>4</label>
         </div>
         <div>
-          <input
+          <input 
+            className='reviewForm-input'
             type='radio'
             name='rating'
             id='5'
             value='5'
             onClick={handleErrorOnFocus}
           />
-          <label htmlFor='5'>5</label>
+          <label className='reviewForm-label' htmlFor='5'>5</label>
         </div>
       </div>
 
       <textarea
+        className='reviewForm-textarea'
         name='review'
         id='review'
         cols='30'
@@ -169,7 +176,7 @@ export default function ReviewForm({
       <p onClick={() => setBookToReview('')} className='cancel-review-btn'>
         Cancel
       </p>
-      <button>Send</button>
+      <button className='reviewForm-send'>Send</button>
     </form>
   );
 }

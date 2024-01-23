@@ -6,10 +6,10 @@ export default function Pagination({ booksPerPage, totalBooks, paginate }) {
   }
 
   return (
-    <nav>
+    <nav className="pagination-nav">
       <ul className='pagination-container'>
         {pageNumbers.map((number) => (
-          <li key={number} onClick={() => paginate(number)}>
+          <li className="pagination-li" key={number} onClick={() => paginate(number)}>
             {number}
           </li>
         ))}

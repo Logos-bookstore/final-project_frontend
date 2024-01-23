@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Continue from "../components/Continue";
-import Email from "../components/Email";
-import FirstName from "../components/FirstName";
-import LastName from "../components/LastName";
-import Password from "../components/Password";
-import ReEnter from "../components/ReEnter";
-import { Context } from "../context/Context";
+import Continue from "../../components/Continue";
+import Email from "../../components/Email";
+import FirstName from "../../components/FirstName";
+import LastName from "../../components/LastName";
+import Password from "../../components/Password";
+import ReEnter from "../../components/ReEnter";
+import { Context } from "../../context/Context";
 
 export default function Register() {
     const {setUser} = useContext(Context);
@@ -42,7 +42,7 @@ export default function Register() {
     };
     return (
         <>
-            <form onSubmit={register}>
+            <form className="register-form" onSubmit={register}>
                 <FirstName/>
                 <LastName/>
                 <Email/>
