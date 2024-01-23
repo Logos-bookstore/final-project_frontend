@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import BookCard from "../components/BookCard";
+import BookCard from "../../components/BookCard";
 
 export default function Home() {
     const [randomBook, setRandomBook] = useState({});
