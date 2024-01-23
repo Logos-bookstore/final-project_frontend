@@ -1,16 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { Context } from "../context/Context";
-import FirstName from "../components/FirstName";
-import LastName from "../components/LastName";
-import Image from "../components/Image";
-import Upload from "../components/Upload";
-import Form from "../components/Form";
-import Email from "../components/Email";
-import Password from "../components/Password";
-import ReEnter from "../components/ReEnter";
-import CombinedName from "../components/CombinedName";
+import { Context } from "../../context/Context";
+import FirstName from "../../components/FirstName";
+import LastName from "../../components/LastName";
+import Image from "../../components/Image";
+import Upload from "../../components/Upload";
+import Form from "../../components/Form";
+import Email from "../../components/Email";
+import Password from "../../components/Password";
+import ReEnter from "../../components/ReEnter";
+import CombinedName from "../../components/CombinedName";
 import { NavLink, useNavigate } from "react-router-dom";
-import ReviewForm from "../components/ReviewForm";
+import ReviewForm from "../../components/ReviewForm";
 
 export default function Profile() {
   const { user, setUser } = useContext(Context);

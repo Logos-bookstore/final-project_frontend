@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import BookCard from '../components/BookCard';
+import BookCard from '../../components/BookCard';
 import { useParams } from 'react-router-dom';
-import CartBtn from '../components/CartBtn';
-import { ReviewStars } from '../components/ReviewStars';
-import DeleteBtnAdmin from '../components/DeleteBtnAdmin';
-import DeleteBook from '../components/DeleteBook';
-import { Context } from '../context/Context';
-import UpdateBtnAdmin from '../components/UpdateBtnAdmin';
-import UpdateBook from '../components/UpdateBook';
+import CartBtn from '../../components/CartBtn';
+import { ReviewStars } from '../../components/ReviewStars';
+import DeleteBtnAdmin from '../../components/DeleteBtnAdmin';
+import DeleteBook from '../../components/DeleteBook';
+import { Context } from '../../context/Context';
+import UpdateBtnAdmin from '../../components/UpdateBtnAdmin';
+import UpdateBook from '../../components/UpdateBook';
 
 export default function SingleBook() {
   const [reviews, setReviews] = useState(null);

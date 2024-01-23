@@ -25,9 +25,9 @@ export default function Home() {
 
   return (
     <>
-      <h1>Home</h1>
-      <h1>Bookstore Name</h1>
+      <h1 className='home-name'>Bookstore Name</h1>
       <img
+        className='home-cover'
         src={randomBook?.image?.thumbnail}
         alt='cover'
         onClick={handleGoToDetailsPage}

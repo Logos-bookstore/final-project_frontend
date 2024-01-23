@@ -18,7 +18,7 @@ export default function BooksDisplay({ books, loading }) {
     <div className='books-container' key={uuidv4()}>
       {books.map((book) => {
         return (
-          <div key={book._id}>
+          <div className='booksDisplay-book' key={book._id}>
             <BookCard key={book._id} book={book} />
             <CartBtn key={uuidv4()} book={book} />
             {user?.role === 'admin' && (
