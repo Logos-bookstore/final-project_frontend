@@ -4,9 +4,11 @@ import { Context } from '../context/Context';
 import CartBtn from '../components/CartBtn';
 import DeleteBtnAdmin from '../components/DeleteBtnAdmin';
 import DeleteBook from '../components/DeleteBook';
+import UpdateBtnAdmin from '../components/UpdateBtnAdmin';
+import UpdateBook from '../components/UpdateBook';
 
 export default function SearchResult() {
-  const { user, booksToGenre, setBooksToGenre, bookToDelete } =
+  const { user, booksToGenre, setBooksToGenre, bookToUpdate, bookToDelete } =
     useContext(Context);
   const queryString = new URLSearchParams(window.location.search);
   const setQueryString = () => {
@@ -46,7 +48,9 @@ export default function SearchResult() {
           <div key={book._id}>
             <BookCard book={book} />
             <CartBtn book={book} />
+            {user?.role === 'admin' && <UpdateBtnAdmin book={book} />}
             {user?.role === 'admin' && <DeleteBtnAdmin book={book} />}
+            {bookToUpdate?._id === book._id && <UpdateBook book={book} />}
             {bookToDelete?._id === book._id && <DeleteBook book={book} />}
           </div>
         ))}

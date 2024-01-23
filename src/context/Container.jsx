@@ -11,6 +11,7 @@ export default function Container({ children }) {
   const [shoppingCart, setShoppingCart] = useState([]);
   const [orderReceived, setOrderReceived] = useState('');
   const [bookToDelete, setBookToDelete] = useState(null);
+  const [bookToUpdate, setBookToUpdate] = useState(null);
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -57,6 +58,8 @@ export default function Container({ children }) {
           setOrderReceived,
           bookToDelete,
           setBookToDelete,
+          bookToUpdate,
+          setBookToUpdate,
         }}
       >
         {children}
