@@ -19,9 +19,9 @@ export default function Home() {
     }, []);
     return (
         <>
-            <h1>Bookstore Name</h1>
-            <p>Looking for a good read?</p>
-            <p>Try this</p>
+            <h1 className="home-name">Bookstore Name</h1>
+            <p className="home-p-one">Looking for a good read?</p>
+            <p className="home-p-two">Try this</p>
            <BookCard book={randomBook}/>
         </>
     );

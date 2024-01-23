@@ -42,7 +42,7 @@ export default function Register() {
     };
     return (
         <>
-            <form onSubmit={register}>
+            <form className="register-form" onSubmit={register}>
                 <FirstName/>
                 <LastName/>
                 <Email/>

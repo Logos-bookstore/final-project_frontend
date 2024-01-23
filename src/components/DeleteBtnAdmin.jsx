@@ -6,5 +6,5 @@ export default function DeleteBtnAdmin({ book }) {
   const handleBookToDel = () =>
     setBookToDelete(bookToDelete === null ? book : null);
 
-  return <button onClick={handleBookToDel}>delete book</button>;
+  return <button className='deleteBtnAdmin-button' onClick={handleBookToDel}>delete book</button>;
 }

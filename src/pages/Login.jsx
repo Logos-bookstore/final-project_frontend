@@ -33,7 +33,7 @@ export default function Login() {
     };
     return (
         <>
-            <form onSubmit={login}>
+            <form className="login-form" onSubmit={login}>
                 <Email/>
                 <Password/>
                 <Continue/>
