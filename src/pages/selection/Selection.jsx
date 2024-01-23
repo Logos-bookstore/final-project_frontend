@@ -5,7 +5,7 @@ import { useEffect, useContext, useState } from 'react';
 
 export default function Selection() {
   const { currentPage, setCurrentPage } = useContext(Context);
-  const [booksPerPage] = useState(6);
+  const [booksPerPage] = useState(10);
   const { books, setBooks } = useContext(Context);
   useEffect(() => {
     async function fetchBooks() {
