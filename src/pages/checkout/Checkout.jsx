@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Form from "../components/Form";
-import { Context } from "../context/Context";
+import Form from "../../components/Form";
+import { Context } from "../../context/Context";
 
 export default function Checkout() {
     const {user, totalPrice, setTotalPrice, setShoppingCart, shoppingCart, setOrderReceived} = useContext(Context);

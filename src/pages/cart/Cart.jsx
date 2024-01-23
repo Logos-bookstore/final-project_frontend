@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Context } from "../context/Context";
+import { Context } from "../../context/Context";
 
 export default function Cart() {
     const navigate = useNavigate();

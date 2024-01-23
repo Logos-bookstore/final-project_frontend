@@ -2,21 +2,21 @@ import { useContext } from "react";
 import { NavLink, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import { Context } from "./context/Context";
-import Books from "./pages/Books";
-import Genre from "./pages/Genre";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Books from "./pages/books/Books";
+import Genre from "./pages/genre/Genre";
+import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
 import Profile from "./pages/Profile";
-import Register from "./pages/Register";
-import NotFound from "./pages/NotFound";
+import Register from "./pages/register/Register";
+import NotFound from "./pages/notFound/NotFound";
 import SearchResult from "./pages/SearchResult";
 import SingleBook from "./pages/SingleBook";
 import Selection from "./pages/Selection";
-import Cart from "./pages/Cart";
-import DeletedAccount from "./pages/DeletedAccount";
-import Checkout from "./pages/Checkout";
-import Thankyou from "./pages/Thankyou";
-import About from "./pages/About";
+import Cart from "./pages/cart/Cart";
+import DeletedAccount from "./pages/deletedAccount/DeletedAccount";
+import Checkout from "./pages/checkout/Checkout";
+import Thankyou from "./pages/thankyou/Thankyou";
+import About from "./pages/about/About";
 import { FaGithub } from "react-icons/fa";
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
   const handleSearch = async (e) => {
     e.preventDefault();
     const plused = e.target.search.value.split(" ").join("+");
-    //console.log(plused);
+    e.target.reset();
     navigate(`/books/request/search?q=${plused}`);
   };
 

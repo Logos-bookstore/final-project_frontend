@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import BookCard from '../components/BookCard';
-import CartBtn from '../components/CartBtn';
-import { Context } from '../context/Context';
-import DeleteBtnAdmin from '../components/DeleteBtnAdmin';
-import DeleteBook from '../components/DeleteBook';
+import BookCard from '../../components/BookCard';
+import CartBtn from '../../components/CartBtn';
+import { Context } from '../../context/Context';
+import DeleteBtnAdmin from '../../components/DeleteBtnAdmin';
+import DeleteBook from '../../components/DeleteBook';
 
 export default function Genre() {
   const { state } = useLocation();
