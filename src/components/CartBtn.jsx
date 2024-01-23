@@ -26,5 +26,5 @@ export default function CartBtn({ book, singleBook }) {
       }
     }
   };
-  return <button onClick={handleCart}>add to cart</button>;
+  return <button className='cartBtn-btn' onClick={handleCart}>add to cart</button>;
 }

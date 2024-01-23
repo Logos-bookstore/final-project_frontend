@@ -34,7 +34,7 @@ export default function Genre() {
       <div className='books-container'>
         {sortedBooks.map((book) => {
           return (
-            <div key={book._id}>
+            <div className='books-book' key={book._id}>
               <BookCard book={book} />
               <CartBtn book={book} />
               {user?.role === 'admin' && <UpdateBtnAdmin book={book} />}
