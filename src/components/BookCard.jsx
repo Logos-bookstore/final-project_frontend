@@ -13,12 +13,12 @@ export default function BookCard({ book }) {
 
   return (
     <div key={book?._id} className='single-book-container'>
-      <img src={book?.image?.thumbnail} alt='' onClick={handleGoToDetailsPage} />
-      <h2 onClick={handleGoToDetailsPage}>{book?.title}</h2>
-      <h3>{book?.author}</h3>
+      <img className='bookCard-cover' src={book?.image?.thumbnail} alt='' onClick={handleGoToDetailsPage} />
+      <h2 className='bookCard-title' onClick={handleGoToDetailsPage}>{book?.title}</h2>
+      <h3 className='bookCard-author'>{book?.author}</h3>
       <ReviewStars rating={book?.avgRating} />
-      <p>{book?.price} €</p>
-      {book?.home && <p>{book?.description.split(' ').slice(0, 15).join(' ')}...</p>}
+      <p className='bookCard-price'>{book?.price} €</p>
+      {book?.home && <p className='bookCard-description'>{book?.description.split(' ').slice(0, 15).join(' ')}...</p>}
     </div>
   );
 }

@@ -5,7 +5,7 @@ export default function Thankyou() {
     const {orderReceived} = useContext(Context);
     return (
         <>
-            <p>{orderReceived}</p>
+            <p className="thankyou-msg">{orderReceived}</p>
         </>
     );
 };

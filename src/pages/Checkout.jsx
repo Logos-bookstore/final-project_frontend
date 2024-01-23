@@ -93,53 +93,53 @@ export default function Checkout() {
                 ?
                 <>
                     <Form update='Add Your Address'>
-                        <div>
-                            <label htmlFor="street">Street</label>
-                            <input type="text" name="street" id="street" />
+                        <div className="checkout-container">
+                            <label className="checkout-label" htmlFor="street">Street</label>
+                            <input className="checkout-input" type="text" name="street" id="street" />
                         </div>
-                        <div>
-                            <label htmlFor="zip">Zip Code</label>
-                            <input type="text" name="zip" id="zip" />
+                        <div className="checkout-container">
+                            <label className="checkout-label" htmlFor="zip">Zip Code</label>
+                            <input className="checkout-input" type="text" name="zip" id="zip" />
                         </div>
-                        <div>
-                            <label htmlFor="city">City</label>
-                            <input type="text" name="city" id="city" />
+                        <div className="checkout-container">
+                            <label className="checkout-label" htmlFor="city">City</label>
+                            <input className="checkout-input" type="text" name="city" id="city" />
                         </div>
-                        <div>
-                            <label htmlFor="country">Country</label>
-                            <input type="text" name="country" id="country" />
+                        <div className="checkout-container">
+                            <label className="checkout-label" htmlFor="country">Country</label>
+                            <input className="checkout-input" type="text" name="country" id="country" />
                         </div>
                     </Form>
-                    <p>Total Price: {totalPrice} €</p>
+                    <p className="checkout-totalPrice">Total Price: {totalPrice} €</p>
                 </>
                 :
                 <>
-                    <div>
-                        <p>{user.address.street}</p>
-                        <p>{user.address.zip}</p>
-                        <p>{user.address.city}</p>
-                        <p>{user.address.country}</p>
+                    <div className="checkout-address">
+                        <p className="checkout-address-p">{user.address.street}</p>
+                        <p className="checkout-address-p">{user.address.zip}</p>
+                        <p className="checkout-address-p">{user.address.city}</p>
+                        <p className="checkout-address-p">{user.address.country}</p>
                     </div>
                     <Form update='Update Your Address'>
-                        <div>
-                            <label htmlFor="street">Street</label>
-                            <input type="text" name="street" id="street" />
+                        <div className="checkout-container">
+                            <label className="checkout-label" htmlFor="street">Street</label>
+                            <input className="checkout-input" type="text" name="street" id="street" />
                         </div>
-                        <div>
-                            <label htmlFor="zip">Zip Code</label>
-                            <input type="text" name="zip" id="zip" />
+                        <div className="checkout-container">
+                            <label className="checkout-label" htmlFor="zip">Zip Code</label>
+                            <input className="checkout-input" type="text" name="zip" id="zip" />
                         </div>
-                        <div>
-                            <label htmlFor="city">City</label>
-                            <input type="text" name="city" id="city" />
+                        <div className="checkout-container">
+                            <label className="checkout-label" htmlFor="city">City</label>
+                            <input className="checkout-input" type="text" name="city" id="city" />
                         </div>
-                        <div>
-                            <label htmlFor="country">Country</label>
-                            <input type="text" name="country" id="country" />
+                        <div className="checkout-container">
+                            <label className="checkout-label" htmlFor="country">Country</label>
+                            <input className="checkout-input" type="text" name="country" id="country" />
                         </div>
                     </Form>
-                    <p>Total Price: {totalPrice} €</p>
-                    <button onClick={handleBuy}>Buy Now</button>
+                    <p className="checkout-totalPrice">Total Price: {totalPrice} €</p>
+                    <button className="checkout-buy-now" onClick={handleBuy}>Buy Now</button>
                 </>
             }
         </>

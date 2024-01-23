@@ -68,10 +68,10 @@ export default function Form({children, update}) {
     };
     return (
         <>
-            <div>
-                <form onSubmit={updateUser}>
-                    <fieldset>
-                        <legend>{update}</legend>
+            <div className="form-container">
+                <form className="form-form" onSubmit={updateUser}>
+                    <fieldset className="form-fieldset">
+                        <legend className="form-legend">{update}</legend>
                         {children}
                         <Continue/>
                     </fieldset>
