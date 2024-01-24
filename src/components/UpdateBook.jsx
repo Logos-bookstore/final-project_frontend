@@ -90,8 +90,8 @@ export default function UpdateBook({ book }) {
             <input type='text' name='isbn' id='isbn' />
           </div>
           <div>
-            <button>send</button>
-            <button onClick={handleCancel}>cancel</button>
+            <button onClick={handleCancel}>Cancel</button>
+            <button>Send</button>
           </div>
         </fieldset>
       </form>
