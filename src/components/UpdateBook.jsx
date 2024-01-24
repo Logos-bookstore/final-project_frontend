@@ -8,6 +8,32 @@ export default function UpdateBook({ book }) {
 
   const handleCancel = () => setBookToUpdate(null);
 
+  const handleNewBookImg = (e) => {
+    e.preventDefault();
+    const token = sessionStorage.getItem('token');
+    if (token) {
+      if (e.target?.image?.value) {
+        fetch(`${import.meta.env.VITE_UPDATE_BOOK}/${book._id}`, {
+          method: 'PATCH',
+          headers: { token: token },
+          body: new FormData(e.target),
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.success) {
+              setUpdateMSG(res.message);
+              setTimeout(() => {
+                const refreshPage = () => window.location.reload(false);
+                setUpdateMSG('');
+                refreshPage();
+              }, 2000);
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    }
+  };
+
   const updateBook = (e) => {
     e.preventDefault();
     let updatedBook = {
@@ -48,53 +74,67 @@ export default function UpdateBook({ book }) {
   return (
     <>
       {updateMSG && <p>{updateMSG}</p>}
-      <form onSubmit={updateBook}>
-        <fieldset>
-          <legend>Update a book</legend>
-          <div>
-            <label htmlFor='title'>Title</label>
-            <input type='text' name='title' id='title' />
-          </div>
-          <CombinedName />
-          <div>
-            <label htmlFor='year'>Year</label>
-            <input type='number' name='year' id='year' />
-          </div>
-          <div>
-            <label htmlFor='publisher'>Publisher</label>
-            <input type='text' name='publisher' id='publisher' />
-          </div>
-          <div>
-            <label htmlFor='genre'>Genre</label>
-            <input type='text' name='genre' id='genre' />
-          </div>
-          <div>
-            <label htmlFor='description'>Description</label>
-            <textarea
-              name='description'
-              id='description'
-              cols='30'
-              rows='10'
-            ></textarea>
-          </div>
-          <div>
-            <label htmlFor='pages'>Number of pages</label>
-            <input type='number' step='any' name='pages' id='pages' />
-          </div>
-          <div>
-            <label htmlFor='price'>Price</label>
-            <input type='number' step='any' name='price' id='price' />
-          </div>
-          <div>
-            <label htmlFor='isbn'>ISBN</label>
-            <input type='text' name='isbn' id='isbn' />
-          </div>
-          <div>
-            <button onClick={handleCancel}>Cancel</button>
-            <button>Send</button>
-          </div>
-        </fieldset>
-      </form>
+      <>
+        <form onSubmit={handleNewBookImg}>
+          <fieldset>
+            <legend>Upload new book image</legend>
+            <label htmlFor='image'>Image</label>
+            <input type='file' name='image' id='image' />
+            <div>
+              <button onClick={handleCancel}>Cancel</button>
+              <button>Send</button>
+            </div>
+          </fieldset>
+        </form>
+
+        <form onSubmit={updateBook}>
+          <fieldset>
+            <legend>Update book details</legend>
+            <div>
+              <label htmlFor='title'>Title</label>
+              <input type='text' name='title' id='title' />
+            </div>
+            <CombinedName />
+            <div>
+              <label htmlFor='year'>Year</label>
+              <input type='number' name='year' id='year' />
+            </div>
+            <div>
+              <label htmlFor='publisher'>Publisher</label>
+              <input type='text' name='publisher' id='publisher' />
+            </div>
+            <div>
+              <label htmlFor='genre'>Genre</label>
+              <input type='text' name='genre' id='genre' />
+            </div>
+            <div>
+              <label htmlFor='description'>Description</label>
+              <textarea
+                name='description'
+                id='description'
+                cols='30'
+                rows='10'
+              ></textarea>
+            </div>
+            <div>
+              <label htmlFor='pages'>Number of pages</label>
+              <input type='number' step='any' name='pages' id='pages' />
+            </div>
+            <div>
+              <label htmlFor='price'>Price</label>
+              <input type='number' step='any' name='price' id='price' />
+            </div>
+            <div>
+              <label htmlFor='isbn'>ISBN</label>
+              <input type='text' name='isbn' id='isbn' />
+            </div>
+            <div>
+              <button onClick={handleCancel}>Cancel</button>
+              <button>Send</button>
+            </div>
+          </fieldset>
+        </form>
+      </>
     </>
   );
 }
