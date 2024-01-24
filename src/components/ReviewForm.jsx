@@ -40,7 +40,7 @@ export default function ReviewForm({
         if (res.ok) {
           const data = await res.json();
           if (data.success) {
-            setBookToReview('');
+            setBookToReview(null);
             setReviewsChange(new Date());
           } // maybe add Toaster for 'review submitted successfully' ?
           else {
@@ -86,7 +86,7 @@ export default function ReviewForm({
         );
         if (res.ok) {
           const data = await res.json();
-          if (data.success) setBookToReview('');
+          if (data.success) setBookToReview(null);
         }
       }
     } catch (error) {
@@ -101,7 +101,9 @@ export default function ReviewForm({
         exisitingReview ? handleEditReview(e) : handleAddReview(e)
       }
     >
-      <p className='reviewForm-existingReview'>{exisitingReview ? 'New rating' : 'Your rating'}</p>
+      <p className='reviewForm-existingReview'>
+        {exisitingReview ? 'New rating' : 'Your rating'}
+      </p>
       {ratingError !== '' && <p>{ratingError}</p>}
       <div className='rating-options-container'>
         <div className='reviewForm-one'>
@@ -113,7 +115,9 @@ export default function ReviewForm({
             value='1'
             onClick={handleErrorOnFocus}
           />
-          <label className='reviewForm-label' htmlFor='1'>1</label>
+          <label className='reviewForm-label' htmlFor='1'>
+            1
+          </label>
         </div>
         <div className='reviewForm-two'>
           <input
@@ -124,7 +128,9 @@ export default function ReviewForm({
             value='2'
             onClick={handleErrorOnFocus}
           />
-          <label className='reviewForm-label' htmlFor='2'>2</label>
+          <label className='reviewForm-label' htmlFor='2'>
+            2
+          </label>
         </div>
         <div>
           <input
@@ -135,7 +141,9 @@ export default function ReviewForm({
             value='3'
             onClick={handleErrorOnFocus}
           />
-          <label className='reviewForm-label' htmlFor='3'>3</label>
+          <label className='reviewForm-label' htmlFor='3'>
+            3
+          </label>
         </div>
         <div>
           <input
@@ -146,10 +154,12 @@ export default function ReviewForm({
             value='4'
             onClick={handleErrorOnFocus}
           />
-          <label className='reviewForm-label' htmlFor='4'>4</label>
+          <label className='reviewForm-label' htmlFor='4'>
+            4
+          </label>
         </div>
         <div>
-          <input 
+          <input
             className='reviewForm-input'
             type='radio'
             name='rating'
@@ -157,7 +167,9 @@ export default function ReviewForm({
             value='5'
             onClick={handleErrorOnFocus}
           />
-          <label className='reviewForm-label' htmlFor='5'>5</label>
+          <label className='reviewForm-label' htmlFor='5'>
+            5
+          </label>
         </div>
       </div>
 
@@ -173,7 +185,7 @@ export default function ReviewForm({
             : 'write your review here'
         }
       ></textarea>
-      <p onClick={() => setBookToReview('')} className='cancel-review-btn'>
+      <p onClick={() => setBookToReview(null)} className='cancel-review-btn'>
         Cancel
       </p>
       <button className='reviewForm-send'>Send</button>
