@@ -11,7 +11,7 @@ export default function DeleteBtnAdmin({ book }) {
 
   return (
     <button className='deleteBtnAdmin-button' onClick={handleBookToDel}>
-      delete book
+      Delete book
     </button>
   );
 }
