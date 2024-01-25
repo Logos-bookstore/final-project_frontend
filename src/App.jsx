@@ -22,11 +22,13 @@ import { FaGithub } from 'react-icons/fa';
 function App() {
   const navigate = useNavigate();
   const { user, setUser } = useContext(Context);
-  const { setCurrentPage } = useContext(Context);
+  const { setCurrentPage, setShoppingCart } = useContext(Context);
 
   const logout = () => {
     setUser(null);
     sessionStorage.removeItem('token');
+    setShoppingCart([]);
+    localStorage.removeItem('cart');
   };
 
   const handleSearch = async (e) => {
@@ -102,7 +104,7 @@ function App() {
           <Route path='/books' element={<Books />}>
             <Route path='/books/genre/:genre' element={<Genre />} />
             <Route path='/books/selection' element={<Selection />} />
-            <Route path='/books/singlebook/:id' element={<SingleBook />} />
+            <Route path='/books/:title/:id' element={<SingleBook />} />
             <Route path='/books/request/:search' element={<SearchResult />} />
           </Route>
           <Route path='/register' element={<Register />} />
@@ -119,6 +121,9 @@ function App() {
       <footer>
         <div className='footer-content'>
           <div className='footer-item'>
+            <NavLink to='/about'>About</NavLink>
+          </div>
+          <div className='footer-item'>
             <a
               href='https://github.com/pozniej-znajde-wolne-haslo/final-project_backend'
               target='_blank'
@@ -126,9 +131,6 @@ function App() {
             >
               <FaGithub className='icon' />
             </a>
-          </div>
-          <div className='footer-item'>
-            <NavLink to='/about'>About</NavLink>
           </div>
           <div className='footer-item'>
             <span className='footer-text'>&copy; {currentYear} Book Store</span>
