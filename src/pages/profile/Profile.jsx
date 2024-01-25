@@ -11,6 +11,7 @@ import ReEnter from '../../components/ReEnter';
 import CombinedName from '../../components/CombinedName';
 import { NavLink, useNavigate } from 'react-router-dom';
 import ReviewForm from '../../components/ReviewForm';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Profile() {
   const { user, setUser } = useContext(Context);
@@ -109,9 +110,12 @@ export default function Profile() {
         if (response.ok) {
           const data = await response.json();
           if (data.success) {
-            console.log(data.message);
+            toast.success('The upload of the book was successful!');
+            e.target.reset();
           }
-        }
+        } else {
+          toast.error('The upload of the book was unsuccessfull! Make sure to fill out all fields.');
+        };
       }
     } catch (error) {
       //
@@ -235,6 +239,7 @@ export default function Profile() {
 
   return (
     <>
+      <Toaster position='top-center' />
       {user?.image?.thumbnail && <img src={user?.image?.thumbnail} alt='' />}
       <h2>Welcome {user?.firstName}</h2>
       <h4>{user?.email}</h4>
