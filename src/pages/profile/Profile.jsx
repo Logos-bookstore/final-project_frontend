@@ -24,6 +24,9 @@ export default function Profile() {
   const [really, setReally] = useState(false);
   const [showEditProfile, setShowEditProfile] = useState(false);
   const [showBookForm, setShowBookForm] = useState(false);
+  const [deleteItem, setDeleteItem] = useState("");
+  const [deleteOrder, setDeleteOrder] = useState("");
+  const [updateItem, setUpdateItem] = useState("");
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -162,6 +165,57 @@ export default function Profile() {
     setReally(true);
   };
 
+  const handleDeleteOrder = async (id) =>{
+    try {
+      const token = sessionStorage.getItem('token');
+      if(token) {
+        const response = await fetch(`${import.meta.env.VITE_DELETE_ORDER}${id}`, {method: "DELETE", headers: { token: token }});
+        if(response.ok) {
+          const data = await response.json();
+          if(data.success) {
+            setUserOrders(data.data);
+          }
+        }
+      }
+    } catch (error) {
+      //
+    }
+  };
+
+  const handleDeleteItem = async (id, order) => {
+    try {
+      const token = sessionStorage.getItem('token');
+      if(token) {
+        const response = await fetch(`${import.meta.env.VITE_DELETE_ITEM_FROM_ORDER}${id}`, {method: "DELETE", headers: {"Content-Type": "application/json", token: token }, body: JSON.stringify({id: order})});
+        if(response.ok) {
+          const data = await response.json();
+          if(data.success) setUserOrders(data.data);
+        }
+      };
+    } catch (error) {
+      //
+    }
+  };
+
+  const handleUpdateQty = async (e, order, book) => {
+    e.preventDefault();
+    try {
+      const token = sessionStorage.getItem('token');
+      if(token) {
+        const response = await fetch(`${import.meta.env.VITE_UPDATE_ITEM}${order}`, {method: "PATCH", headers: {"Content-Type": "application/json", token: token}, body: JSON.stringify({qty: e.target.qty.value, book: book})});
+        if(response.ok) {
+          const data = await response.json();
+          if(data.success) {
+            setUserOrders(data.data);
+            setUpdateItem("");
+          }
+        }
+      }
+    } catch (error) {
+      //
+    }
+  };
+
   return (
     <>
       {user?.image?.thumbnail && <img src={user?.image?.thumbnail} alt='' />}
@@ -201,15 +255,33 @@ export default function Profile() {
             return (
               <div key={item._id}>
                 <p>{item.date}</p>
+                <p>{item.totalPrice}</p>
+                {
+                  deleteOrder === item._id ? (
+                    <>
+                      <div>
+                        <p>Do you really want to delete this order?</p>
+                      </div>
+                      <div>
+                        <button onClick={() => handleDeleteOrder(item._id)}>Yes</button>
+                        <button onClick={() => setDeleteOrder("")}>No</button>
+                      </div>
+                    </>
+                  ) : (
+                    <div>
+                      <button onClick={() => setDeleteOrder(item._id)}>Delete Order</button>
+                    </div>
+                  )
+                }
                 {item.books.map((book) => {
                   return (
                     <div className='order-item' key={book._id}>
-                      <img src={book.image.thumbnail} alt='cover' />
-                      <p>"{book.title}", </p>
-                      <p>{book.author}, </p>
-                      <p>{book.price} €</p>
+                      <img src={book?.image?.thumbnail} alt='cover' />
+                      <p>"{book?.title}", </p>
+                      <p>{book?.author}, </p>
+                      <p>{book?.price} €</p>
                       <p>
-                        Qty:{' '}
+                        Qty:
                         {item?.quantity.find(
                           (qty) =>
                             item?.quantity.indexOf(qty) ===
@@ -234,6 +306,53 @@ export default function Profile() {
                           userReviews={userReviews}
                         />
                       )}
+                      <div>
+                        {
+                          updateItem === book._id ? (
+                            <div>
+                              <form onSubmit={(e) => handleUpdateQty(e, item._id, book._id)}>
+                                <select name="qty" id="qty">
+                                      <option className="cart-option" value="1">1</option>
+                                      <option className="cart-option" value="2">2</option>
+                                      <option className="cart-option" value="3">3</option>
+                                      <option className="cart-option" value="4">4</option>
+                                      <option className="cart-option" value="5">5</option>
+                                      <option className="cart-option" value="6">6</option>
+                                      <option className="cart-option" value="7">7</option>
+                                      <option className="cart-option" value="8">8</option>
+                                      <option className="cart-option" value="9">9</option>
+                                      <option className="cart-option" value="10">10</option>
+                                </select>
+                                <button type="submit">Submit</button>
+                              </form>
+                              <button onClick={() => setUpdateItem("")}>Cancel</button>
+                            </div>
+                          ) : (
+                            <div>
+                              <button onClick={() => setUpdateItem(book._id)}>Update Qty</button>
+                            </div>
+                          )
+                        }
+                      </div>
+                      <div>
+                        {
+                          deleteItem === book._id ? (
+                            <>
+                              <div>
+                                <p>Do you really want to delete this item from your order?</p>
+                              </div>
+                              <div>
+                                <button onClick={() => handleDeleteItem(book._id, item._id)}>Yes</button>
+                                <button onClick={() => setDeleteItem("")}>No</button>
+                              </div>
+                            </>
+                          ) : (
+                          <div>
+                            <button onClick={() => setDeleteItem(book._id)}>Delete Item</button>
+                          </div>
+                          )
+                        }
+                      </div>
                     </div>
                   );
                 })}
@@ -316,7 +435,7 @@ export default function Profile() {
             </div>
           </>
         ) : (
-          <button onClick={showDeleteOption}>DELETE YOUR ACCOUNT</button>
+          <p onClick={showDeleteOption}>DELETE YOUR ACCOUNT</p>
         )}
       </div>
     </>
