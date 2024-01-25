@@ -22,11 +22,13 @@ import { FaGithub } from 'react-icons/fa';
 function App() {
   const navigate = useNavigate();
   const { user, setUser } = useContext(Context);
-  const { setCurrentPage } = useContext(Context);
+  const { setCurrentPage, setShoppingCart } = useContext(Context);
 
   const logout = () => {
     setUser(null);
     sessionStorage.removeItem('token');
+    setShoppingCart([]);
+    localStorage.removeItem('cart');
   };
 
   const handleSearch = async (e) => {
@@ -119,6 +121,9 @@ function App() {
       <footer>
         <div className='footer-content'>
           <div className='footer-item'>
+            <NavLink to='/about'>About</NavLink>
+          </div>
+          <div className='footer-item'>
             <a
               href='https://github.com/pozniej-znajde-wolne-haslo/final-project_backend'
               target='_blank'
@@ -126,9 +131,6 @@ function App() {
             >
               <FaGithub className='icon' />
             </a>
-          </div>
-          <div className='footer-item'>
-            <NavLink to='/about'>About</NavLink>
           </div>
           <div className='footer-item'>
             <span className='footer-text'>&copy; {currentYear} Book Store</span>
