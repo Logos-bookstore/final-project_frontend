@@ -220,7 +220,7 @@ export default function Profile() {
     <>
       {user?.image?.thumbnail && <img src={user?.image?.thumbnail} alt='' />}
       <h2>
-        {user?.firstName} {user?.lastName}
+        Welcome {user?.firstName}
       </h2>
       <h4>{user?.email}</h4>
 
@@ -254,8 +254,7 @@ export default function Profile() {
           userOrders.map((item) => {
             return (
               <div key={item._id}>
-                <p>{item.date}</p>
-                <p>{item.totalPrice}</p>
+                <p><span>{item.date}</span>, <span>Total Price: {item.totalPrice} €</span></p>
                 {
                   deleteOrder === item._id ? (
                     <>
@@ -276,8 +275,8 @@ export default function Profile() {
                 {item.books.map((book) => {
                   return (
                     <div className='order-item' key={book._id}>
-                      <img src={book?.image?.thumbnail} alt='cover' />
-                      <p>"{book?.title}", </p>
+                      <img onClick={() => navigate(`/books/singlebook/${book._id}`)} src={book?.image?.thumbnail} alt='cover' />
+                      <p onClick={() => navigate(`/books/singlebook/${book._id}`)}>"{book?.title}", </p>
                       <p>{book?.author}, </p>
                       <p>{book?.price} €</p>
                       <p>
