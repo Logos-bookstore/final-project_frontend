@@ -38,7 +38,25 @@ export default function Login() {
       })
       .catch((err) => console.log(err));
   };
-  /* async function login(e) {
+
+  return (
+    <>
+      <form className='login-form' onSubmit={login}>
+        {loginError === 'Please make sure your email is correct.' && (
+          <p>{loginError}</p>
+        )}
+        <Email loginError={loginError} setLoginError={setLoginError} />
+        {loginError === 'Please make sure your password is correct.' && (
+          <p>{loginError}</p>
+        )}
+        <Password loginError={loginError} setLoginError={setLoginError} />
+        <Continue />
+      </form>
+    </>
+  );
+}
+
+/* async function login(e) {
     e.preventDefault();
     const user = {
       email: e.target.email.value,
@@ -67,20 +85,3 @@ export default function Login() {
       //
     }
   } */
-
-  return (
-    <>
-      <form className='login-form' onSubmit={login}>
-        {loginError === 'Please make sure your email is correct.' && (
-          <p>{loginError}</p>
-        )}
-        <Email loginError={loginError} setLoginError={setLoginError} />
-        {loginError === 'Please make sure your password is correct.' && (
-          <p>{loginError}</p>
-        )}
-        <Password loginError={loginError} setLoginError={setLoginError} />
-        <Continue />
-      </form>
-    </>
-  );
-}
