@@ -5,10 +5,8 @@ export default function BookCard({ book }) {
   const navigate = useNavigate();
 
   const handleGoToDetailsPage = () => {
-    // FOR LATER --> add the TITLE to the URL as a 2nd dynamic PARAM ?
-    /* const bookTitle = book.title.split(' ').join('_');
-    navigate(`/singlebook/${bookTitle}`); */
-    navigate(`/books/singlebook/${book._id}`);
+    const bookTitle = book.title.split(' ').join('_');
+    navigate(`/books/${bookTitle}/${book._id}`);
   };
 
   return (
