@@ -24,9 +24,9 @@ export default function Profile() {
   const [really, setReally] = useState(false);
   const [showEditProfile, setShowEditProfile] = useState(false);
   const [showBookForm, setShowBookForm] = useState(false);
-  const [deleteItem, setDeleteItem] = useState("");
-  const [deleteOrder, setDeleteOrder] = useState("");
-  const [updateItem, setUpdateItem] = useState("");
+  const [deleteItem, setDeleteItem] = useState('');
+  const [deleteOrder, setDeleteOrder] = useState('');
+  const [updateItem, setUpdateItem] = useState('');
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -165,14 +165,17 @@ export default function Profile() {
     setReally(true);
   };
 
-  const handleDeleteOrder = async (id) =>{
+  const handleDeleteOrder = async (id) => {
     try {
       const token = sessionStorage.getItem('token');
-      if(token) {
-        const response = await fetch(`${import.meta.env.VITE_DELETE_ORDER}${id}`, {method: "DELETE", headers: { token: token }});
-        if(response.ok) {
+      if (token) {
+        const response = await fetch(
+          `${import.meta.env.VITE_DELETE_ORDER}${id}`,
+          { method: 'DELETE', headers: { token: token } }
+        );
+        if (response.ok) {
           const data = await response.json();
-          if(data.success) {
+          if (data.success) {
             setUserOrders(data.data);
           }
         }
@@ -185,13 +188,20 @@ export default function Profile() {
   const handleDeleteItem = async (id, order) => {
     try {
       const token = sessionStorage.getItem('token');
-      if(token) {
-        const response = await fetch(`${import.meta.env.VITE_DELETE_ITEM_FROM_ORDER}${id}`, {method: "DELETE", headers: {"Content-Type": "application/json", token: token }, body: JSON.stringify({id: order})});
-        if(response.ok) {
+      if (token) {
+        const response = await fetch(
+          `${import.meta.env.VITE_DELETE_ITEM_FROM_ORDER}${id}`,
+          {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json', token: token },
+            body: JSON.stringify({ id: order }),
+          }
+        );
+        if (response.ok) {
           const data = await response.json();
-          if(data.success) setUserOrders(data.data);
+          if (data.success) setUserOrders(data.data);
         }
-      };
+      }
     } catch (error) {
       //
     }
@@ -201,13 +211,20 @@ export default function Profile() {
     e.preventDefault();
     try {
       const token = sessionStorage.getItem('token');
-      if(token) {
-        const response = await fetch(`${import.meta.env.VITE_UPDATE_ITEM}${order}`, {method: "PATCH", headers: {"Content-Type": "application/json", token: token}, body: JSON.stringify({qty: e.target.qty.value, book: book})});
-        if(response.ok) {
+      if (token) {
+        const response = await fetch(
+          `${import.meta.env.VITE_UPDATE_ITEM}${order}`,
+          {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json', token: token },
+            body: JSON.stringify({ qty: e.target.qty.value, book: book }),
+          }
+        );
+        if (response.ok) {
           const data = await response.json();
-          if(data.success) {
+          if (data.success) {
             setUserOrders(data.data);
-            setUpdateItem("");
+            setUpdateItem('');
           }
         }
       }
@@ -219,9 +236,7 @@ export default function Profile() {
   return (
     <>
       {user?.image?.thumbnail && <img src={user?.image?.thumbnail} alt='' />}
-      <h2>
-        Welcome {user?.firstName}
-      </h2>
+      <h2>Welcome {user?.firstName}</h2>
       <h4>{user?.email}</h4>
 
       <p onClick={handleEditProfile}>Edit your profile</p>
@@ -254,29 +269,54 @@ export default function Profile() {
           userOrders.map((item) => {
             return (
               <div key={item._id}>
-                <p><span>{item.date}</span>, <span>Total Price: {item.totalPrice} €</span></p>
-                {
-                  deleteOrder === item._id ? (
-                    <>
-                      <div>
-                        <p>Do you really want to delete this order?</p>
-                      </div>
-                      <div>
-                        <button onClick={() => handleDeleteOrder(item._id)}>Yes</button>
-                        <button onClick={() => setDeleteOrder("")}>No</button>
-                      </div>
-                    </>
-                  ) : (
+                <p>
+                  <span>{item.date}</span>,{' '}
+                  <span>Total Price: {item.totalPrice} €</span>
+                </p>
+                {deleteOrder === item._id ? (
+                  <>
                     <div>
-                      <button onClick={() => setDeleteOrder(item._id)}>Delete Order</button>
+                      <p>Do you really want to delete this order?</p>
                     </div>
-                  )
-                }
+                    <div>
+                      <button onClick={() => handleDeleteOrder(item._id)}>
+                        Yes
+                      </button>
+                      <button onClick={() => setDeleteOrder('')}>No</button>
+                    </div>
+                  </>
+                ) : (
+                  <div>
+                    <button onClick={() => setDeleteOrder(item._id)}>
+                      Delete Order
+                    </button>
+                  </div>
+                )}
                 {item.books.map((book) => {
                   return (
                     <div className='order-item' key={book._id}>
-                      <img onClick={() => navigate(`/books/singlebook/${book._id}`)} src={book?.image?.thumbnail} alt='cover' />
-                      <p onClick={() => navigate(`/books/singlebook/${book._id}`)}>"{book?.title}", </p>
+                      <img
+                        onClick={() =>
+                          navigate(
+                            `/books/${book.title.split(' ').join('_')}/${
+                              book._id
+                            }`
+                          )
+                        }
+                        src={book?.image?.thumbnail}
+                        alt='cover'
+                      />
+                      <p
+                        onClick={() =>
+                          navigate(
+                            `/books/${book.title.split(' ').join('_')}/${
+                              book._id
+                            }`
+                          )
+                        }
+                      >
+                        "{book?.title}",{' '}
+                      </p>
                       <p>{book?.author}, </p>
                       <p>{book?.price} €</p>
                       <p>
@@ -306,51 +346,88 @@ export default function Profile() {
                         />
                       )}
                       <div>
-                        {
-                          updateItem === book._id ? (
-                            <div>
-                              <form onSubmit={(e) => handleUpdateQty(e, item._id, book._id)}>
-                                <select name="qty" id="qty">
-                                      <option className="cart-option" value="1">1</option>
-                                      <option className="cart-option" value="2">2</option>
-                                      <option className="cart-option" value="3">3</option>
-                                      <option className="cart-option" value="4">4</option>
-                                      <option className="cart-option" value="5">5</option>
-                                      <option className="cart-option" value="6">6</option>
-                                      <option className="cart-option" value="7">7</option>
-                                      <option className="cart-option" value="8">8</option>
-                                      <option className="cart-option" value="9">9</option>
-                                      <option className="cart-option" value="10">10</option>
-                                </select>
-                                <button type="submit">Submit</button>
-                              </form>
-                              <button onClick={() => setUpdateItem("")}>Cancel</button>
-                            </div>
-                          ) : (
-                            <div>
-                              <button onClick={() => setUpdateItem(book._id)}>Update Qty</button>
-                            </div>
-                          )
-                        }
+                        {updateItem === book._id ? (
+                          <div>
+                            <form
+                              onSubmit={(e) =>
+                                handleUpdateQty(e, item._id, book._id)
+                              }
+                            >
+                              <select name='qty' id='qty'>
+                                <option className='cart-option' value='1'>
+                                  1
+                                </option>
+                                <option className='cart-option' value='2'>
+                                  2
+                                </option>
+                                <option className='cart-option' value='3'>
+                                  3
+                                </option>
+                                <option className='cart-option' value='4'>
+                                  4
+                                </option>
+                                <option className='cart-option' value='5'>
+                                  5
+                                </option>
+                                <option className='cart-option' value='6'>
+                                  6
+                                </option>
+                                <option className='cart-option' value='7'>
+                                  7
+                                </option>
+                                <option className='cart-option' value='8'>
+                                  8
+                                </option>
+                                <option className='cart-option' value='9'>
+                                  9
+                                </option>
+                                <option className='cart-option' value='10'>
+                                  10
+                                </option>
+                              </select>
+                              <button type='submit'>Submit</button>
+                            </form>
+                            <button onClick={() => setUpdateItem('')}>
+                              Cancel
+                            </button>
+                          </div>
+                        ) : (
+                          <div>
+                            <button onClick={() => setUpdateItem(book._id)}>
+                              Update Qty
+                            </button>
+                          </div>
+                        )}
                       </div>
                       <div>
-                        {
-                          deleteItem === book._id ? (
-                            <>
-                              <div>
-                                <p>Do you really want to delete this item from your order?</p>
-                              </div>
-                              <div>
-                                <button onClick={() => handleDeleteItem(book._id, item._id)}>Yes</button>
-                                <button onClick={() => setDeleteItem("")}>No</button>
-                              </div>
-                            </>
-                          ) : (
+                        {deleteItem === book._id ? (
+                          <>
+                            <div>
+                              <p>
+                                Do you really want to delete this item from your
+                                order?
+                              </p>
+                            </div>
+                            <div>
+                              <button
+                                onClick={() =>
+                                  handleDeleteItem(book._id, item._id)
+                                }
+                              >
+                                Yes
+                              </button>
+                              <button onClick={() => setDeleteItem('')}>
+                                No
+                              </button>
+                            </div>
+                          </>
+                        ) : (
                           <div>
-                            <button onClick={() => setDeleteItem(book._id)}>Delete Item</button>
+                            <button onClick={() => setDeleteItem(book._id)}>
+                              Delete Item
+                            </button>
                           </div>
-                          )
-                        }
+                        )}
                       </div>
                     </div>
                   );
