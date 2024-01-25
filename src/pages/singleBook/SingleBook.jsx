@@ -15,7 +15,6 @@ export default function SingleBook() {
   const { user, bookToUpdate, bookToDelete } = useContext(Context);
   const { id } = useParams();
   const { title } = useParams();
-  console.log(title);
 
   const fetchReviews = async () => {
     try {
