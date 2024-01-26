@@ -2,11 +2,10 @@ import { useContext } from 'react';
 import { Context } from '../context/Context';
 
 export default function CartBtn({ book, singleBook }) {
-  const { setBookToUpdate, setBookToDelete } = useContext(Context);
+  const { hideUpdateDeleteBookForms } = useContext(Context);
 
   const handleCart = () => {
-    setBookToUpdate(null);
-    setBookToDelete(null);
+    hideUpdateDeleteBookForms();
     let cart = JSON.parse(localStorage.getItem('cart'));
     if (cart) {
       if (book) {
