@@ -112,10 +112,13 @@ export default function Profile() {
           if (data.success) {
             toast.success('The upload of the book was successful!');
             e.target.reset();
+            setShowBookForm(false);
           }
         } else {
-          toast.error('The upload of the book was unsuccessfull! Make sure to fill out all fields.');
-        };
+          toast.error(
+            'The upload of the book was unsuccessfull! Make sure to fill out all fields.'
+          );
+        }
       }
     } catch (error) {
       //
