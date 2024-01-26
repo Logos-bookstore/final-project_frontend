@@ -5,6 +5,7 @@ export default function Container({ children }) {
   const [user, setUser] = useState(null);
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [booksPerPage] = useState(10);
   const [searchResult, setSearchResult] = useState([]);
   const [booksToGenre, setBooksToGenre] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -46,6 +47,7 @@ export default function Container({ children }) {
           setBooks,
           currentPage,
           setCurrentPage,
+          booksPerPage,
           searchResult,
           setSearchResult,
           booksToGenre,

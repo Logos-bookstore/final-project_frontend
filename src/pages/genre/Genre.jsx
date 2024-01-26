@@ -7,10 +7,20 @@ import DeleteBtnAdmin from '../../components/DeleteBtnAdmin';
 import DeleteBook from '../../components/DeleteBook';
 import UpdateBtnAdmin from '../../components/UpdateBtnAdmin';
 import UpdateBook from '../../components/UpdateBook';
+import Pagination from '../../components/Pagination';
 
 export default function Genre() {
   const { state } = useLocation();
-  const { booksToGenre, setBooksToGenre, user, bookToUpdate, bookToDelete } = useContext(Context);
+  const {
+    booksToGenre,
+    setBooksToGenre,
+    user,
+    bookToUpdate,
+    bookToDelete,
+    currentPage,
+    setCurrentPage,
+    booksPerPage,
+  } = useContext(Context);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_BOOKS_ONE_GENRE}`, {
@@ -20,19 +30,26 @@ export default function Genre() {
     })
       .then((res) => res.json())
       .then((res) => {
-        res.success && setBooksToGenre(res.data);
+        if (res.success) {
+          setCurrentPage(1);
+          setBooksToGenre(res.data);
+        }
       })
       .catch((err) => console.log(err));
   }, [state]);
 
+  // get current books
+  const indexOfLastBook = currentPage * booksPerPage;
+  const indexOfFirstBook = indexOfLastBook - booksPerPage;
   const sortedBooks = booksToGenre.sort((a, b) =>
     a.author.split(' ').at(-1).localeCompare(b.author.split(' ').at(-1))
   );
+  const currentBooks = sortedBooks.slice(indexOfFirstBook, indexOfLastBook);
 
   return (
     <>
       <div className='books-container'>
-        {sortedBooks.map((book) => {
+        {currentBooks.map((book) => {
           return (
             <div className='books-book' key={book._id}>
               <BookCard book={book} />
@@ -45,6 +62,10 @@ export default function Genre() {
           );
         })}
       </div>
+      <Pagination
+        booksPerPage={booksPerPage}
+        totalBooks={booksToGenre.length}
+      />
     </>
   );
 }

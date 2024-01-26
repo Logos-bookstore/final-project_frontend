@@ -1,12 +1,11 @@
 import { Context } from '../../context/Context';
 import BooksDisplay from '../../components/BooksDisplay';
 import Pagination from '../../components/Pagination';
-import { useEffect, useContext, useState } from 'react';
+import { useEffect, useContext } from 'react';
 
 export default function Selection() {
-  const { currentPage, setCurrentPage } = useContext(Context);
-  const [booksPerPage] = useState(10);
-  const { books, setBooks } = useContext(Context);
+  const { books, setBooks, currentPage, booksPerPage } = useContext(Context);
+
   useEffect(() => {
     async function fetchBooks() {
       try {
@@ -30,16 +29,10 @@ export default function Selection() {
   );
   const currentBooks = sortedBooks.slice(indexOfFirstBook, indexOfLastBook);
 
-  // change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <>
       <BooksDisplay books={currentBooks} />
-      <Pagination
-        booksPerPage={booksPerPage}
-        totalBooks={books.length}
-        paginate={paginate}
-      />
+      <Pagination booksPerPage={booksPerPage} totalBooks={books.length} />
     </>
   );
 }
