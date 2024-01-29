@@ -37,6 +37,12 @@ export default function Container({ children }) {
       verify();
     }
   }, []);
+
+  const hideUpdateDeleteBookForms = () => {
+    setBookToUpdate(null);
+    setBookToDelete(null);
+  };
+
   return (
     <>
       <Context.Provider
@@ -62,6 +68,7 @@ export default function Container({ children }) {
           setBookToDelete,
           bookToUpdate,
           setBookToUpdate,
+          hideUpdateDeleteBookForms,
         }}
       >
         {children}

@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import { Context } from '../../context/Context';
 
 export default function Books() {
   const [genres, setGenres] = useState([]);
+  const { hideUpdateDeleteBookForms } = useContext(Context);
+
   useEffect(() => {
     async function getGenres() {
       try {
@@ -24,13 +27,11 @@ export default function Books() {
       <div className='genres-container'>
         {genres.map((genre) => {
           return (
-            <h3
-              className='books-title'
-              key={genre._id}
-            >
+            <h3 className='books-title' key={genre._id}>
               <NavLink
                 to={`/books/genre/${genre.genre.split(' ').join('_')}`}
                 state={genre.genre}
+                onClick={hideUpdateDeleteBookForms}
               >
                 {genre.genre}
               </NavLink>
