@@ -1,0 +1,24 @@
+.singleBook-page {
+  margin: 3.5rem 2rem 3rem 2rem;
+}
+
+.singleBook-details {
+  line-height: 1.8;
+}
+
+.singleBook-title {
+  margin-top: 2.5rem;
+}
+
+.singleBook-heading {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.singleBook-span {
+  font-weight: bold;
+}
+
+.singleBook-review-text {
+  margin-bottom: 1.5rem;
+}

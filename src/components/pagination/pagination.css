@@ -1,0 +1,15 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.pagination-li:hover {
+  cursor: pointer;
+}
+
+.pagination-active-link {
+  border-bottom: 1px solid gray;
+}

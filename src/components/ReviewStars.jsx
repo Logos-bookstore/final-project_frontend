@@ -15,5 +15,5 @@ export const ReviewStars = ({ rating }) => {
       renderedStars.push(<StarIcon key={i} isFilled={false} />);
     }
   }
-  return renderedStars;
+  return <div>{renderedStars}</div>;
 };

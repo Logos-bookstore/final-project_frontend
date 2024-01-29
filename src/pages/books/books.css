@@ -1,0 +1,32 @@
+.books-genres-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  line-height: 1.7;
+  margin: 2.5rem 1rem 0 1rem;
+  padding-left: 4rem;
+}
+
+.books-genres-container .books-genre-name {
+  font-weight: normal;
+  font-size: 1.4rem;
+}
+
+.books-genres-container .books-active {
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 550px) {
+  .books-genres-container {
+    line-height: 0.1;
+    margin: 3rem 2rem 0 2rem;
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  .books-genres-container .books-genre-name {
+    font-size: 1.6rem;
+  }
+}
