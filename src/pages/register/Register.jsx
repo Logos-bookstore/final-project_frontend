@@ -8,6 +8,7 @@ import Password from '../../components/Password';
 import ReEnter from '../../components/ReEnter';
 import toast, { Toaster } from 'react-hot-toast';
 import { Context } from '../../context/Context';
+import './register.css'
 
 export default function Register() {
   const { setUser } = useContext(Context);
@@ -67,6 +68,7 @@ export default function Register() {
   return (
     <>
       <Toaster position='top-center' />
+      <h2 className='create-an-account'>Create an Account</h2>
       <form className='register-form' onSubmit={register}>
         {errorMSGs.firstName !== '' && <p>{errorMSGs.firstName}</p>}
         <FirstName errorMSGs={errorMSGs} setErrorMSGs={setErrorMSGs} />

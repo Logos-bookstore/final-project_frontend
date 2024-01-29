@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../../context/Context';
+import './cart.css'
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -88,7 +89,6 @@ export default function Cart() {
 
   return (
     <>
-      <h2 className='cart-title'>Cart</h2>
       <div className='cart-container'>
         {shoppingCart.length > 0 ? (
           <>
@@ -99,6 +99,7 @@ export default function Cart() {
                   src={item?.image?.thumbnail}
                   alt='cover'
                 />
+                <div className='cart-next-to-cover'>
                 <h2 className='cart-bookTitle'>{item?.title}</h2>
                 <h3 className='cart-author'>{item?.author}</h3>
                 <p className='cart-price'>{item?.price} €</p>
@@ -108,6 +109,7 @@ export default function Cart() {
                 >
                   Remove from cart
                 </button>
+                <div className='cart-quantity-div'>
                 <label className='cart-label' htmlFor='quantity'>
                   Qty
                 </label>
@@ -148,20 +150,25 @@ export default function Cart() {
                     10
                   </option>
                 </select>
+                </div>
+                </div>
               </div>
             ))}
-            <div className='cart-totalPrice'>Total Price: {totalPrice} €</div>
+            <div className='cart-total-price-div'>
+              <p className='cart-totalPrice'>Total Price: {totalPrice} €</p>
+            </div>
           </>
         ) : (
-          <div className='cart-empty'>Your cart is empty.</div>
+          <p className='cart-empty'>Your cart is empty.</p>
         )}
-      </div>
-
-      {shoppingCart.length > 0 && user && (
-        <button className='cart-buy' onClick={handleGoToCashier}>
-          Buy
-        </button>
+         {shoppingCart.length > 0 && user && (
+          <div className='cart-buy-div'>
+            <button className='cart-buy' onClick={handleGoToCashier}>
+              Buy
+            </button>
+          </div>
       )}
+      </div>
       {!user && (
         <p className='cart-please'>
           Please log in if you want to buy books or create an account.

@@ -66,67 +66,40 @@ function App() {
           <ul className='search-ul'>
             <li>
               <form onSubmit={handleSearch}>
-                <input
-                  className='search-input'
-                  type='text'
-                  name='search'
-                  id='search'
-                />
-                <button
-                  className='search-btn'
-                  type='submit'
-                  onClick={hideUpdateDeleteBookForms}
-                >
-                  <FaSearch className='icon' />
-                </button>
+                <input className='search-input' type='text' name='search' id='search' />
+                <button className='search-btn' type='submit' onClick={hideUpdateDeleteBookForms}><FaSearch className='icon' /></button>
               </form>
             </li>
           </ul>
           <ul className='links-ul'>
             <li onClick={hideUpdateDeleteBookForms}>
-              <NavLink className='navlink' to='/'>
-                Home
-              </NavLink>
+              <NavLink className='navlink' to='/'>Home</NavLink>
             </li>
             <li onClick={handleBooksDisplay}>
-              <NavLink className='navlink' to='/books'>
-                Books
-              </NavLink>
+              <NavLink className='navlink' to='/books'>Books</NavLink>
             </li>
             {!user ? (
               <>
                 <li>
-                  <NavLink className='navlink' to='/register'>
-                    Register
-                  </NavLink>
+                  <NavLink className='navlink' to='/register'>Register</NavLink>
                 </li>
                 <li>
-                  <NavLink className='navlink' to='/login'>
-                    Login
-                  </NavLink>
+                  <NavLink className='navlink' to='/login'>Login</NavLink>
                 </li>
                 <li onClick={hideUpdateDeleteBookForms}>
-                  <NavLink className='navlink' to='/cart'>
-                    <FaShoppingCart className='icon' />
-                  </NavLink>
+                  <NavLink className='navlink' to='/cart'><FaShoppingCart className='icon'/></NavLink>
                 </li>
               </>
             ) : (
               <>
                 <li onClick={hideUpdateDeleteBookForms}>
-                  <NavLink className='navlink' to='/profile'>
-                    Profile
-                  </NavLink>
+                  <NavLink className='navlink' to='/profile'>Profile</NavLink>
                 </li>
                 <li onClick={hideUpdateDeleteBookForms}>
-                  <NavLink className='navlink' to='/cart'>
-                    <FaShoppingCart className='icon' />
-                  </NavLink>
+                  <NavLink className='navlink' to='/cart'><FaShoppingCart className='icon'/></NavLink>
                 </li>
                 <li onClick={logout}>
-                  <NavLink className='navlink' to='/'>
-                    Logout
-                  </NavLink>
+                  <NavLink className='navlink' to='/'>Logout</NavLink>
                 </li>
               </>
             )}
@@ -157,9 +130,7 @@ function App() {
         <div className='footer-content'>
           <div className='footer-about-github'>
             <div className='footer-item' onClick={hideUpdateDeleteBookForms}>
-              <NavLink className='navlink' to='/about'>
-                About
-              </NavLink>
+              <NavLink className='navlink' to='/about'>About</NavLink>
             </div>
             <div className='footer-item' onClick={hideUpdateDeleteBookForms}>
               <a

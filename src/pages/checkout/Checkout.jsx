@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from '../../components/Form';
 import { Context } from '../../context/Context';
+import './checkout.css'
 
 export default function Checkout() {
   const {
@@ -99,7 +100,7 @@ export default function Checkout() {
   return (
     <>
       {!user?.address ? (
-        <>
+        <div className='checkout-page-container'>
           <Form update='Add Your Address'>
             <div className='checkout-container'>
               <label className='checkout-label' htmlFor='street'>
@@ -146,10 +147,12 @@ export default function Checkout() {
               />
             </div>
           </Form>
-          <p className='checkout-totalPrice'>Total Price: {totalPrice} €</p>
-        </>
+          <div className='checkout-totalPrice-div'>
+            <p className='checkout-totalPrice'>Total Price: {totalPrice} €</p>
+          </div>
+        </div>
       ) : (
-        <>
+        <div className='checkout-page-container'>
           <div className='checkout-address'>
             <p className='checkout-address-p'>{user.address.street}</p>
             <p className='checkout-address-p'>{user.address.zip}</p>
@@ -202,11 +205,15 @@ export default function Checkout() {
               />
             </div>
           </Form>
-          <p className='checkout-totalPrice'>Total Price: {totalPrice} €</p>
-          <button className='checkout-buy-now' onClick={handleBuy}>
-            Buy now
-          </button>
-        </>
+          <div className='checkout-totalPrice-div'>
+            <p className='checkout-totalPrice'>Total Price: {totalPrice} €</p>
+          </div>
+          <div className='checkout-buy-now-div'>
+            <button className='checkout-buy-now' onClick={handleBuy}>
+              Buy now
+            </button>
+          </div>
+        </div>
       )}
     </>
   );
