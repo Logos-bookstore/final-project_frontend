@@ -21,8 +21,13 @@ import { FaGithub, FaSearch, FaShoppingCart } from 'react-icons/fa';
 
 function App() {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(Context);
-  const { setCurrentPage, setShoppingCart } = useContext(Context);
+  const {
+    user,
+    setUser,
+    setCurrentPage,
+    setShoppingCart,
+    hideUpdateDeleteBookForms,
+  } = useContext(Context);
 
   const logout = () => {
     setUser(null);
@@ -38,9 +43,10 @@ function App() {
     navigate(`/books/request/search?q=${plused}`);
   };
 
-  // handler to display all books again (when Books-link clicked)
+  // (when Books-link clicked) - display all books again / go back to page 1 / hide update/delete book components
   const handleBooksDisplay = () => {
     setCurrentPage(1);
+    hideUpdateDeleteBookForms();
     navigate('/books/selection');
   };
 
@@ -51,20 +57,22 @@ function App() {
       <header key='header'>
         <nav className='header-navbar'>
           <ul className='logo-ul'>
-            <li>
-              <NavLink className='navlink' to='/'>Logo</NavLink>
+            <li onClick={hideUpdateDeleteBookForms}>
+              <NavLink className='navlink' to='/'>
+                Logo
+              </NavLink>
             </li>
           </ul>
           <ul className='search-ul'>
             <li>
               <form onSubmit={handleSearch}>
                 <input className='search-input' type='text' name='search' id='search' />
-                <button className='search-btn' type='submit'><FaSearch className='icon' /></button>
+                <button className='search-btn' type='submit' onClick={hideUpdateDeleteBookForms}><FaSearch className='icon' /></button>
               </form>
             </li>
           </ul>
           <ul className='links-ul'>
-            <li>
+            <li onClick={hideUpdateDeleteBookForms}>
               <NavLink className='navlink' to='/'>Home</NavLink>
             </li>
             <li onClick={handleBooksDisplay}>
@@ -78,16 +86,16 @@ function App() {
                 <li>
                   <NavLink className='navlink' to='/login'>Login</NavLink>
                 </li>
-                <li>
+                <li onClick={hideUpdateDeleteBookForms}>
                   <NavLink className='navlink' to='/cart'><FaShoppingCart className='icon'/></NavLink>
                 </li>
               </>
             ) : (
               <>
-                <li>
+                <li onClick={hideUpdateDeleteBookForms}>
                   <NavLink className='navlink' to='/profile'>Profile</NavLink>
                 </li>
-                <li>
+                <li onClick={hideUpdateDeleteBookForms}>
                   <NavLink className='navlink' to='/cart'><FaShoppingCart className='icon'/></NavLink>
                 </li>
                 <li onClick={logout}>
@@ -121,10 +129,10 @@ function App() {
       <footer>
         <div className='footer-content'>
           <div className='footer-about-github'>
-            <div className='footer-item'>
+            <div className='footer-item' onClick={hideUpdateDeleteBookForms}>
               <NavLink className='navlink' to='/about'>About</NavLink>
             </div>
-            <div className='footer-item'>
+            <div className='footer-item' onClick={hideUpdateDeleteBookForms}>
               <a
                 href='https://github.com/pozniej-znajde-wolne-haslo/final-project_backend'
                 target='_blank'

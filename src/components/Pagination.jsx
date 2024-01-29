@@ -2,8 +2,7 @@ import { useContext } from 'react';
 import { Context } from '../context/Context';
 
 export default function Pagination({ booksPerPage, totalBooks }) {
-  const { setCurrentPage, setBookToUpdate, setBookToDelete } =
-    useContext(Context);
+  const { setCurrentPage, hideUpdateDeleteBookForms } = useContext(Context);
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalBooks / booksPerPage); i++) {
@@ -12,8 +11,7 @@ export default function Pagination({ booksPerPage, totalBooks }) {
 
   // change page
   const paginate = (pageNumber) => {
-    setBookToUpdate(null);
-    setBookToDelete(null);
+    hideUpdateDeleteBookForms();
     setCurrentPage(pageNumber);
   };
 

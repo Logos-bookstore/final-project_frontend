@@ -14,7 +14,7 @@ import ReviewForm from '../../components/ReviewForm';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function Profile() {
-  const { user, setUser } = useContext(Context);
+  const { user, setUser, hideUpdateDeleteBookForms } = useContext(Context);
   const [userOrders, setUserOrders] = useState([]);
   const navigate = useNavigate();
   // states for writing/editing reviews:
@@ -112,10 +112,13 @@ export default function Profile() {
           if (data.success) {
             toast.success('The upload of the book was successful!');
             e.target.reset();
+            setShowBookForm(false);
           }
         } else {
-          toast.error('The upload of the book was unsuccessfull! Make sure to fill out all fields.');
-        };
+          toast.error(
+            'The upload of the book was unsuccessfull! Make sure to fill out all fields.'
+          );
+        }
       }
     } catch (error) {
       //
@@ -494,10 +497,18 @@ export default function Profile() {
               </form>
             )}
             <p>
-              <NavLink to='/books/selection'>Edit book information</NavLink>
+              <NavLink
+                to='/books/selection'
+                onClick={hideUpdateDeleteBookForms}
+              >
+                Edit book information
+              </NavLink>
             </p>
             <p>
-              <NavLink to='/books/selection'>
+              <NavLink
+                to='/books/selection'
+                onClick={hideUpdateDeleteBookForms}
+              >
                 Remove a book from assortment
               </NavLink>
             </p>

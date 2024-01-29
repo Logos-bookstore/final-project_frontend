@@ -53,7 +53,6 @@ export default function Register() {
             setUser(res.data);
             setTimeout(() => navigate('/profile'), 1500);
           } else {
-            console.log(res.message.errors);
             setErrorMSGs(
               res.message.errors.reduce((acc, item) => {
                 acc[item.path] = item.msg;
