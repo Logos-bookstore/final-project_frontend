@@ -17,7 +17,7 @@ import DeletedAccount from './pages/deletedAccount/DeletedAccount';
 import Checkout from './pages/checkout/Checkout';
 import Thankyou from './pages/thankyou/Thankyou';
 import About from './pages/about/About';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaSearch, FaShoppingCart } from 'react-icons/fa';
 
 function App() {
   const navigate = useNavigate();
@@ -49,49 +49,49 @@ function App() {
   return (
     <>
       <header key='header'>
-        <nav>
-          <ul>
+        <nav className='header-navbar'>
+          <ul className='logo-ul'>
             <li>
-              <NavLink to='/'>Logo</NavLink>
+              <NavLink className='navlink' to='/'>Logo</NavLink>
             </li>
           </ul>
-          <ul>
+          <ul className='search-ul'>
             <li>
               <form onSubmit={handleSearch}>
-                <input type='text' name='search' id='search' />
-                <button type='submit'>Search</button>
+                <input className='search-input' type='text' name='search' id='search' />
+                <button className='search-btn' type='submit'><FaSearch className='icon' /></button>
               </form>
             </li>
           </ul>
-          <ul>
+          <ul className='links-ul'>
             <li>
-              <NavLink to='/'>Home</NavLink>
+              <NavLink className='navlink' to='/'>Home</NavLink>
             </li>
             <li onClick={handleBooksDisplay}>
-              <NavLink to='/books'>Books</NavLink>
+              <NavLink className='navlink' to='/books'>Books</NavLink>
             </li>
             {!user ? (
               <>
                 <li>
-                  <NavLink to='/register'>Register</NavLink>
+                  <NavLink className='navlink' to='/register'>Register</NavLink>
                 </li>
                 <li>
-                  <NavLink to='/login'>Login</NavLink>
+                  <NavLink className='navlink' to='/login'>Login</NavLink>
                 </li>
                 <li>
-                  <NavLink to='/cart'>Cart</NavLink>
+                  <NavLink className='navlink' to='/cart'><FaShoppingCart className='icon'/></NavLink>
                 </li>
               </>
             ) : (
               <>
                 <li>
-                  <NavLink to='/profile'>Profile</NavLink>
+                  <NavLink className='navlink' to='/profile'>Profile</NavLink>
                 </li>
                 <li>
-                  <NavLink to='/cart'>Cart</NavLink>
+                  <NavLink className='navlink' to='/cart'><FaShoppingCart className='icon'/></NavLink>
                 </li>
                 <li onClick={logout}>
-                  <NavLink to='/'>Logout</NavLink>
+                  <NavLink className='navlink' to='/'>Logout</NavLink>
                 </li>
               </>
             )}
@@ -120,19 +120,21 @@ function App() {
       </main>
       <footer>
         <div className='footer-content'>
-          <div className='footer-item'>
-            <NavLink to='/about'>About</NavLink>
+          <div className='footer-about-github'>
+            <div className='footer-item'>
+              <NavLink className='navlink' to='/about'>About</NavLink>
+            </div>
+            <div className='footer-item'>
+              <a
+                href='https://github.com/pozniej-znajde-wolne-haslo/final-project_backend'
+                target='_blank'
+                className='footer-link'
+              >
+                <FaGithub className='icon' />
+              </a>
+            </div>
           </div>
-          <div className='footer-item'>
-            <a
-              href='https://github.com/pozniej-znajde-wolne-haslo/final-project_backend'
-              target='_blank'
-              className='footer-link'
-            >
-              <FaGithub className='icon' />
-            </a>
-          </div>
-          <div className='footer-item'>
+          <div className='footer-book-store'>
             <span className='footer-text'>&copy; {currentYear} Book Store</span>
           </div>
         </div>

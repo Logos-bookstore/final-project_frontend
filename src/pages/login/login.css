@@ -1,0 +1,17 @@
+.sign-in {
+    text-align: center;
+    padding-top: 15rem;
+    font-size: 2rem;
+}
+
+.login-form {
+    padding-top: 2rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form p {
+    color: red;
+    font-size: 1.2rem;
+}

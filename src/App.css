@@ -1,6 +1,86 @@
+/*HEADER*/
+header {
+  border-bottom: 1px solid black;
+}
+
+.header-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6rem;
+}
+
 ul {
   list-style-type: none;
+  display: flex;
 }
+
+.logo-ul {
+  padding-left: .9rem;
+}
+
+.links-ul {
+  gap: .5rem;
+  padding-right: .9rem;
+}
+
+.links-ul,
+.logo-ul {
+  font-size: 1.2rem;
+}
+
+.navlink {
+  color: black;
+  text-decoration: none;
+}
+
+.search-input {
+  max-width: 12rem;
+}
+
+.search-btn {
+  border: none;
+  background-color: white;
+}
+
+/*FOOTER*/
+footer {
+  border-top: 1px solid black;
+  /*position: fixed;
+  bottom: 0;*/
+  width: 100%;
+}
+
+.footer-content {
+  height: 6rem;
+}
+
+.footer-about-github,
+.footer-book-store {
+  display: flex;
+  justify-content: center;
+  height: 3rem;
+}
+
+.footer-about-github {
+  gap: 1rem;
+}
+
+.footer-item {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  color: black;
+}
+
+.icon,
+.footer-item > .navlink {
+  font-size: 1.6rem;
+}
+
+/*BELOW HAS TO BE PUT IN APPROPRIATE CSS FILES*/
 
 .genres-container {
   display: flex;

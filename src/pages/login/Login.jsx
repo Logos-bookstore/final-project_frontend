@@ -4,6 +4,7 @@ import Continue from '../../components/Continue';
 import Email from '../../components/Email';
 import Password from '../../components/Password';
 import { Context } from '../../context/Context';
+import './login.css'
 
 export default function Login() {
   const { setUser } = useContext(Context);
@@ -41,6 +42,7 @@ export default function Login() {
 
   return (
     <>
+      <h2 className='sign-in'>Sign In</h2>
       <form className='login-form' onSubmit={login}>
         {loginError === 'Please make sure your email is correct.' && (
           <p>{loginError}</p>

@@ -1,0 +1,42 @@
+.create-an-account {
+    text-align: center;
+    padding-top: 15rem;
+    font-size: 2rem;
+}
+
+.register-form {
+    padding-top: 2rem;
+    align-items: center;
+}
+
+.register-form p {
+    color: red;
+    font-size: 1.2rem;
+}
+
+.register-form,
+.firstName-container,
+.lastName-container,
+.email-container,
+.password-container,
+.reEnter-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.firstName-container,
+.lastName-container,
+.email-container,
+.password-container,
+.reEnter-container {
+    padding-bottom: 2rem;
+    width: 50%;
+}
+
+.firstName-label,
+.lastName-label,
+.email-label,
+.password-label,
+.reEnter-label {
+    font-size: 1.6rem;
+}

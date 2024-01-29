@@ -1,0 +1,50 @@
+.cart-empty {
+    padding-top: 15rem;
+}
+.cart-please {
+    padding-top: 2rem;
+    width: 80%;
+    margin: 0 auto;
+}
+.cart-empty,
+.cart-please {
+    text-align: center;
+    font-size: 1.6rem;
+}
+.cart-container {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+}
+.cart-item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    gap: .5rem;
+}
+.cart-totalPrice {
+    border-top: 1px solid black;
+    width: fit-content;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.cart-bookTitle,
+.cart-author,
+.cart-price {
+    padding-bottom: 1rem;
+}
+.cart-quantity-div {
+    padding-top: 1rem;
+}
+.cart-totalPrice,
+.cart-buy-div {
+    margin-left: auto;
+}
+.cart-total-price-div,
+.cart-buy-div {
+    padding-right: 1rem;
+}
+.cart-buy-div {
+    width: fit-content;
+}

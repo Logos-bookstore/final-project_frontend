@@ -1,0 +1,29 @@
+.checkout-page-container {
+    padding: 3.5rem 1rem;
+}
+.checkout-totalPrice {
+    border-top: 1px solid black;
+    width: fit-content;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.checkout-buy-now-div {
+    width: fit-content;
+}
+.checkout-totalPrice,
+.checkout-buy-now-div {
+    margin-left: auto;
+}
+.checkout-totalPrice-div,
+.checkout-buy-now-div {
+    padding-right: 1rem;
+}
+.checkout-totalPrice-div {
+    margin-top: 1rem;
+}
+.checkout-address-p {
+    padding-bottom: .5rem;
+}
+.checkout-address {
+    padding-bottom: 1.5rem;
+}
