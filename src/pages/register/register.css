@@ -1,3 +1,7 @@
+.register-container {
+    min-height: 55rem;
+    height: 80vh;
+}
 .create-an-account {
     text-align: center;
     padding-top: 15rem;
@@ -39,4 +43,21 @@
 .password-label,
 .reEnter-label {
     font-size: 1.6rem;
+}
+
+@media screen and (min-width: 1000px) {
+    .firstName-input,
+    .lastName-input,
+    .email-input,
+    .password-input,
+    .reEnter-input {
+        width: 25rem;
+    }
+    .firstName-container,
+    .lastName-container,
+    .email-container,
+    .password-container,
+    .reEnter-container {
+        width: fit-content;
+    }
 }

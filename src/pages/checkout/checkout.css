@@ -1,5 +1,12 @@
+.checkout-container-complete {
+    min-height: 55rem;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+}
 .checkout-page-container {
     padding: 3.5rem 1rem;
+    width: fit-content;
 }
 .checkout-totalPrice {
     border-top: 1px solid black;
@@ -26,4 +33,18 @@
 }
 .checkout-address {
     padding-bottom: 1.5rem;
+}
+
+.form-container {
+    width: fit-content;
+    padding: 2rem 0;
+}
+.checkout-container .checkout-input {
+    margin-bottom: 1rem;
+}
+.form-fieldset {
+    padding: 1rem;
+}
+.checkout-label {
+    padding-right: .5rem;
 }

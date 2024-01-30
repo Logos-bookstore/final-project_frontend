@@ -13,6 +13,7 @@ export default function Container({ children }) {
   const [orderReceived, setOrderReceived] = useState('');
   const [bookToDelete, setBookToDelete] = useState(null);
   const [bookToUpdate, setBookToUpdate] = useState(null);
+  const [menuIcon, setMenuIcon] = useState(false);
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -69,6 +70,8 @@ export default function Container({ children }) {
           bookToUpdate,
           setBookToUpdate,
           hideUpdateDeleteBookForms,
+          menuIcon,
+          setMenuIcon
         }}
       >
         {children}
