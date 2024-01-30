@@ -66,7 +66,7 @@ export default function Register() {
   };
 
   return (
-    <>
+    <div className='register-container'>
       <Toaster position='top-center' />
       <h2 className='create-an-account'>Create an Account</h2>
       <form className='register-form' onSubmit={register}>
@@ -85,7 +85,7 @@ export default function Register() {
         />
         <Continue />
       </form>
-    </>
+    </div>
   );
 }
 

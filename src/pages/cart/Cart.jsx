@@ -88,7 +88,7 @@ export default function Cart() {
   };
 
   return (
-    <>
+    <div className='cart-container-complete'>
       <div className='cart-container'>
         {shoppingCart.length > 0 ? (
           <>
@@ -174,6 +174,6 @@ export default function Cart() {
           Please log in if you want to buy books or create an account.
         </p>
       )}
-    </>
+    </div>
   );
 }

@@ -1,3 +1,7 @@
+.login-container {
+    min-height: 55rem;
+    height: 80vh;
+}
 .sign-in {
     text-align: center;
     padding-top: 15rem;

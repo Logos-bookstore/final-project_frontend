@@ -13,6 +13,7 @@ export default function Container({ children }) {
   const [orderReceived, setOrderReceived] = useState('');
   const [bookToDelete, setBookToDelete] = useState(null);
   const [bookToUpdate, setBookToUpdate] = useState(null);
+  const [menuIcon, setMenuIcon] = useState(false);
   const [activeGenreLink, setActiveGenreLink] = useState('');
 
   useEffect(() => {
@@ -71,8 +72,10 @@ export default function Container({ children }) {
           bookToUpdate,
           setBookToUpdate,
           hideUpdateDeleteBookForms,
+          menuIcon,
+          setMenuIcon,
           activeGenreLink,
-          setActiveGenreLink,
+          setActiveGenreLink
         }}
       >
         {children}

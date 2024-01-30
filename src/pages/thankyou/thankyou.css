@@ -1,3 +1,7 @@
+.thankyou-container {
+    min-height: 55rem;
+    height: 80vh;
+}
 .thankyou-msg {
     text-align: center;
     padding: 5rem 0;

@@ -41,7 +41,7 @@ export default function Login() {
   };
 
   return (
-    <>
+    <div className='login-container'>
       <h2 className='sign-in'>Sign In</h2>
       <form className='login-form' onSubmit={login}>
         {loginError === 'Please make sure your email is correct.' && (
@@ -54,7 +54,7 @@ export default function Login() {
         <Password loginError={loginError} setLoginError={setLoginError} />
         <Continue />
       </form>
-    </>
+    </div>
   );
 }
 

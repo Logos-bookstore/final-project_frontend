@@ -1,22 +1,36 @@
 /*HEADER*/
 header {
-  border-bottom: 1px solid black;
+  /*border-bottom: 1px solid black;*/
+  position: sticky;
+  top: 0;
 }
 
 .header-navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 6rem;
+  min-height: 6rem;
+  height: 10vh;
 }
 
 .logo-ul {
-  padding-left: 0.9rem;
+  padding-left: 2.5rem;
+}
+.menu {
+  margin-right: 2.5rem;
 }
 
 .links-ul {
-  gap: 0.5rem;
-  padding-right: 0.9rem;
+  gap: .5rem;
+  padding-right: 2.5rem;
+  flex-direction: column;
+  position: absolute;
+  top: 6rem;
+  right: 0;
+}
+
+.desktop-links {
+  display: none;
 }
 
 .links-ul,
@@ -27,10 +41,7 @@ header {
 .navlink {
   color: black;
   text-decoration: none;
-}
-
-.search-input {
-  max-width: 12rem;
+  font-size: 1.6rem;
 }
 
 .search-btn {
@@ -40,14 +51,13 @@ header {
 
 /*FOOTER*/
 footer {
-  border-top: 1px solid black;
-  /*position: fixed;
-  bottom: 0;*/
+  /*border-top: 1px solid black;*/
   width: 100%;
 }
 
 .footer-content {
-  height: 6rem;
+  min-height: 5rem;
+  height: 10vh;
 }
 
 .footer-about-github,
@@ -73,6 +83,24 @@ footer {
 .icon,
 .footer-item > .navlink {
   font-size: 1.6rem;
+}
+
+/*1000*/
+@media screen and (min-width: 1000px) {
+  .desktop-links {
+    font-size: 1.2rem;
+    gap: .5rem;
+    padding-right: 2.5rem;
+    flex-direction: row;
+    display: flex;
+  }
+  .menu,
+  .links-ul {
+    display: none;
+  }
+  .search-input {
+    width: 25rem;
+  }
 }
 
 /*BELOW HAS TO BE PUT IN APPROPRIATE CSS FILES*/

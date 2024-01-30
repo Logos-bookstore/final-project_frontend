@@ -98,7 +98,7 @@ export default function Checkout() {
   };
 
   return (
-    <>
+    <div className='checkout-container-complete'>
       {!user?.address ? (
         <div className='checkout-page-container'>
           <Form update='Add Your Address'>
@@ -154,6 +154,7 @@ export default function Checkout() {
       ) : (
         <div className='checkout-page-container'>
           <div className='checkout-address'>
+            <h3 className='checkout-address-p'>Delivery Address</h3>
             <p className='checkout-address-p'>{user.address.street}</p>
             <p className='checkout-address-p'>{user.address.zip}</p>
             <p className='checkout-address-p'>{user.address.city}</p>
@@ -215,6 +216,6 @@ export default function Checkout() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
