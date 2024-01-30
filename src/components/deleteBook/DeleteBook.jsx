@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
-import { Context } from '../context/Context';
+import { Context } from '../../context/Context';
+import './deleteBook.css';
 
 export default function DeleteBook({ book }) {
   const { setBookToDelete } = useContext(Context);
@@ -33,15 +34,16 @@ export default function DeleteBook({ book }) {
   return (
     <div className='deleteBook-container'>
       {deleteMSG && <p className='deleteBook-msg'>{deleteMSG}</p>}
+
       <p className='deleteBook-p'>
         Are you sure you want to remove this book from the shop's database?
       </p>
-      <div className='deleteBook-deleteContainer'>
+      <div className='deleteBook-btns-container'>
         {/* deactivated to avoid accidental book removal from the DB */}
-        <button className='deleteBook-yes' /* onClick={deleteBook} */>
+        <button className='deleteBook-btn' /* onClick={deleteBook} */>
           Yes
         </button>
-        <button className='deleteBook-cancel' onClick={handleDeleteMode}>
+        <button className='deleteBook-btn' onClick={handleDeleteMode}>
           Cancel
         </button>
       </div>

@@ -1,13 +1,13 @@
 import { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import BookCard from '../../components/BookCard';
+import BookCard from '../../components/bookCard/BookCard';
 import CartBtn from '../../components/CartBtn';
 import { Context } from '../../context/Context';
 import DeleteBtnAdmin from '../../components/DeleteBtnAdmin';
-import DeleteBook from '../../components/DeleteBook';
+import DeleteBook from '../../components/deleteBook/DeleteBook';
 import UpdateBtnAdmin from '../../components/UpdateBtnAdmin';
-import UpdateBook from '../../components/UpdateBook';
-import Pagination from '../../components/Pagination';
+import UpdateBook from '../../components/updateBook/UpdateBook';
+import Pagination from '../../components/pagination/Pagination';
 
 export default function Genre() {
   const { state } = useLocation();
@@ -51,11 +51,15 @@ export default function Genre() {
       <div className='books-container'>
         {currentBooks.map((book) => {
           return (
-            <div className='books-book' key={book._id}>
-              <BookCard book={book} />
-              <CartBtn book={book} />
-              {user?.role === 'admin' && <UpdateBtnAdmin book={book} />}
-              {user?.role === 'admin' && <DeleteBtnAdmin book={book} />}
+            <div key={book._id}>
+              <div className='bookcard-and-btns-container'>
+                <BookCard book={book} />
+                <div className='cart-and-admin-btns-container'>
+                  <CartBtn book={book} />
+                  {user?.role === 'admin' && <UpdateBtnAdmin book={book} />}
+                  {user?.role === 'admin' && <DeleteBtnAdmin book={book} />}
+                </div>
+              </div>
               {bookToUpdate?._id === book._id && <UpdateBook book={book} />}
               {bookToDelete?._id === book._id && <DeleteBook book={book} />}
             </div>

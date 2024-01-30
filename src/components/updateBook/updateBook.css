@@ -1,0 +1,53 @@
+.updateBook-container {
+  width: 32rem;
+  margin: auto;
+  padding: 1rem;
+  padding: 1rem 0;
+  line-height: 1.4;
+}
+
+.updateBook-msg {
+  color: rgb(30, 111, 62);
+  margin-bottom: 0.5rem;
+}
+
+.updateBook-container .updateBook-btns-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.updateBook-img-form {
+  padding: 1rem;
+  line-height: 1.5;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.updateBook-details-form {
+  padding: 1rem;
+  line-height: 1.5;
+  border: 1px solid gray;
+  border-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.updateBook-details-form div {
+  display: grid;
+  grid-template-columns: 37% 1fr;
+}
+
+.updateBook-legend {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.updateBook-btn {
+  width: 6rem;
+}
