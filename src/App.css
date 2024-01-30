@@ -13,11 +13,6 @@ header {
   height: 10vh;
 }
 
-ul {
-  list-style-type: none;
-  display: flex;
-}
-
 .logo-ul {
   padding-left: 2.5rem;
 }
@@ -110,38 +105,6 @@ footer {
 
 /*BELOW HAS TO BE PUT IN APPROPRIATE CSS FILES*/
 
-.genres-container {
-  display: flex;
-  gap: 15px;
-}
-
-.books-container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.single-book-container {
-  width: 250px;
-  border: 1px solid gray;
-  padding: 5px;
-}
-
-.pagination-container {
-  display: flex;
-  gap: 5px;
-}
-
-.pagination-container li {
-  border-bottom: 1px solid gray;
-  color: rgb(44, 77, 125);
-}
-
-.pagination-container li:hover {
-  cursor: pointer;
-}
-
-/*  NEW */
 .order-item {
   display: flex;
   align-items: baseline;

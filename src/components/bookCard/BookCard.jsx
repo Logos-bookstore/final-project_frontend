@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { ReviewStars } from './ReviewStars';
+import { ReviewStars } from '../ReviewStars';
+import './bookCard.css';
 
 export default function BookCard({ book }) {
   const navigate = useNavigate();
@@ -13,10 +14,16 @@ export default function BookCard({ book }) {
     <div
       key={book?._id}
       onClick={handleGoToDetailsPage}
-      className='single-book-container'
+      className='bookCard-container'
     >
-      <img className='bookCard-cover' src={book?.image?.thumbnail} alt='' />
-      <h2 className='bookCard-title'>{book?.title}</h2>
+      <div className='bookCard-cover-container'>
+        <img className='bookCard-cover' src={book?.image?.thumbnail} alt='' />
+      </div>
+
+      <h2 className='bookCard-title'>
+        {book?.title.split(' ').slice(0, 6).join(' ')}
+        {book?.title.split(' ').length > 6 ? '...' : ''}
+      </h2>
       <h3 className='bookCard-author'>{book?.author}</h3>
       <ReviewStars rating={book?.avgRating} />
       <p className='bookCard-price'>{book?.price} €</p>

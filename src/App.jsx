@@ -43,6 +43,7 @@ function App() {
     e.preventDefault();
     const plused = e.target.search.value.split(' ').join('+');
     e.target.reset();
+    setActiveGenreLink('');
     navigate(`/books/request/search?q=${plused}`);
   };
 
@@ -50,6 +51,7 @@ function App() {
   const handleBooksDisplay = () => {
     setCurrentPage(1);
     hideUpdateDeleteBookForms();
+    setActiveGenreLink('');
     navigate('/books/selection');
   };
 
@@ -69,8 +71,19 @@ function App() {
           <ul className='search-ul'>
             <li>
               <form onSubmit={handleSearch}>
-                <input className='search-input' type='text' name='search' id='search' />
-                <button className='search-btn' type='submit' onClick={hideUpdateDeleteBookForms}><FaSearch className='icon' /></button>
+                <input
+                  className='search-input'
+                  type='text'
+                  name='search'
+                  id='search'
+                />
+                <button
+                  className='search-btn'
+                  type='submit'
+                  onClick={hideUpdateDeleteBookForms}
+                >
+                  <FaSearch className='icon' />
+                </button>
               </form>
             </li>
           </ul>
@@ -167,7 +180,9 @@ function App() {
         <div className='footer-content'>
           <div className='footer-about-github'>
             <div className='footer-item' onClick={hideUpdateDeleteBookForms}>
-              <NavLink className='navlink' to='/about'>About</NavLink>
+              <NavLink className='navlink' to='/about'>
+                About
+              </NavLink>
             </div>
             <div className='footer-item' onClick={hideUpdateDeleteBookForms}>
               <a

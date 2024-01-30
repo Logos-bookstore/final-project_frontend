@@ -1,13 +1,51 @@
 :root {
-    font-size: 62.5%;
-    font-family: sans-serif;
+  font-size: 62.5%;
+  font-family: sans-serif;
 }
+
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
 body {
-    max-width: 1400px;
-    font-size: 1.4rem;
+  max-width: 1400px;
+  font-size: 1.4rem;
+}
+
+/*  *** GLOBAL STYLES *** */
+ul {
+  list-style-type: none;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: inherit; /* check if all should inherit */
+}
+
+.books-container {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin-top: 3.5rem;
+  margin-bottom: 3rem;
+}
+
+.bookcard-and-btns-container {
+  border: 1px solid gray;
+  width: 32rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding-bottom: 2rem;
+}
+
+.cart-and-admin-btns-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }

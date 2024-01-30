@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { Context } from '../context/Context';
 import { v4 as uuidv4 } from 'uuid';
-import BookCard from './BookCard';
+import BookCard from './bookCard/BookCard';
 import CartBtn from './CartBtn';
 import DeleteBtnAdmin from './DeleteBtnAdmin';
-import DeleteBook from './DeleteBook';
-import UpdateBook from './UpdateBook';
+import DeleteBook from './deleteBook/DeleteBook';
+import UpdateBook from './updateBook/UpdateBook';
 import UpdateBtnAdmin from './UpdateBtnAdmin';
 
 export default function BooksDisplay({ books, loading }) {
@@ -15,18 +15,22 @@ export default function BooksDisplay({ books, loading }) {
     return <h2>Loading...</h2>;
   }
   return (
-    <div className='books-container' key={uuidv4()}>
+    <div className='books-container'>
       {books.map((book) => {
         return (
-          <div className='booksDisplay-book' key={book._id}>
-            <BookCard key={book._id} book={book} />
-            <CartBtn key={uuidv4()} book={book} />
-            {user?.role === 'admin' && (
-              <>
-                <UpdateBtnAdmin book={book} />
-                <DeleteBtnAdmin book={book} />
-              </>
-            )}
+          <div key={book._id}>
+            <div className='bookcard-and-btns-container'>
+              <BookCard key={book._id} book={book} />
+              <div className='cart-and-admin-btns-container'>
+                <CartBtn key={uuidv4()} book={book} />
+                {user?.role === 'admin' && (
+                  <>
+                    <UpdateBtnAdmin book={book} />
+                    <DeleteBtnAdmin book={book} />
+                  </>
+                )}
+              </div>
+            </div>
             {bookToUpdate?._id === book._id && <UpdateBook book={book} />}
             {bookToDelete?._id === book._id && <DeleteBook book={book} />}
           </div>

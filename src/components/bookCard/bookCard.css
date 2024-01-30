@@ -1,0 +1,36 @@
+.bookCard-container {
+  width: 25rem;
+  height: 53rem;
+  height: 50rem;
+  margin: auto;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bookCard-cover-container {
+  margin: auto;
+  width: 90%;
+  margin-top: 1rem;
+}
+
+.bookCard-container .bookCard-cover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 100%;
+}
+
+.bookCard-title {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.bookCard-author {
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+.bookCard-price {
+  font-size: 1.6rem;
+}
