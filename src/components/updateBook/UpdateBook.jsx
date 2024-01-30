@@ -5,9 +5,14 @@ import './updateBook.css';
 
 export default function UpdateBook({ book }) {
   const { setBookToUpdate } = useContext(Context);
-  const [updateMSG, setUpdateMSG] = useState('');
+  const [updateMSGcover, setUpdateMSGcover] = useState('');
+  const [updateMSGbookInfo, setUpdateMSGbookInfo] = useState('');
 
   const handleCancel = () => setBookToUpdate(null);
+  const resetErrorMSGs = () => {
+    setUpdateMSGcover('');
+    setUpdateMSGbookInfo('');
+  };
 
   const handleNewBookImg = (e) => {
     e.preventDefault();
@@ -22,24 +27,26 @@ export default function UpdateBook({ book }) {
           .then((res) => res.json())
           .then((res) => {
             if (res.success) {
-              setUpdateMSG(res.message);
+              setUpdateMSGcover(res.message);
               setTimeout(() => {
                 const refreshPage = () => window.location.reload(false);
-                setUpdateMSG('');
+                setUpdateMSGcover('');
                 refreshPage();
               }, 2000);
             }
           })
           .catch((err) => console.log(err));
+      } else {
+        setUpdateMSGcover('Please choose an image and try again.');
       }
     }
   };
 
   const updateBook = (e) => {
     e.preventDefault();
-    let updatedBook = {
+    const updatedBook = {
       title: e.target.title.value,
-      author: e.target.combinedName.value,
+      author: e.target.author.value,
       year: Number(e.target.year.value),
       publisher: e.target.publisher.value,
       genre: e.target.genre.value,
@@ -49,63 +56,110 @@ export default function UpdateBook({ book }) {
       ISBN: e.target.isbn.value,
     };
 
-    const token = sessionStorage.getItem('token');
-    if (token) {
-      fetch(`${import.meta.env.VITE_UPDATE_BOOK}/${book._id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json', token: token },
-        body: JSON.stringify(updatedBook),
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.success) {
-            setUpdateMSG(res.message);
-            setTimeout(() => {
-              const refreshPage = () => window.location.reload(false);
-              setBookToUpdate(null);
-              setUpdateMSG('');
-              refreshPage();
-            }, 2000);
-          }
+    if (
+      updatedBook.title === '' &&
+      updatedBook.author === '' &&
+      updatedBook.publisher === '' &&
+      updatedBook.genre === '' &&
+      updatedBook.description === '' &&
+      updatedBook.ISBN === '' &&
+      updatedBook.year === 0 &&
+      updatedBook.pages === 0 &&
+      updatedBook.price === 0
+    ) {
+      setUpdateMSGbookInfo(
+        'Please enter the information you wish to update and try again.'
+      );
+    } else {
+      const token = sessionStorage.getItem('token');
+      if (token) {
+        fetch(`${import.meta.env.VITE_UPDATE_BOOK}/${book._id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json', token: token },
+          body: JSON.stringify(updatedBook),
         })
-        .catch((err) => console.log(err));
+          .then((res) => res.json())
+          .then((res) => {
+            if (res.success) {
+              setUpdateMSGbookInfo(res.message);
+              setTimeout(() => {
+                const refreshPage = () => window.location.reload(false);
+                setBookToUpdate(null);
+                setUpdateMSGbookInfo('');
+                refreshPage();
+              }, 2000);
+            }
+          })
+          .catch((err) => console.log(err));
+      }
     }
   };
 
   return (
     <div className='updateBook-container'>
-      {updateMSG && <p className='updateBook-msg'>{updateMSG}</p>}
+      {updateMSGcover && <p className='updateBook-msg'>{updateMSGcover}</p>}
       <>
         <form className='updateBook-img-form' onSubmit={handleNewBookImg}>
           <legend className='updateBook-legend'>Upload new book image</legend>
           {/* <label htmlFor='image'>Image</label> */}
-          <input type='file' name='image' id='image' />
+          <input type='file' name='image' id='image' onFocus={resetErrorMSGs} />
           <div className='updateBook-btns-container'>
             <button className='updateBook-btn' onClick={handleCancel}>
               Cancel
             </button>
-            <button className='updateBook-btn'>Send</button>
+            <button className='updateBook-btn' onClick={resetErrorMSGs}>
+              Send
+            </button>
           </div>
         </form>
 
+        {updateMSGbookInfo && <p>{updateMSGbookInfo}</p>}
         <form className='updateBook-details-form' onSubmit={updateBook}>
           <legend className='updateBook-legend'>Update book details</legend>
           <div>
             <label htmlFor='title'>Title</label>
-            <input type='text' name='title' id='title' />
+            <input
+              type='text'
+              name='title'
+              id='title'
+              onFocus={resetErrorMSGs}
+            />
           </div>
-          <CombinedName />
+          <div>
+            <label htmlFor='author'>Author</label>
+            <input
+              type='text'
+              name='author'
+              id='author'
+              onFocus={resetErrorMSGs}
+            />
+          </div>
           <div>
             <label htmlFor='year'>Year</label>
-            <input type='number' name='year' id='year' />
+            <input
+              type='number'
+              name='year'
+              id='year'
+              onFocus={resetErrorMSGs}
+            />
           </div>
           <div>
             <label htmlFor='publisher'>Publisher</label>
-            <input type='text' name='publisher' id='publisher' />
+            <input
+              type='text'
+              name='publisher'
+              id='publisher'
+              onFocus={resetErrorMSGs}
+            />
           </div>
           <div>
             <label htmlFor='genre'>Genre</label>
-            <input type='text' name='genre' id='genre' />
+            <input
+              type='text'
+              name='genre'
+              id='genre'
+              onFocus={resetErrorMSGs}
+            />
           </div>
           <div>
             <label htmlFor='description'>Description</label>
@@ -114,25 +168,40 @@ export default function UpdateBook({ book }) {
               id='description'
               cols='23'
               rows='10'
+              onFocus={resetErrorMSGs}
             ></textarea>
           </div>
           <div>
             <label htmlFor='pages'>Number of pages</label>
-            <input type='number' step='any' name='pages' id='pages' />
+            <input
+              type='number'
+              step='any'
+              name='pages'
+              id='pages'
+              onFocus={resetErrorMSGs}
+            />
           </div>
           <div>
             <label htmlFor='price'>Price</label>
-            <input type='number' step='any' name='price' id='price' />
+            <input
+              type='number'
+              step='any'
+              name='price'
+              id='price'
+              onFocus={resetErrorMSGs}
+            />
           </div>
           <div>
             <label htmlFor='isbn'>ISBN</label>
-            <input type='text' name='isbn' id='isbn' />
+            <input type='text' name='isbn' id='isbn' onFocus={resetErrorMSGs} />
           </div>
           <div className='updateBook-btns-container'>
             <button className='updateBook-btn' onClick={handleCancel}>
               Cancel
             </button>
-            <button className='updateBook-btn'>Send</button>
+            <button className='updateBook-btn' onFocus={resetErrorMSGs}>
+              Send
+            </button>
           </div>
         </form>
       </>
