@@ -19,9 +19,10 @@ export default function BookCard({ book }) {
       <div className='bookCard-cover-container'>
         <img className='bookCard-cover' src={book?.image?.thumbnail} alt='' />
       </div>
-
       <h2 className='bookCard-title'>
-        {book?.title.split(' ').slice(0, 6).join(' ')}
+        {book?.title.split(' ').length < 7
+          ? book?.title
+          : book?.title.split(' ').slice(0, 6).join(' ')}
         {book?.title.split(' ').length > 6 ? '...' : ''}
       </h2>
       <h3 className='bookCard-author'>{book?.author}</h3>
@@ -29,7 +30,7 @@ export default function BookCard({ book }) {
       <p className='bookCard-price'>{book?.price} €</p>
       {book?.home && (
         <p className='bookCard-description'>
-          {book?.description.split(' ').slice(0, 15).join(' ')}...
+          {book?.description.split(' ').slice(0, 10).join(' ')}...
         </p>
       )}
     </div>

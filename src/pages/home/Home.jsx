@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import BookCard from '../../components/BookCard';
-import './home.css'
+import BookCard from '../../components/bookCard/BookCard';
+import './home.css';
 
 export default function Home() {
-  const [randomBook, setRandomBook] = useState([]);
+  const [randomBook, setRandomBook] = useState();
 
   useEffect(() => {
     async function random() {
@@ -11,7 +11,7 @@ export default function Home() {
         const response = await fetch(`${import.meta.env.VITE_RANDOM_BOOK}`);
         if (response.ok) {
           const data = await response.json();
-          if (data.success) setRandomBook({...data.data, home: true});
+          if (data.success) setRandomBook({ ...data.data, home: true });
         }
       } catch (error) {
         //
@@ -27,7 +27,7 @@ export default function Home() {
       <div className='home-grid'>
         <p className='home-p-two'>Try this</p>
         <div className='home-book-container'>
-          <BookCard book={randomBook}/>
+          <BookCard book={randomBook} />
         </div>
       </div>
     </div>
