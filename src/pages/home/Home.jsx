@@ -10,8 +10,8 @@ export default function Home() {
       try {
         const response = await fetch(`${import.meta.env.VITE_RANDOM_BOOK}`);
         if (response.ok) {
-          const result = await response.json();
-          if (result.success) setRandomBook(result.data);
+          const data = await response.json();
+          if (data.success) setRandomBook({ ...data.data, home: true });
         }
       } catch (error) {
         //
