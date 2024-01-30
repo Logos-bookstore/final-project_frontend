@@ -27,6 +27,7 @@ function App() {
     setCurrentPage,
     setShoppingCart,
     hideUpdateDeleteBookForms,
+    setActiveGenreLink,
     menuIcon,
     setMenuIcon
   } = useContext(Context);
@@ -84,10 +85,10 @@ function App() {
             {!user ? (
               <>
                 <li>
-                  <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/register'>Register</NavLink>
+                  <NavLink onClick={() => {setMenuIcon(false); setActiveGenreLink('')}} className='navlink' to='/register'>Register</NavLink>
                 </li>
                 <li>
-                  <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/login'>Login</NavLink>
+                  <NavLink onClick={() => {setMenuIcon(false); setActiveGenreLink('')}} className='navlink' to='/login'>Login</NavLink>
                 </li>
                 <li onClick={hideUpdateDeleteBookForms}>
                   <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/cart'><FaShoppingCart className='icon'/></NavLink>
@@ -117,10 +118,10 @@ function App() {
             {!user ? (
               <>
                 <li>
-                  <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/register'>Register</NavLink>
+                  <NavLink onClick={() => {setMenuIcon(false); setActiveGenreLink('')}} className='navlink' to='/register'>Register</NavLink>
                 </li>
                 <li>
-                  <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/login'>Login</NavLink>
+                  <NavLink onClick={() => {setMenuIcon(false); setActiveGenreLink('')}} className='navlink' to='/login'>Login</NavLink>
                 </li>
                 <li onClick={hideUpdateDeleteBookForms}>
                   <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/cart'><FaShoppingCart className='icon'/></NavLink>
