@@ -20,10 +20,10 @@ export default function BookCard({ book }) {
         <img className='bookCard-cover' src={book?.image?.thumbnail} alt='' />
       </div>
       <h2 className='bookCard-title'>
-        {book?.title.split(' ').length < 7
+        {book?.title.split(' ').length < 5
           ? book?.title
-          : book?.title.split(' ').slice(0, 6).join(' ')}
-        {book?.title.split(' ').length > 6 ? '...' : ''}
+          : book?.title.split(' ').slice(0, 4).join(' ')}
+        {book?.title.split(' ').length > 4 ? '...' : ''}
       </h2>
       <h3 className='bookCard-author'>{book?.author}</h3>
       <ReviewStars rating={book?.avgRating} />
