@@ -185,10 +185,12 @@ export default function ReviewForm({
             : 'write your review here'
         }
       ></textarea>
-      <p onClick={() => setBookToReview(null)} className='cancel-review-btn'>
-        Cancel
-      </p>
-      <button className='reviewForm-send'>Send</button>
+      <div className='review-send-cancel'>
+        <button className='reviewForm-send'>Send</button>
+        <p onClick={() => setBookToReview(null)} className='cancel-review-btn'>
+          Cancel
+        </p>
+        </div>
     </form>
   );
 }
