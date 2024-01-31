@@ -1,5 +1,6 @@
 .singleBook-page {
-  margin: 4.5rem 3rem 3rem 3rem;
+  margin: 4.5rem 3rem 0 3rem;
+  padding-bottom: 3rem;
 }
 
 .singleBook-details,

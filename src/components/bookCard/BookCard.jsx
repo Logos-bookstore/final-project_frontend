@@ -16,9 +16,7 @@ export default function BookCard({ book }) {
       onClick={handleGoToDetailsPage}
       className='bookCard-container'
     >
-      <div className='bookCard-cover-container'>
-        <img className='bookCard-cover' src={book?.image?.thumbnail} alt='' />
-      </div>
+      <img className='bookCard-cover' src={book?.image?.thumbnail} alt='' />
       <h2 className='bookCard-title'>
         {book?.title.split(' ').length < 5
           ? book?.title

@@ -40,8 +40,15 @@ export default function DeleteBook({ book }) {
       </p>
       <div className='deleteBook-btns-container'>
         {/* deactivated to avoid accidental book removal from the DB */}
-        <button className='primary-btn' /* onClick={deleteBook} */>Yes</button>
-        <button className='secondary-btn' onClick={handleDeleteMode}>
+        <button
+          className='btn-bronze admin-btn-small' /* onClick={deleteBook} */
+        >
+          Yes
+        </button>
+        <button
+          className='btn-steelblue admin-btn-small'
+          onClick={handleDeleteMode}
+        >
           Cancel
         </button>
       </div>

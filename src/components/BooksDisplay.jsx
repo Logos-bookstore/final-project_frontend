@@ -19,7 +19,7 @@ export default function BooksDisplay({ books, loading }) {
       {books.map((book) => {
         return (
           <div key={book._id}>
-            <div className='bookcard-and-btns-container'>
+            <div className='bookCard-and-btns-container'>
               <BookCard key={book._id} book={book} />
               <div className='cart-and-admin-btns-container'>
                 <CartBtn key={uuidv4()} book={book} />

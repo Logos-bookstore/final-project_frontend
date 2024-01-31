@@ -51,7 +51,7 @@ export default function SingleBook() {
     <>
       {singleBook && (
         <div className='singleBook-page'>
-          <div className='bookcard-and-btns-container'>
+          <div className='bookCard-and-btns-container'>
             <BookCard book={singleBook} />
             <div className='cart-and-admin-btns-container'>
               <CartBtn book={singleBook} />
@@ -92,6 +92,7 @@ export default function SingleBook() {
             <h3 className='singleBook-heading'>Book description</h3>
             <p>{singleBook.description}</p>
             <h3 className='singleBook-heading'>Reviews</h3>
+            {reviews.length === 0 && <p>No reviews yet...</p>}
             <div>
               {reviews &&
                 reviews.map((review) => {

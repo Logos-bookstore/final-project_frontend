@@ -11,7 +11,7 @@ export default function UpdateBtnAdmin({ book }) {
   };
 
   return (
-    <button className='secondary-btn' onClick={handleBookToUpdate}>
+    <button className='btn-steelblue' onClick={handleBookToUpdate}>
       Update book
     </button>
   );

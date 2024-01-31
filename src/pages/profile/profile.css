@@ -1,45 +1,45 @@
 .profile-container {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .profile-user {
-    display: flex;
-    justify-content: center;
-    gap: .5rem;
-    padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-bottom: 2rem;
 }
 .profile-user-img-container {
-    border-radius: 50%;
-    width: 10rem;
-    height: 10rem;
-    overflow: hidden;
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  overflow: hidden;
 }
 .prfile-user-img {
-    object-position: 50% 50%;
+  object-position: 50% 50%;
 }
 .profile-user-name {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .profile-user-edit-container,
 .profile-orders,
 .profile-admin,
 .profile-delete-account {
-    margin-left: 1rem;
-    margin-right: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .profile-user-edit-container,
 .profile-orders,
 .profile-upload-book,
 .profile-admin-edit-book,
 .profile-admin-delete-book {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 .image-container {
-    padding-bottom: 2rem;
+  padding-bottom: 2rem;
 }
 .profile-user-edit,
 .profile-orders-history,
@@ -47,116 +47,117 @@
 .profile-admin-edit-book-p,
 .profile-admint-delete-book-p,
 .profile-delete-account-p {
-    cursor: pointer;
-    width: fit-content;
+  cursor: pointer;
+  width: fit-content;
 }
 .profile-order-p {
-    padding: .5rem 0;
-    border-top: 1px solid black;
+  padding: 0.5rem 0;
+  border-top: 1px solid black;
 }
 .profile-order-delete-div {
-    padding-bottom: .5rem;
+  padding-bottom: 0.5rem;
 }
 .delete-order-btns {
-    padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 .delete-order-yes {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 .order-item {
-    flex-direction: column;
+  flex-direction: column;
 }
 .item-img-title-author {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 .profile-order-updates {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .reviewForm-existingReview {
-    padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 .rating-options-container {
-    padding-bottom: .5rem;
+  padding-bottom: 0.5rem;
 }
 .reviewForm-textarea {
-    margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 .cancel-review-btn {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 .review-send-cancel {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 .profile-update-qty-form,
 .profile-delete-item-btns {
-    display: flex;
+  display: flex;
 }
 .profile-delete-item-btns {
-    gap: 1rem;
+  gap: 1rem;
 }
 .profile-review-form-div,
 .profile-qty-div {
-    border-right: 1px solid black;
-    padding-right: 1rem;
+  border-right: 1px solid black;
+  padding-right: 1rem;
 }
 .profile-qty-div,
 .profile-delete-item-border {
-    border-left: 1px solid black;
-    padding-left: 1rem;
+  border-left: 1px solid black;
+  padding-left: 1rem;
 }
 .profile-delete-item-really {
-    padding-bottom: .5rem;
+  padding-bottom: 0.5rem;
 }
 .profile-qty-cancel-div {
-    padding-top: 1rem;
+  padding-top: 1rem;
 }
 
 .upload-book-fieldset {
-    padding: 1rem;
+  padding: 1rem;
+  background-color: #fff;
 }
 .upload-book-fieldset div {
-    padding-bottom: .5rem;
-    display: flex;
-    flex-direction: column;
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
 }
 .upload-container {
-    padding-top: .5rem;
+  padding-top: 0.5rem;
 }
 .upload-book-cancel-div {
-    padding-top: 1rem;
+  padding-top: 1rem;
 }
 .profile-delete-account {
-    padding-top: 2rem;
+  padding-top: 2rem;
 }
 .delete-account-really-div {
-    padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 .profile-delete-account-p {
-    color: red;
+  color: red;
 }
 .delete-account-really-div {
-    border-top: 1px solid black;
+  border-top: 1px solid black;
 }
 .delete-account-btns {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 .delete-account-yes {
-    background-color: red;
-    color: white;
+  background-color: red;
+  color: white;
 }
 .profile-orders-close {
-    padding-top: .5rem;
+  padding-top: 0.5rem;
 }
 .profile-edit-cancel-div,
 .profile-orders-close {
-    border-bottom: 1px solid black;
-    padding-bottom: .5rem;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5rem;
 }
 .profile-order-cursor {
-    cursor: pointer;
+  cursor: pointer;
 }

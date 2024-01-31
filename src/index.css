@@ -12,9 +12,10 @@
 body {
   max-width: 1400px;
   margin: auto;
-  border: 1px solid gray;
+  background-color: rgb(113, 111, 111);
   font-size: 1.4rem;
-  background-color: #f2f0ec;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 /*  *** GLOBAL STYLES *** */
@@ -37,12 +38,11 @@ a {
   margin-bottom: 3rem;
 }
 
-.bookcard-and-btns-container {
-  border: 1px solid rgb(233, 231, 231);
+.bookCard-and-btns-container {
   border-radius: 5px;
   background-color: #fff;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
   width: 32rem;
   display: flex;
   flex-direction: column;
@@ -50,6 +50,12 @@ a {
   margin: auto;
   padding-bottom: 2rem;
 }
+
+/* .bookCard-and-btns-container:hover {
+  transform: scale(1.009);
+  transition: 0.19s ease-in-out;
+}
+ */
 
 .update-delete-book-msg {
   font-weight: bold;
@@ -64,11 +70,14 @@ a {
 .cart-and-admin-btns-container {
   display: flex;
   gap: 1rem;
-  margin-top: 1.5rem;
 }
 
-.primary-btn {
-  background-image: linear-gradient(#d59352, #7e4e1f);
+.admin-btn-small {
+  width: 6.5rem;
+}
+
+.btn-bronze,
+.btn-steelblue {
   border: 0;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.3) 0 5px 15px;
@@ -77,30 +86,34 @@ a {
   padding: 5px 8px 7px 8px;
 }
 
-.primary-btn:hover {
+.btn-bronze {
+  background-image: linear-gradient(#d59352, #7e4e1f);
+}
+
+.btn-bronze:hover {
   background-image: linear-gradient(#d0ae94, #4c321d);
 }
 
-.primary-btn:active {
+.btn-bronze:active {
   background-image: linear-gradient(#d99d61, #7e4e1f);
   transform: scale(1.2);
 }
 
-.secondary-btn {
+.btn-steelblue {
   background-image: linear-gradient(#90a4ae, #263238);
-  border: 0;
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0 5px 15px;
-  color: #f6f5f3;
-  cursor: pointer;
-  padding: 5px 8px 7px 8px;
 }
 
-.secondary-btn:hover {
-  background-image: linear-gradient(#37474f, #78909c);
+.btn-steelblue:hover {
+  background-image: linear-gradient(#abbaca, #0a0e10);
 }
 
-.secondary-btn:active {
-  background-image: linear-gradient(#90a4ae, #263238);
+.btn-steelblue:active {
+  background-image: linear-gradient(#a2b8c3, #36464f);
   transform: scale(1.2);
+}
+
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 1.6rem;
+  }
 }

@@ -104,10 +104,16 @@ export default function UpdateBook({ book }) {
           <legend className='updateBook-legend'>Upload new book image</legend>
           <input type='file' name='image' id='image' onFocus={resetErrorMSGs} />
           <div className='updateBook-btns-container'>
-            <button className='secondary-btn' onClick={handleCancel}>
+            <button
+              className='btn-steelblue admin-btn-small'
+              onClick={handleCancel}
+            >
               Cancel
             </button>
-            <button className='primary-btn' onClick={resetErrorMSGs}>
+            <button
+              className='btn-bronze admin-btn-small'
+              onClick={resetErrorMSGs}
+            >
               Send
             </button>
           </div>
@@ -198,10 +204,16 @@ export default function UpdateBook({ book }) {
             <input type='text' name='isbn' id='isbn' onFocus={resetErrorMSGs} />
           </div>
           <div className='updateBook-btns-container'>
-            <button className='secondary-btn' onClick={handleCancel}>
+            <button
+              className='btn-steelblue admin-btn-small'
+              onClick={handleCancel}
+            >
               Cancel
             </button>
-            <button className='primary-btn' onFocus={resetErrorMSGs}>
+            <button
+              className='btn-bronze admin-btn-small'
+              onFocus={resetErrorMSGs}
+            >
               Send
             </button>
           </div>

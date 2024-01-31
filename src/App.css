@@ -1,3 +1,9 @@
+header,
+main,
+footer {
+  background-color: #e4e2de;
+}
+
 /*HEADER*/
 header {
   /*border-bottom: 1px solid black;*/
@@ -28,7 +34,7 @@ header {
 }
 
 .links-ul {
-  gap: .5rem;
+  gap: 0.5rem;
   padding-right: 2.5rem;
   flex-direction: column;
   position: absolute;
@@ -59,7 +65,7 @@ header {
 
 .search-btn {
   border: none;
-  background-color: white;
+  background-color: #f2f0ec;
 }
 
 /*FOOTER*/
@@ -102,7 +108,7 @@ footer {
 @media screen and (min-width: 1000px) {
   .desktop-links {
     font-size: 1.2rem;
-    gap: .5rem;
+    gap: 0.5rem;
     padding-right: 2.5rem;
     flex-direction: row;
     display: flex;

@@ -10,6 +10,7 @@
 .updateBook-details-form input,
 .updateBook-details-form textarea {
   background-color: #f2f0ec;
+  width: 18.5rem;
 }
 
 .updateBook-container .updateBook-btns-container {

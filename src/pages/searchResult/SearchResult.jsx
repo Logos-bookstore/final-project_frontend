@@ -62,7 +62,7 @@ export default function SearchResult() {
       <div className='books-container'>
         {currentBooks.map((book) => (
           <div key={book._id}>
-            <div className='bookcard-and-btns-container'>
+            <div className='bookCard-and-btns-container'>
               <BookCard book={book} />
               <div className='cart-and-admin-btns-container'>
                 <CartBtn book={book} />

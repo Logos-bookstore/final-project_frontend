@@ -10,7 +10,7 @@ export default function DeleteBtnAdmin({ book }) {
   };
 
   return (
-    <button className='secondary-btn' onClick={handleBookToDel}>
+    <button className='btn-steelblue' onClick={handleBookToDel}>
       Delete book
     </button>
   );
