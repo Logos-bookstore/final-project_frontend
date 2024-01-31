@@ -1,0 +1,16 @@
+.about-container {
+    height: 80vh;
+    padding-top: 5rem;
+}
+.about-p {
+    padding: 0 2rem;
+    line-height: 3rem;
+}
+.about-p span {
+    font-style: italic;
+}
+@media screen and (min-width: 784px) {
+    .about-p {
+        text-align: center;
+    }
+}

@@ -12,6 +12,7 @@ import CombinedName from '../../components/CombinedName';
 import { NavLink, useNavigate } from 'react-router-dom';
 import ReviewForm from '../../components/ReviewForm';
 import toast, { Toaster } from 'react-hot-toast';
+import './profile.css'
 
 export default function Profile() {
   const { user, setUser, hideUpdateDeleteBookForms } = useContext(Context);
@@ -241,295 +242,334 @@ export default function Profile() {
   };
 
   return (
-    <>
+    <div className='profile-container'>
       <Toaster position='top-center' />
-      {user?.image?.thumbnail && <img src={user?.image?.thumbnail} alt='' />}
-      <h2>Welcome {user?.firstName}</h2>
-      <h4>{user?.email}</h4>
-
-      <p onClick={handleEditProfile}>Edit your profile</p>
-      {showEditProfile && (
-        <div>
-          <Form update='Upload a Profile Image'>
-            <Image />
-          </Form>
-          <Form update='Update Your First Name'>
-            <FirstName />
-          </Form>
-          <Form update='Update Your Last Name'>
-            <LastName />
-          </Form>
-          <Form update='Update Your Email'>
-            <Email />
-          </Form>
-          <Form update='Update Your Password'>
-            <Password />
-            <ReEnter />
-          </Form>
-          <p onClick={() => setShowEditProfile(false)}>Cancel</p>
+      <div className='profile-flex-center'>
+        <div className='profile-user'>
+          <div className='profile-user-img-container'>
+            {user?.image?.thumbnail && <img className='profile-user-img' src={user?.image?.thumbnail} alt='' />}
+          </div>
+          <div className='profile-user-name'>
+            <h2>Welcome, {user?.firstName}</h2>
+            <h4>{user?.email}</h4>
+          </div>
         </div>
-      )}
-      <div>
-        <p onClick={handleOrderHistory}>
-          Order history {userOrders.length === 0 && '(no orders yet)'}
-        </p>
-        {renderOrders &&
-          userOrders.map((item) => {
-            return (
-              <div key={item._id}>
-                <p>
-                  <span>{item.date}</span>,{' '}
-                  <span>Total Price: {item.totalPrice} €</span>
-                </p>
-                {deleteOrder === item._id ? (
-                  <>
+        <div className='profile-user-edit-container'>
+          <p className='profile-user-edit' onClick={handleEditProfile}>Edit your profile</p>
+          {showEditProfile && (
+            <div>
+              <Form update='Upload a Profile Image'>
+                <Image />
+              </Form>
+              <Form update='Update Your First Name'>
+                <FirstName />
+              </Form>
+              <Form update='Update Your Last Name'>
+                <LastName />
+              </Form>
+              <Form update='Update Your Email'>
+                <Email />
+              </Form>
+              <Form update='Update Your Password'>
+                <Password />
+                <ReEnter />
+              </Form>
+              <div className='profile-edit-cancel-div'>
+                <button onClick={() => setShowEditProfile(false)}>Cancel</button>
+              </div>
+            </div>
+          )}
+        </div>
+        <div className='profile-orders'>
+          <p className='profile-orders-history' onClick={handleOrderHistory}>
+            Order history {userOrders.length === 0 && '(no orders yet)'}
+          </p>
+          
+          {renderOrders && 
+            <div>
+              {userOrders.map((item) => {
+              return (
+                <div key={item._id}>
+                  <p className='profile-order-p'>
+                    <span>{item.date}</span>, <span>Total Price: {item.totalPrice} €</span>
+                  </p>
+                  {deleteOrder === item._id ? (
                     <div>
-                      <p>Do you really want to delete this order?</p>
-                    </div>
-                    <div>
-                      <button onClick={() => handleDeleteOrder(item._id)}>
-                        Yes
-                      </button>
-                      <button onClick={() => setDeleteOrder('')}>No</button>
-                    </div>
-                  </>
-                ) : (
-                  <div>
-                    <button onClick={() => setDeleteOrder(item._id)}>
-                      Delete Order
-                    </button>
-                  </div>
-                )}
-                {item.books.map((book) => {
-                  return (
-                    <div className='order-item' key={book._id}>
-                      <img
-                        onClick={() =>
-                          navigate(
-                            `/books/${book.title.split(' ').join('_')}/${
-                              book._id
-                            }`
-                          )
-                        }
-                        src={book?.image?.thumbnail}
-                        alt='cover'
-                      />
-                      <p
-                        onClick={() =>
-                          navigate(
-                            `/books/${book.title.split(' ').join('_')}/${
-                              book._id
-                            }`
-                          )
-                        }
-                      >
-                        "{book?.title}",{' '}
-                      </p>
-                      <p>{book?.author}, </p>
-                      <p>{book?.price} €</p>
-                      <p>
-                        Qty:
-                        {item?.quantity.find(
-                          (qty) =>
-                            item?.quantity.indexOf(qty) ===
-                            item.books.indexOf(book)
-                        )}
-                      </p>
-                      <button
-                        onClick={() =>
-                          setBookToReview(bookToReview === null ? book : null)
-                        }
-                      >
-                        {userReviews.find((rev) => rev.book === book._id)
-                          ? 'Edit your review'
-                          : 'Write a review'}
-                      </button>
-
-                      {bookToReview?._id === book._id && (
-                        <ReviewForm
-                          book={book}
-                          setBookToReview={setBookToReview}
-                          setReviewsChange={setReviewsChange}
-                          userReviews={userReviews}
-                        />
-                      )}
                       <div>
-                        {updateItem === book._id ? (
+                        <p>Do you really want to delete this order?</p>
+                      </div>
+                      <div className='delete-order-btns'>
+                        <button className='delete-order-yes' onClick={() => handleDeleteOrder(item._id)}>
+                          Yes
+                        </button>
+                        <button onClick={() => setDeleteOrder('')}>No</button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className='profile-order-delete-div'>
+                      <button onClick={() => setDeleteOrder(item._id)}>
+                        Delete Order
+                      </button>
+                    </div>
+                  )}
+                  {item.books.map((book) => {
+                    return (
+                      <div className='order-item' key={book._id}>
+                        <div className='item-img-title-author'>
+                          <img
+                            className='profile-order-cursor'
+                            onClick={() =>
+                              navigate(
+                                `/books/${book.title.split(' ').join('_')}/${
+                                  book._id
+                                }`
+                              )
+                            }
+                            src={book?.image?.thumbnail}
+                            alt='cover'
+                          />
                           <div>
-                            <form
-                              onSubmit={(e) =>
-                                handleUpdateQty(e, item._id, book._id)
+                            <p
+                              className='profile-order-cursor'
+                              onClick={() =>
+                                navigate(
+                                  `/books/${book.title.split(' ').join('_')}/${
+                                    book._id
+                                  }`
+                                )
                               }
                             >
-                              <select name='qty' id='qty'>
-                                <option className='cart-option' value='1'>
-                                  1
-                                </option>
-                                <option className='cart-option' value='2'>
-                                  2
-                                </option>
-                                <option className='cart-option' value='3'>
-                                  3
-                                </option>
-                                <option className='cart-option' value='4'>
-                                  4
-                                </option>
-                                <option className='cart-option' value='5'>
-                                  5
-                                </option>
-                                <option className='cart-option' value='6'>
-                                  6
-                                </option>
-                                <option className='cart-option' value='7'>
-                                  7
-                                </option>
-                                <option className='cart-option' value='8'>
-                                  8
-                                </option>
-                                <option className='cart-option' value='9'>
-                                  9
-                                </option>
-                                <option className='cart-option' value='10'>
-                                  10
-                                </option>
-                              </select>
-                              <button type='submit'>Submit</button>
-                            </form>
-                            <button onClick={() => setUpdateItem('')}>
-                              Cancel
-                            </button>
+                              "{book?.title}",{' '}
+                            </p>
+                            <p>{book?.author}, </p>
+                            <p>{book?.price} €</p>
+                            <p>
+                              Qty:
+                              {item?.quantity.find(
+                                (qty) =>
+                                  item?.quantity.indexOf(qty) ===
+                                  item.books.indexOf(book)
+                              )}
+                            </p>
                           </div>
-                        ) : (
+                        </div>
+                        <div className='profile-order-updates'>
                           <div>
-                            <button onClick={() => setUpdateItem(book._id)}>
-                              Update Qty
+                            <button
+                              onClick={() =>
+                                setBookToReview(bookToReview === null ? book : null)
+                              }
+                            >
+                              {userReviews.find((rev) => rev.book === book._id)
+                                ? 'Edit your review'
+                                : 'Write a review'}
                             </button>
+                            <div className='profile-review-form-div'>
+                              {bookToReview?._id === book._id && (
+                                <ReviewForm
+                                  book={book}
+                                  setBookToReview={setBookToReview}
+                                  setReviewsChange={setReviewsChange}
+                                  userReviews={userReviews}
+                                />
+                              )}
+                            </div>
                           </div>
-                        )}
+                          <div className='profile-qty-container'>
+                            {updateItem === book._id ? (
+                              <div className='profile-qty-div'>
+                                <form
+                                  className='profile-update-qty-form'
+                                  onSubmit={(e) =>
+                                    handleUpdateQty(e, item._id, book._id)
+                                  }
+                                >
+                                  <select className='profile-select' name='qty' id='qty'>
+                                    <option className='cart-option' value='1'>
+                                      1
+                                    </option>
+                                    <option className='cart-option' value='2'>
+                                      2
+                                    </option>
+                                    <option className='cart-option' value='3'>
+                                      3
+                                    </option>
+                                    <option className='cart-option' value='4'>
+                                      4
+                                    </option>
+                                    <option className='cart-option' value='5'>
+                                      5
+                                    </option>
+                                    <option className='cart-option' value='6'>
+                                      6
+                                    </option>
+                                    <option className='cart-option' value='7'>
+                                      7
+                                    </option>
+                                    <option className='cart-option' value='8'>
+                                      8
+                                    </option>
+                                    <option className='cart-option' value='9'>
+                                      9
+                                    </option>
+                                    <option className='cart-option' value='10'>
+                                      10
+                                    </option>
+                                  </select>
+                                  <button type='submit'>Submit</button>
+                                </form>
+                                <div className='profile-qty-cancel-div'>
+                                  <button onClick={() => setUpdateItem('')}>
+                                    Cancel
+                                  </button>
+                                </div>
+                              </div>
+                            ) : (
+                              <div>
+                                <button onClick={() => setUpdateItem(book._id)}>
+                                  Update Qty
+                                </button>
+                              </div>
+                            )}
+                          </div>
+                          <div>
+                            {deleteItem === book._id ? (
+                              <div className='profile-delete-item-border'>
+                                <div className='profile-delete-item-really'>
+                                  <p>
+                                    Do you really want to delete this item from your
+                                    order?
+                                  </p>
+                                </div>
+                                <div className='profile-delete-item-btns'>
+                                  <button
+                                    onClick={() =>
+                                      handleDeleteItem(book._id, item._id)
+                                    }
+                                  >
+                                    Yes
+                                  </button>
+                                  <button onClick={() => setDeleteItem('')}>
+                                    No
+                                  </button>
+                                </div>
+                              </div>
+                            ) : (
+                              <div>
+                                <button onClick={() => setDeleteItem(book._id)}>
+                                  Delete Item
+                                </button>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                        
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
+              <div className='profile-orders-close'>
+                <button onClick={() => setRenderOrders(false)}>Close</button>
+              </div>
+            </div>
+            }
+        </div>
+        <div className='profile-admin'>
+          {user?.role === 'admin' && (
+            <>
+              <div className='profile-upload-book'>
+                <p className='profile-upload-book-p' onClick={handleBookForm}>Upload a book</p>
+                {showBookForm && (
+                  <form className='upload-book-form' onSubmit={uploadBook}>
+                    <fieldset className='upload-book-fieldset'>
+                      <div>
+                        <label htmlFor='title'>Title</label>
+                        <input type='text' name='title' id='title' />
+                      </div>
+                      <CombinedName />
+                      <div>
+                        <label htmlFor='year'>Year</label>
+                        <input type='number' name='year' id='year' />
                       </div>
                       <div>
-                        {deleteItem === book._id ? (
-                          <>
-                            <div>
-                              <p>
-                                Do you really want to delete this item from your
-                                order?
-                              </p>
-                            </div>
-                            <div>
-                              <button
-                                onClick={() =>
-                                  handleDeleteItem(book._id, item._id)
-                                }
-                              >
-                                Yes
-                              </button>
-                              <button onClick={() => setDeleteItem('')}>
-                                No
-                              </button>
-                            </div>
-                          </>
-                        ) : (
-                          <div>
-                            <button onClick={() => setDeleteItem(book._id)}>
-                              Delete Item
-                            </button>
-                          </div>
-                        )}
+                        <label htmlFor='publisher'>Publisher</label>
+                        <input type='text' name='publisher' id='publisher' />
                       </div>
-                    </div>
-                  );
-                })}
+                      <div>
+                        <label htmlFor='genre'>Genre</label>
+                        <input type='text' name='genre' id='genre' />
+                      </div>
+                      <div>
+                        <label htmlFor='description'>Description</label>
+                        <textarea
+                          name='description'
+                          id='description'
+                          cols='30'
+                          rows='10'
+                        ></textarea>
+                      </div>
+                      <div>
+                        <label htmlFor='pages'>Number of pages</label>
+                        <input type='number' step='any' name='pages' id='pages' />
+                      </div>
+                      <div>
+                        <label htmlFor='price'>Price</label>
+                        <input type='number' step='any' name='price' id='price' />
+                      </div>
+                      <div>
+                        <label htmlFor='isbn'>ISBN</label>
+                        <input type='text' name='isbn' id='isbn' />
+                      </div>
+                      <Image />
+                      <Upload />
+                      <div className='upload-book-cancel-div'>
+                        <button className='upload-book-cancel-p' onClick={() => setShowBookForm(false)}>Cancel</button>
+                      </div>
+                    </fieldset>
+                  </form>
+                )}
               </div>
-            );
-          })}
-      </div>
-      <div>
-        {user?.role === 'admin' && (
-          <>
-            <p onClick={handleBookForm}>Upload a book</p>
-            {showBookForm && (
-              <form onSubmit={uploadBook}>
-                <fieldset>
-                  <legend>Upload a Book</legend>
-                  <div>
-                    <label htmlFor='title'>Title</label>
-                    <input type='text' name='title' id='title' />
-                  </div>
-                  <CombinedName />
-                  <div>
-                    <label htmlFor='year'>Year</label>
-                    <input type='number' name='year' id='year' />
-                  </div>
-                  <div>
-                    <label htmlFor='publisher'>Publisher</label>
-                    <input type='text' name='publisher' id='publisher' />
-                  </div>
-                  <div>
-                    <label htmlFor='genre'>Genre</label>
-                    <input type='text' name='genre' id='genre' />
-                  </div>
-                  <div>
-                    <label htmlFor='description'>Description</label>
-                    <textarea
-                      name='description'
-                      id='description'
-                      cols='30'
-                      rows='10'
-                    ></textarea>
-                  </div>
-                  <div>
-                    <label htmlFor='pages'>Number of pages</label>
-                    <input type='number' step='any' name='pages' id='pages' />
-                  </div>
-                  <div>
-                    <label htmlFor='price'>Price</label>
-                    <input type='number' step='any' name='price' id='price' />
-                  </div>
-                  <div>
-                    <label htmlFor='isbn'>ISBN</label>
-                    <input type='text' name='isbn' id='isbn' />
-                  </div>
-                  <Image />
-                  <p onClick={() => setShowBookForm(false)}>Cancel</p>
-                  <Upload />
-                </fieldset>
-              </form>
-            )}
-            <p>
-              <NavLink
-                to='/books/selection'
-                onClick={hideUpdateDeleteBookForms}
-              >
-                Edit book information
-              </NavLink>
-            </p>
-            <p>
-              <NavLink
-                to='/books/selection'
-                onClick={hideUpdateDeleteBookForms}
-              >
-                Remove a book from assortment
-              </NavLink>
-            </p>
-          </>
-        )}
-      </div>
-      <div>
-        {really ? (
-          <>
+              <div className='profile-admin-edit-book'>
+                <p className='profile-admin-edit-book-p'>
+                  <NavLink
+                    to='/books/selection'
+                    onClick={hideUpdateDeleteBookForms}
+                  >
+                    Edit book information
+                  </NavLink>
+                </p>
+              </div>
+              <div className='profile-admin-delete-book'>
+                <p className='profile-admin-delete-book-p'>
+                  <NavLink
+                    to='/books/selection'
+                    onClick={hideUpdateDeleteBookForms}
+                  >
+                    Remove a book from assortment
+                  </NavLink>
+                </p>
+              </div>
+            </>
+          )}
+        </div>
+        <div className='profile-delete-account'>
+          {really ? (
             <div>
-              <p>Do you really want to delete your account?</p>
+              <div className='delete-account-really-div'>
+                <p>Do you really want to delete your account?</p>
+              </div>
+              <div className='delete-account-btns'>
+                <button className='delete-account-yes' onClick={handleDelete}>Yes</button>
+                <button onClick={() => setReally(false)}>No</button>
+              </div>
             </div>
-            <div>
-              <button onClick={handleDelete}>Yes</button>
-              <button onClick={() => setReally(false)}>No</button>
-            </div>
-          </>
-        ) : (
-          <p onClick={showDeleteOption}>DELETE YOUR ACCOUNT</p>
-        )}
+          ) : (
+            <p className='profile-delete-account-p' onClick={showDeleteOption}>DELETE YOUR ACCOUNT</p>
+          )}
+        </div>
       </div>
-    </>
+    </div>
   );
 }
