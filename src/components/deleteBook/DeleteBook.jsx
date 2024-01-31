@@ -33,17 +33,15 @@ export default function DeleteBook({ book }) {
 
   return (
     <div className='deleteBook-container'>
-      {deleteMSG && <p className='deleteBook-msg'>{deleteMSG}</p>}
+      {deleteMSG && <p className='update-delete-book-msg'>{deleteMSG}</p>}
 
       <p className='deleteBook-p'>
         Are you sure you want to remove this book from the shop's database?
       </p>
       <div className='deleteBook-btns-container'>
         {/* deactivated to avoid accidental book removal from the DB */}
-        <button className='deleteBook-btn' /* onClick={deleteBook} */>
-          Yes
-        </button>
-        <button className='deleteBook-btn' onClick={handleDeleteMode}>
+        <button className='primary-btn' /* onClick={deleteBook} */>Yes</button>
+        <button className='secondary-btn' onClick={handleDeleteMode}>
           Cancel
         </button>
       </div>

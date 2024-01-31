@@ -4,11 +4,12 @@
   padding: 1rem;
   padding: 1rem 0;
   line-height: 1.4;
+  color: #454545;
 }
 
-.updateBook-msg {
-  color: rgb(30, 111, 62);
-  margin-bottom: 0.5rem;
+.updateBook-details-form input,
+.updateBook-details-form textarea {
+  background-color: #f2f0ec;
 }
 
 .updateBook-container .updateBook-btns-container {
@@ -18,23 +19,22 @@
   margin-top: 1.5rem;
 }
 
-.updateBook-img-form {
-  padding: 1rem;
+.updateBook-img-form,
+.updateBook-details-form {
+  padding: 1.5rem 1rem;
   line-height: 1.5;
-  border: 1px solid gray;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  background-color: #fff;
+  border: 1px solid rgb(233, 231, 231);
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.updateBook-details-form {
-  padding: 1rem;
-  line-height: 1.5;
-  border: 1px solid gray;
-  border-top: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.updateBook-img-form {
+  border-bottom: 1px solid rgb(197, 195, 195);
 }
 
 .updateBook-details-form div {
@@ -43,11 +43,14 @@
 }
 
 .updateBook-legend {
+  width: 25rem;
+  margin: auto;
+  margin-bottom: 1rem;
   text-align: center;
   font-size: 1.6rem;
+  letter-spacing: 0.8px;
   font-weight: bold;
-}
-
-.updateBook-btn {
-  width: 6rem;
+  color: #f6f5f3;
+  color: #7e4e1f;
+  padding: 4px 0;
 }

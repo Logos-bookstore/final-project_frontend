@@ -11,7 +11,10 @@
 
 body {
   max-width: 1400px;
+  margin: auto;
+  border: 1px solid gray;
   font-size: 1.4rem;
+  background-color: #f2f0ec;
 }
 
 /*  *** GLOBAL STYLES *** */
@@ -35,7 +38,11 @@ a {
 }
 
 .bookcard-and-btns-container {
-  border: 1px solid gray;
+  border: 1px solid rgb(233, 231, 231);
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   width: 32rem;
   display: flex;
   flex-direction: column;
@@ -44,8 +51,56 @@ a {
   padding-bottom: 2rem;
 }
 
+.update-delete-book-msg {
+  font-weight: bold;
+  padding-top: 4px;
+  margin-bottom: 0.5rem;
+  background-color: #f2f0ec;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  text-align: center;
+}
+
 .cart-and-admin-btns-container {
   display: flex;
   gap: 1rem;
   margin-top: 1.5rem;
+}
+
+.primary-btn {
+  background-image: linear-gradient(#d59352, #7e4e1f);
+  border: 0;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 5px 15px;
+  color: #f6f5f3;
+  cursor: pointer;
+  padding: 5px 8px 7px 8px;
+}
+
+.primary-btn:hover {
+  background-image: linear-gradient(#d0ae94, #4c321d);
+}
+
+.primary-btn:active {
+  background-image: linear-gradient(#d99d61, #7e4e1f);
+  transform: scale(1.2);
+}
+
+.secondary-btn {
+  background-image: linear-gradient(#90a4ae, #263238);
+  border: 0;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 5px 15px;
+  color: #f6f5f3;
+  cursor: pointer;
+  padding: 5px 8px 7px 8px;
+}
+
+.secondary-btn:hover {
+  background-image: linear-gradient(#37474f, #78909c);
+}
+
+.secondary-btn:active {
+  background-image: linear-gradient(#90a4ae, #263238);
+  transform: scale(1.2);
 }

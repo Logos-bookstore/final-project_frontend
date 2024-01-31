@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import { Context } from '../../context/Context';
-import CombinedName from '../CombinedName';
 import './updateBook.css';
 
 export default function UpdateBook({ book }) {
@@ -97,24 +96,27 @@ export default function UpdateBook({ book }) {
 
   return (
     <div className='updateBook-container'>
-      {updateMSGcover && <p className='updateBook-msg'>{updateMSGcover}</p>}
       <>
         <form className='updateBook-img-form' onSubmit={handleNewBookImg}>
+          {updateMSGcover && (
+            <p className='update-delete-book-msg'>{updateMSGcover}</p>
+          )}
           <legend className='updateBook-legend'>Upload new book image</legend>
-          {/* <label htmlFor='image'>Image</label> */}
           <input type='file' name='image' id='image' onFocus={resetErrorMSGs} />
           <div className='updateBook-btns-container'>
-            <button className='updateBook-btn' onClick={handleCancel}>
+            <button className='secondary-btn' onClick={handleCancel}>
               Cancel
             </button>
-            <button className='updateBook-btn' onClick={resetErrorMSGs}>
+            <button className='primary-btn' onClick={resetErrorMSGs}>
               Send
             </button>
           </div>
         </form>
 
-        {updateMSGbookInfo && <p>{updateMSGbookInfo}</p>}
         <form className='updateBook-details-form' onSubmit={updateBook}>
+          {updateMSGbookInfo && (
+            <p className='update-delete-book-msg'>{updateMSGbookInfo}</p>
+          )}
           <legend className='updateBook-legend'>Update book details</legend>
           <div>
             <label htmlFor='title'>Title</label>
@@ -196,10 +198,10 @@ export default function UpdateBook({ book }) {
             <input type='text' name='isbn' id='isbn' onFocus={resetErrorMSGs} />
           </div>
           <div className='updateBook-btns-container'>
-            <button className='updateBook-btn' onClick={handleCancel}>
+            <button className='secondary-btn' onClick={handleCancel}>
               Cancel
             </button>
-            <button className='updateBook-btn' onFocus={resetErrorMSGs}>
+            <button className='primary-btn' onFocus={resetErrorMSGs}>
               Send
             </button>
           </div>
