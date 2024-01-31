@@ -63,7 +63,7 @@ function App() {
         <nav className='header-navbar'>
           <ul className='logo-ul'>
             <li onClick={hideUpdateDeleteBookForms}>
-              <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/'>
+              <NavLink onClick={() => setMenuIcon(false)} className='navlink logos' to='/'>
                 Logos
               </NavLink>
             </li>
@@ -88,7 +88,7 @@ function App() {
             </li>
           </ul>
           <FaBars className='icon menu' onClick={() => setMenuIcon(prev => !prev)}/>
-          {menuIcon && <ul className='links-ul'>
+          {menuIcon && <ul className='links-ul' onClick={() => setMenuIcon(false)}>
             <li onClick={hideUpdateDeleteBookForms}>
               <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/'>Home</NavLink>
             </li>
