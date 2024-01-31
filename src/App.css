@@ -13,6 +13,13 @@ header {
   height: 10vh;
 }
 
+.active {
+  font-weight: bold;
+}
+.logos {
+  font-weight: 400;
+}
+
 .logo-ul {
   padding-left: 2.5rem;
 }
@@ -27,6 +34,12 @@ header {
   position: absolute;
   top: 6rem;
   right: 0;
+
+  background-color: rgba(0, 0, 0, 0.089);
+  width: 100%;
+  align-items: end;
+  z-index: 1;
+  height: 100vh;
 }
 
 .desktop-links {
@@ -95,7 +108,8 @@ footer {
     display: flex;
   }
   .menu,
-  .links-ul {
+  .links-ul,
+  .app-nav-modal {
     display: none;
   }
   .search-input {
