@@ -1,8 +1,9 @@
 .singleBook-page {
-  margin: 3.5rem 2rem 3rem 2rem;
+  margin: 4.5rem 3rem 3rem 3rem;
 }
 
-.singleBook-details {
+.singleBook-details,
+.singleBook-description-revs {
   line-height: 1.8;
 }
 
@@ -21,4 +22,38 @@
 
 .singleBook-review-text {
   margin-bottom: 1.5rem;
+}
+
+@media only screen and (min-width: 650px) {
+  .singleBook-page {
+    margin-top: 8rem;
+    display: grid;
+    grid-template-areas:
+      'bookCover details '
+      'forms details'
+      'description-reviews description-reviews ';
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 55% 1fr;
+    grid-column-gap: 1rem;
+  }
+  .bookcard-and-btns-container {
+    grid-area: bookCover;
+  }
+  .singleBook-admin-forms {
+    grid-area: forms;
+  }
+  .singleBook-details {
+    grid-area: details;
+  }
+
+  .singleBook-description-revs {
+    grid-area: description-reviews;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  .singleBook-page {
+    grid-template-columns: 45% 1fr;
+    grid-column-gap: 0;
+  }
 }

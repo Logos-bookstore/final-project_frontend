@@ -59,13 +59,14 @@ export default function SingleBook() {
               {user?.role === 'admin' && <DeleteBtnAdmin book={singleBook} />}
             </div>
           </div>
-          {bookToUpdate?._id === singleBook._id && (
-            <UpdateBook book={singleBook} />
-          )}
-          {bookToDelete?._id === singleBook._id && (
-            <DeleteBook book={singleBook} />
-          )}
-
+          <div className='singleBook-admin-forms'>
+            {bookToUpdate?._id === singleBook._id && (
+              <UpdateBook book={singleBook} />
+            )}
+            {bookToDelete?._id === singleBook._id && (
+              <DeleteBook book={singleBook} />
+            )}
+          </div>
           <div className='singleBook-details'>
             <h2 className='singleBook-title'>{singleBook.title}</h2>
             <p>by {singleBook.author}</p>
@@ -86,6 +87,8 @@ export default function SingleBook() {
               <span className='singleBook-span'>ISBN: </span>
               {singleBook.ISBN}
             </p>
+          </div>
+          <div className='singleBook-description-revs'>
             <h3 className='singleBook-heading'>Book description</h3>
             <p>{singleBook.description}</p>
             <h3 className='singleBook-heading'>Reviews</h3>

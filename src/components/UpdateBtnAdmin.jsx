@@ -10,5 +10,9 @@ export default function UpdateBtnAdmin({ book }) {
     setBookToUpdate(bookToUpdate === null ? book : null);
   };
 
-  return <button onClick={handleBookToUpdate}>Update book</button>;
+  return (
+    <button className='secondary-btn' onClick={handleBookToUpdate}>
+      Update book
+    </button>
+  );
 }
