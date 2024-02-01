@@ -5,8 +5,7 @@ import './books.css';
 
 export default function Books() {
   const [genres, setGenres] = useState([]);
-  const { hideUpdateDeleteBookForms, activeGenreLink, setActiveGenreLink } =
-    useContext(Context);
+  const { hideUpdateDeleteBookForms } = useContext(Context);
 
   useEffect(() => {
     async function getGenres() {
@@ -32,15 +31,7 @@ export default function Books() {
       <div className='books-genres-container'>
         {sortedGenres.map((genre) => {
           return (
-            <h3
-              className={
-                activeGenreLink === genre.genre
-                  ? 'books-active books-genre-name'
-                  : 'books-genre-name'
-              }
-              key={genre._id}
-              onClick={() => setActiveGenreLink(genre.genre)}
-            >
+            <h3 className='books-genre-name' key={genre._id}>
               <NavLink
                 to={`/books/genre/${genre.genre.split(' ').join('_')}`}
                 state={genre.genre}
