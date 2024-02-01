@@ -10,6 +10,7 @@
 .books-genres-container .books-genre-name {
   font-weight: normal;
   font-size: 1.4rem;
+  color: #0a0e10;
 }
 
 .books-genres-container .books-genre-name:nth-child(odd) {
