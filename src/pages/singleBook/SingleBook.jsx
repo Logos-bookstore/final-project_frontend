@@ -65,10 +65,14 @@ export default function SingleBook() {
           </div>
           <div className='singleBook-admin-forms'>
             {bookToUpdate?._id === singleBook._id && (
-              <UpdateBook book={singleBook} />
+              <div id='singleBook-reset-margin-forms'>
+                <UpdateBook book={singleBook} />
+              </div>
             )}
             {bookToDelete?._id === singleBook._id && (
-              <DeleteBook book={singleBook} />
+              <div id='singleBook-reset-margin-forms'>
+                <DeleteBook book={singleBook} />
+              </div>
             )}
           </div>
           <div className='singleBook-details'>
