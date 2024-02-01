@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { Context } from '../context/Context';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function ReviewForm({
   book,
@@ -40,6 +41,7 @@ export default function ReviewForm({
         if (res.ok) {
           const data = await res.json();
           if (data.success) {
+            toast.success('Review submitted!');
             setBookToReview(null);
             setReviewsChange(new Date());
           } // maybe add Toaster for 'review submitted successfully' ?
@@ -86,7 +88,10 @@ export default function ReviewForm({
         );
         if (res.ok) {
           const data = await res.json();
-          if (data.success) setBookToReview(null);
+          if (data.success) {
+            toast.success('Review updated!');
+            setBookToReview(null);
+          }
         }
       }
     } catch (error) {
@@ -101,6 +106,7 @@ export default function ReviewForm({
         exisitingReview ? handleEditReview(e) : handleAddReview(e)
       }
     >
+      <Toaster position='top-center' />
       <p className='reviewForm-existingReview'>
         {exisitingReview ? 'New rating' : 'Your rating'}
       </p>
@@ -187,10 +193,13 @@ export default function ReviewForm({
       ></textarea>
       <div className='review-send-cancel'>
         <button className='reviewForm-send'>Send</button>
-        <button onClick={() => setBookToReview(null)} className='cancel-review-btn'>
+        <button
+          onClick={() => setBookToReview(null)}
+          className='cancel-review-btn'
+        >
           Cancel
         </button>
-        </div>
+      </div>
     </form>
   );
 }

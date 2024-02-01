@@ -87,10 +87,12 @@ export default function SingleBook() {
               <span className='singleBook-span'>ISBN: </span>
               {singleBook.ISBN}
             </p>
-          </div>
-          <div className='singleBook-description-revs'>
             <h3 className='singleBook-heading'>Book description</h3>
             <p>{singleBook.description}</p>
+          </div>
+          <div className='singleBook-description-revs'>
+            {/*   <h3 className='singleBook-heading'>Book description</h3>
+            <p>{singleBook.description}</p> */}
             <h3 className='singleBook-heading'>Reviews</h3>
             {reviews.length === 0 && <p>No reviews yet...</p>}
             <div>

@@ -13,6 +13,10 @@ header {
   height: 10vh;
 }
 
+.active {
+  font-weight: bold;
+}
+
 .logos {
   font-weight: 400;
 }
@@ -115,5 +119,3 @@ footer {
 }
 
 /*BELOW HAS TO BE PUT IN APPROPRIATE CSS FILES*/
-
-

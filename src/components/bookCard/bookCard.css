@@ -31,3 +31,6 @@
 .bookCard-price {
   font-size: 1.6rem;
 }
+.bookCard-description {
+  line-height: 1.4;
+}

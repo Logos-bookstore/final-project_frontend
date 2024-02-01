@@ -22,10 +22,9 @@ export default function Home() {
 
   return (
     <div className='home-container'>
-      <h1 className='home-name'>Bookstore Name</h1>
       <p className='home-p-one'>Looking for a good book?</p>
       <div className='home-grid'>
-        <p className='home-p-two'>Try this</p>
+        <p className='home-p-two'>Try</p>
         <div className='home-book-container'>
           <BookCard book={randomBook} />
         </div>

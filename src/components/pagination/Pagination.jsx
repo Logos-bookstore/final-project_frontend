@@ -18,7 +18,7 @@ export default function Pagination({ booksPerPage, totalBooks }) {
   };
 
   return (
-    <nav /* className='pagination-nav' */>
+    <nav>
       <ul className='pagination-container'>
         {pageNumbers.map((number) => (
           <li

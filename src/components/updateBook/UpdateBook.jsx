@@ -96,129 +96,112 @@ export default function UpdateBook({ book }) {
 
   return (
     <div className='updateBook-container'>
-      <>
-        <form className='updateBook-img-form' onSubmit={handleNewBookImg}>
-          {updateMSGcover && (
-            <p className='update-delete-book-msg'>{updateMSGcover}</p>
-          )}
-          <legend className='updateBook-legend'>Upload new book image</legend>
-          <input type='file' name='image' id='image' onFocus={resetErrorMSGs} />
-          <div className='updateBook-btns-container'>
-            <button
-              className='btn-steelblue admin-btn-small'
-              onClick={handleCancel}
-            >
-              Cancel
-            </button>
-            <button
-              className='btn-bronze admin-btn-small'
-              onClick={resetErrorMSGs}
-            >
-              Send
-            </button>
-          </div>
-        </form>
+      <form className='updateBook-img-form' onSubmit={handleNewBookImg}>
+        {updateMSGcover && (
+          <p className='update-delete-book-msg'>{updateMSGcover}</p>
+        )}
+        <legend className='updateBook-legend'>Upload new book image</legend>
+        <input type='file' name='image' id='image' onFocus={resetErrorMSGs} />
+        <div className='updateBook-btns-container'>
+          <button
+            className='btn-steelblue admin-btn-small'
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+          <button
+            className='btn-bronze admin-btn-small'
+            onClick={resetErrorMSGs}
+          >
+            Send
+          </button>
+        </div>
+      </form>
 
-        <form className='updateBook-details-form' onSubmit={updateBook}>
-          {updateMSGbookInfo && (
-            <p className='update-delete-book-msg'>{updateMSGbookInfo}</p>
-          )}
-          <legend className='updateBook-legend'>Update book details</legend>
-          <div>
-            <label htmlFor='title'>Title</label>
-            <input
-              type='text'
-              name='title'
-              id='title'
-              onFocus={resetErrorMSGs}
-            />
-          </div>
-          <div>
-            <label htmlFor='author'>Author</label>
-            <input
-              type='text'
-              name='author'
-              id='author'
-              onFocus={resetErrorMSGs}
-            />
-          </div>
-          <div>
-            <label htmlFor='year'>Year</label>
-            <input
-              type='number'
-              name='year'
-              id='year'
-              onFocus={resetErrorMSGs}
-            />
-          </div>
-          <div>
-            <label htmlFor='publisher'>Publisher</label>
-            <input
-              type='text'
-              name='publisher'
-              id='publisher'
-              onFocus={resetErrorMSGs}
-            />
-          </div>
-          <div>
-            <label htmlFor='genre'>Genre</label>
-            <input
-              type='text'
-              name='genre'
-              id='genre'
-              onFocus={resetErrorMSGs}
-            />
-          </div>
-          <div>
-            <label htmlFor='description'>Description</label>
-            <textarea
-              name='description'
-              id='description'
-              cols='23'
-              rows='10'
-              onFocus={resetErrorMSGs}
-            ></textarea>
-          </div>
-          <div>
-            <label htmlFor='pages'>Number of pages</label>
-            <input
-              type='number'
-              step='any'
-              name='pages'
-              id='pages'
-              onFocus={resetErrorMSGs}
-            />
-          </div>
-          <div>
-            <label htmlFor='price'>Price</label>
-            <input
-              type='number'
-              step='any'
-              name='price'
-              id='price'
-              onFocus={resetErrorMSGs}
-            />
-          </div>
-          <div>
-            <label htmlFor='isbn'>ISBN</label>
-            <input type='text' name='isbn' id='isbn' onFocus={resetErrorMSGs} />
-          </div>
-          <div className='updateBook-btns-container'>
-            <button
-              className='btn-steelblue admin-btn-small'
-              onClick={handleCancel}
-            >
-              Cancel
-            </button>
-            <button
-              className='btn-bronze admin-btn-small'
-              onFocus={resetErrorMSGs}
-            >
-              Send
-            </button>
-          </div>
-        </form>
-      </>
+      <form className='updateBook-details-form' onSubmit={updateBook}>
+        {updateMSGbookInfo && (
+          <p className='update-delete-book-msg'>{updateMSGbookInfo}</p>
+        )}
+        <legend className='updateBook-legend'>Update book details</legend>
+        <div>
+          <label htmlFor='title'>Title</label>
+          <input type='text' name='title' id='title' onFocus={resetErrorMSGs} />
+        </div>
+        <div>
+          <label htmlFor='author'>Author</label>
+          <input
+            type='text'
+            name='author'
+            id='author'
+            onFocus={resetErrorMSGs}
+          />
+        </div>
+        <div>
+          <label htmlFor='year'>Year</label>
+          <input type='number' name='year' id='year' onFocus={resetErrorMSGs} />
+        </div>
+        <div>
+          <label htmlFor='publisher'>Publisher</label>
+          <input
+            type='text'
+            name='publisher'
+            id='publisher'
+            onFocus={resetErrorMSGs}
+          />
+        </div>
+        <div>
+          <label htmlFor='genre'>Genre</label>
+          <input type='text' name='genre' id='genre' onFocus={resetErrorMSGs} />
+        </div>
+        <div>
+          <label htmlFor='description'>Description</label>
+          <textarea
+            name='description'
+            id='description'
+            cols='23'
+            rows='4'
+            onFocus={resetErrorMSGs}
+          ></textarea>
+        </div>
+        <div>
+          <label htmlFor='pages'>No. of pages</label>
+          <input
+            type='number'
+            step='any'
+            name='pages'
+            id='pages'
+            onFocus={resetErrorMSGs}
+          />
+        </div>
+        <div>
+          <label htmlFor='price'>Price</label>
+          <input
+            type='number'
+            step='any'
+            name='price'
+            id='price'
+            onFocus={resetErrorMSGs}
+          />
+        </div>
+        <div>
+          <label htmlFor='isbn'>ISBN</label>
+          <input type='text' name='isbn' id='isbn' onFocus={resetErrorMSGs} />
+        </div>
+        <div className='updateBook-btns-container'>
+          <button
+            className='btn-steelblue admin-btn-small'
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+          <button
+            className='btn-bronze admin-btn-small'
+            onFocus={resetErrorMSGs}
+          >
+            Send
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
