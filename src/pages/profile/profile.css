@@ -13,8 +13,15 @@
   display: flex;
   gap: 3px;
 }
-
-
+.upload-book-form input,
+.upload-book-form textarea,
+.firstName-input,
+.lastName-input,
+.email-input,
+.password-input,
+.reEnter-input {
+  background-color: #e4e2de;
+}
 .profile-container {
   min-height: 80vh;
   display: flex;
@@ -91,7 +98,13 @@
   display: flex;
   gap: 1rem;
 }
-
+.profile-review-form-div {
+  background-color: #fff;
+  padding: 0 .2rem;
+}
+.reviewForm-form {
+  padding-bottom: .2rem;
+}
 .reviewForm-existingReview {
   padding: 0.5rem 0;
 }
@@ -100,11 +113,15 @@
 }
 .reviewForm-textarea {
   margin-bottom: 0.5rem;
+  background-color: #e4e2de;
 }
 
 .review-send-cancel {
   display: flex;
   gap: 1rem;
+}
+.profile-qty-div {
+  background-color: #fff;
 }
 .profile-update-qty-form,
 .profile-delete-item-btns {
@@ -151,6 +168,10 @@
 .delete-account-really-div {
   padding: 0.5rem 0;
 }
+.profile-delete-item-border {
+  background-color: #fff;
+  padding-bottom: .2rem;
+}
 .profile-delete-account-p {
   color: red;
 }
@@ -175,4 +196,41 @@
 }
 .profile-order-cursor {
   cursor: pointer;
+}
+
+.delete-order-yes {
+  background-color: red;
+  color: #fff;
+}
+.profile-qty-div {
+  padding-top: .2rem;
+  padding-bottom: .2rem;
+}
+.reviewForm-form{
+  padding-left: .5rem;
+}
+.profile-steelblue {
+  border: 0;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 5px 15px;
+  color: #f6f5f3;
+  cursor: pointer;
+  padding: 5px 8px 7px 8px;
+
+  background-image: linear-gradient(#90a4ae, #263238);
+}
+.profile-steelblue:hover{
+  background-image: linear-gradient(#abbaca, #0a0e10);
+}
+.delete-order-yes,
+.delete-account-yes {
+  border: 0;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 5px 15px;
+  color: #f6f5f3;
+  cursor: pointer;
+  padding: 5px 8px 7px 8px;
+}
+.order-item {
+  padding-bottom: 2rem;
 }

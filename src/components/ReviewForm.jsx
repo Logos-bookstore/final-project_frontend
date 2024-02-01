@@ -8,7 +8,7 @@ export default function ReviewForm({
   setReviewsChange,
   userReviews,
 }) {
-  const { user } = useContext(Context);
+  const { user, setReviewBtn } = useContext(Context);
   const [ratingError, setRatingError] = useState('');
   const exisitingReview = userReviews.find((rev) => rev.book === book._id);
 
@@ -192,10 +192,10 @@ export default function ReviewForm({
         }
       ></textarea>
       <div className='review-send-cancel'>
-        <button className='reviewForm-send'>Send</button>
+        <button className='continue-button'>Send</button>
         <button
-          onClick={() => setBookToReview(null)}
-          className='cancel-review-btn'
+          onClick={() => {setBookToReview(null); setReviewBtn(true)}}
+          className='profile-steelblue'
         >
           Cancel
         </button>
