@@ -15,12 +15,11 @@ import toast, { Toaster } from 'react-hot-toast';
 import './profile.css'
 
 export default function Profile() {
-  const { user, setUser, hideUpdateDeleteBookForms } = useContext(Context);
+  const { user, setUser, hideUpdateDeleteBookForms, bookToReview, setBookToReview } = useContext(Context);
   const [userOrders, setUserOrders] = useState([]);
   const navigate = useNavigate();
   // states for writing/editing reviews:
   const [userReviews, setUserReviews] = useState([]);
-  const [bookToReview, setBookToReview] = useState(null);
   const [reviewsChange, setReviewsChange] = useState(null); // to fetch reviews after submitting a review
   const [renderOrders, setRenderOrders] = useState(false);
   const [really, setReally] = useState(false);
@@ -357,7 +356,9 @@ export default function Profile() {
                           <div>
                             <button
                               onClick={() =>
-                                setBookToReview(bookToReview === null ? book : null)
+                                {setBookToReview(bookToReview === null ? book : null);
+                                setUpdateItem('');
+                                setDeleteItem('')}
                               }
                             >
                               {userReviews.find((rev) => rev.book === book._id)
@@ -426,7 +427,7 @@ export default function Profile() {
                               </div>
                             ) : (
                               <div>
-                                <button onClick={() => setUpdateItem(book._id)}>
+                                <button onClick={() => {setUpdateItem(book._id); setBookToReview(null); setDeleteItem('')}}>
                                   Update Qty
                                 </button>
                               </div>
@@ -456,7 +457,7 @@ export default function Profile() {
                               </div>
                             ) : (
                               <div>
-                                <button onClick={() => setDeleteItem(book._id)}>
+                                <button onClick={() => {setDeleteItem(book._id); setBookToReview(null); setUpdateItem('')}}>
                                   Delete Item
                                 </button>
                               </div>

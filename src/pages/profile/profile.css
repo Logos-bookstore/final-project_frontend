@@ -1,3 +1,20 @@
+.order-item {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.order-item img {
+  width: 40px;
+}
+
+.rating-options-container {
+  display: flex;
+  gap: 3px;
+}
+
+
 .profile-container {
   min-height: 80vh;
   display: flex;
@@ -84,9 +101,7 @@
 .reviewForm-textarea {
   margin-bottom: 0.5rem;
 }
-.cancel-review-btn {
-  margin-bottom: 1rem;
-}
+
 .review-send-cancel {
   display: flex;
   gap: 1rem;
