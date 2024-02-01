@@ -14,6 +14,7 @@ export default function SingleBook() {
   const [reviews, setReviews] = useState(null);
   const [singleBook, setSingleBook] = useState(null);
   const { user, bookToUpdate, bookToDelete } = useContext(Context);
+  const [showBookText, setShowBookText] = useState(false);
   const { id } = useParams();
 
   const fetchReviews = async () => {
@@ -51,7 +52,10 @@ export default function SingleBook() {
     <>
       {singleBook && (
         <div className='singleBook-page'>
-          <div className='bookCard-and-btns-container'>
+          <div
+            className='bookCard-and-btns-container'
+            id='singleBook-reset-margin'
+          >
             <BookCard book={singleBook} />
             <div className='cart-and-admin-btns-container'>
               <CartBtn book={singleBook} />
@@ -88,11 +92,35 @@ export default function SingleBook() {
               {singleBook.ISBN}
             </p>
             <h3 className='singleBook-heading'>Book description</h3>
-            <p>{singleBook.description}</p>
+            <p>
+              {singleBook.description.split(' ').slice(0, 20).join(' ') + ' '}
+              {showBookText ? (
+                <>
+                  <span>
+                    {singleBook.description.split(' ').slice(20).join(' ') +
+                      ' '}
+                  </span>
+                  <span
+                    className='singleBook-show-hide-text'
+                    onClick={() => setShowBookText(false)}
+                  >
+                    hide
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>... </span>
+                  <span
+                    className='singleBook-show-hide-text'
+                    onClick={() => setShowBookText(true)}
+                  >
+                    read more
+                  </span>
+                </>
+              )}
+            </p>
           </div>
-          <div className='singleBook-description-revs'>
-            {/*   <h3 className='singleBook-heading'>Book description</h3>
-            <p>{singleBook.description}</p> */}
+          <div className='singleBook-reviews'>
             <h3 className='singleBook-heading'>Reviews</h3>
             {reviews.length === 0 && <p>No reviews yet...</p>}
             <div>

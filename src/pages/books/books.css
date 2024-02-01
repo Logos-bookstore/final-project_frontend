@@ -1,15 +1,19 @@
 .books-genres-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  line-height: 1.7;
+  grid-column-gap: 5rem;
+  grid-row-gap: 1.5rem;
   margin: 0 1rem;
   padding-top: 2.5rem;
-  padding-left: 4rem;
 }
 
 .books-genres-container .books-genre-name {
   font-weight: normal;
   font-size: 1.4rem;
+}
+
+.books-genres-container .books-genre-name:nth-child(odd) {
+  text-align: right;
 }
 
 @media only screen and (min-width: 550px) {

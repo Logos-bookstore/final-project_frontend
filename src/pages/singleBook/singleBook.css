@@ -4,21 +4,32 @@
 }
 
 .singleBook-details,
-.singleBook-description-revs {
-  line-height: 1.8;
+.singleBook-reviews {
+  line-height: 1.7;
 }
 
 .singleBook-title {
   margin-top: 2.5rem;
+  font-size: 2rem;
+  line-height: 1.4;
 }
 
 .singleBook-heading {
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
   margin-bottom: 1rem;
 }
 
 .singleBook-span {
   font-weight: bold;
+}
+
+.singleBook-show-hide-text {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #4c321d;
+  border-bottom: 2px solid #7e4e1f;
+  cursor: pointer;
+  padding: 0 2px;
 }
 
 .singleBook-review-text {
@@ -32,10 +43,10 @@
     grid-template-areas:
       'bookCover details '
       'forms details'
-      'description-reviews description-reviews ';
+      'reviews reviews ';
     grid-template-rows: auto auto auto;
-    grid-template-columns: 55% 1fr;
-    grid-column-gap: 1rem;
+    grid-template-columns: auto auto;
+    grid-column-gap: 1.5rem;
   }
   .bookcard-and-btns-container {
     grid-area: bookCover;
@@ -45,16 +56,40 @@
   }
   .singleBook-details {
     grid-area: details;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
+  .singleBook-title {
+    margin-top: 0;
+  }
+  .singleBook-reviews {
+    grid-area: reviews;
+    margin: 3rem 3rem;
+  }
+  #singleBook-reset-margin {
+    margin-left: 0;
+  }
+}
 
-  .singleBook-description-revs {
-    grid-area: description-reviews;
+@media only screen and (min-width: 768px) {
+  .singleBook-page {
+    grid-column-gap: 2.5rem;
+  }
+  #singleBook-reset-margin {
+    margin-left: 3rem;
   }
 }
 
 @media only screen and (min-width: 1080px) {
   .singleBook-page {
-    grid-template-columns: 45% 1fr;
-    grid-column-gap: 0;
+    grid-template-columns: auto auto;
+    grid-column-gap: 4rem;
+  }
+  .singleBook-reviews {
+    margin: 3rem 5rem;
+  }
+  #singleBook-reset-margin {
+    margin-left: 4rem;
   }
 }
