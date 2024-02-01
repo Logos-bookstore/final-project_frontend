@@ -27,9 +27,8 @@ function App() {
     setCurrentPage,
     setShoppingCart,
     hideUpdateDeleteBookForms,
-    setActiveGenreLink,
     menuIcon,
-    setMenuIcon
+    setMenuIcon,
   } = useContext(Context);
 
   const logout = () => {
@@ -43,7 +42,6 @@ function App() {
     e.preventDefault();
     const plused = e.target.search.value.split(' ').join('+');
     e.target.reset();
-    setActiveGenreLink('');
     navigate(`/books/request/search?q=${plused}`);
   };
 
@@ -51,7 +49,6 @@ function App() {
   const handleBooksDisplay = () => {
     setCurrentPage(1);
     hideUpdateDeleteBookForms();
-    setActiveGenreLink('');
     navigate('/books/selection');
   };
 
@@ -63,7 +60,11 @@ function App() {
         <nav className='header-navbar'>
           <ul className='logo-ul'>
             <li onClick={hideUpdateDeleteBookForms}>
-              <NavLink onClick={() => setMenuIcon(false)} className='navlink logos' to='/'>
+              <NavLink
+                onClick={() => setMenuIcon(false)}
+                className='navlink logos'
+                to='/'
+              >
                 Logos
               </NavLink>
             </li>
@@ -87,69 +88,172 @@ function App() {
               </form>
             </li>
           </ul>
-          <FaBars className='icon menu' onClick={() => setMenuIcon(prev => !prev)}/>
-          {menuIcon && <ul className='links-ul' onClick={() => setMenuIcon(false)}>
-            <li onClick={hideUpdateDeleteBookForms}>
-              <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/'>Home</NavLink>
-            </li>
-            <li onClick={handleBooksDisplay}>
-              <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/books'>Books</NavLink>
-            </li>
-            {!user ? (
-              <>
-                <li>
-                  <NavLink onClick={() => {setMenuIcon(false); setActiveGenreLink('')}} className='navlink' to='/register'>Register</NavLink>
-                </li>
-                <li>
-                  <NavLink onClick={() => {setMenuIcon(false); setActiveGenreLink('')}} className='navlink' to='/login'>Login</NavLink>
-                </li>
-                <li onClick={hideUpdateDeleteBookForms}>
-                  <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/cart'><FaShoppingCart className='icon'/></NavLink>
-                </li>
-              </>
-            ) : (
-              <>
-                <li onClick={hideUpdateDeleteBookForms}>
-                  <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/profile'>Profile</NavLink>
-                </li>
-                <li onClick={hideUpdateDeleteBookForms}>
-                  <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/cart'><FaShoppingCart className='icon'/></NavLink>
-                </li>
-                <li onClick={logout}>
-                  <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/'>Logout</NavLink>
-                </li>
-              </>
-            )}
-          </ul>}
+          <FaBars
+            className='icon menu'
+            onClick={() => setMenuIcon((prev) => !prev)}
+          />
+          {menuIcon && (
+            <ul className='links-ul' onClick={() => setMenuIcon(false)}>
+              <li onClick={hideUpdateDeleteBookForms}>
+                <NavLink
+                  onClick={() => setMenuIcon(false)}
+                  className='navlink'
+                  to='/'
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li onClick={handleBooksDisplay}>
+                <NavLink
+                  onClick={() => setMenuIcon(false)}
+                  className='navlink'
+                  to='/books'
+                >
+                  Books
+                </NavLink>
+              </li>
+              {!user ? (
+                <>
+                  <li>
+                    <NavLink
+                      onClick={() => {
+                        setMenuIcon(false);
+                      }}
+                      className='navlink'
+                      to='/register'
+                    >
+                      Register
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      onClick={() => setMenuIcon(false)}
+                      className='navlink'
+                      to='/login'
+                    >
+                      Login
+                    </NavLink>
+                  </li>
+                  <li onClick={hideUpdateDeleteBookForms}>
+                    <NavLink
+                      onClick={() => setMenuIcon(false)}
+                      className='navlink'
+                      to='/cart'
+                    >
+                      <FaShoppingCart className='icon' />
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li onClick={hideUpdateDeleteBookForms}>
+                    <NavLink
+                      onClick={() => setMenuIcon(false)}
+                      className='navlink'
+                      to='/profile'
+                    >
+                      Profile
+                    </NavLink>
+                  </li>
+                  <li onClick={hideUpdateDeleteBookForms}>
+                    <NavLink
+                      onClick={() => setMenuIcon(false)}
+                      className='navlink'
+                      to='/cart'
+                    >
+                      <FaShoppingCart className='icon' />
+                    </NavLink>
+                  </li>
+                  <li onClick={logout}>
+                    <NavLink
+                      onClick={() => setMenuIcon(false)}
+                      className='navlink'
+                      to='/'
+                    >
+                      Logout
+                    </NavLink>
+                  </li>
+                </>
+              )}
+            </ul>
+          )}
           <ul className='desktop-links'>
             <li onClick={hideUpdateDeleteBookForms}>
-              <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/'>Home</NavLink>
+              <NavLink
+                onClick={() => setMenuIcon(false)}
+                className='navlink'
+                to='/'
+              >
+                Home
+              </NavLink>
             </li>
             <li onClick={handleBooksDisplay}>
-              <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/books'>Books</NavLink>
+              <NavLink
+                onClick={() => setMenuIcon(false)}
+                className='navlink'
+                to='/books'
+              >
+                Books
+              </NavLink>
             </li>
             {!user ? (
               <>
                 <li>
-                  <NavLink onClick={() => {setMenuIcon(false); setActiveGenreLink('')}} className='navlink' to='/register'>Register</NavLink>
+                  <NavLink
+                    onClick={() => setMenuIcon(false)}
+                    className='navlink'
+                    to='/register'
+                  >
+                    Register
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink onClick={() => {setMenuIcon(false); setActiveGenreLink('')}} className='navlink' to='/login'>Login</NavLink>
+                  <NavLink
+                    onClick={() => setMenuIcon(false)}
+                    className='navlink'
+                    to='/login'
+                  >
+                    Login
+                  </NavLink>
                 </li>
                 <li onClick={hideUpdateDeleteBookForms}>
-                  <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/cart'><FaShoppingCart className='icon'/></NavLink>
+                  <NavLink
+                    onClick={() => setMenuIcon(false)}
+                    className='navlink'
+                    to='/cart'
+                  >
+                    <FaShoppingCart className='icon' />
+                  </NavLink>
                 </li>
               </>
             ) : (
               <>
                 <li onClick={hideUpdateDeleteBookForms}>
-                  <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/profile'>Profile</NavLink>
+                  <NavLink
+                    onClick={() => setMenuIcon(false)}
+                    className='navlink'
+                    to='/profile'
+                  >
+                    Profile
+                  </NavLink>
                 </li>
                 <li onClick={hideUpdateDeleteBookForms}>
-                  <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/cart'><FaShoppingCart className='icon'/></NavLink>
+                  <NavLink
+                    onClick={() => setMenuIcon(false)}
+                    className='navlink'
+                    to='/cart'
+                  >
+                    <FaShoppingCart className='icon' />
+                  </NavLink>
                 </li>
                 <li onClick={logout}>
-                  <NavLink onClick={() => setMenuIcon(false)} className='navlink' to='/'>Logout</NavLink>
+                  <NavLink
+                    onClick={() => setMenuIcon(false)}
+                    className='navlink'
+                    to='/'
+                  >
+                    Logout
+                  </NavLink>
                 </li>
               </>
             )}

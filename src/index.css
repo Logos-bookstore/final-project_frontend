@@ -29,6 +29,12 @@ a {
   color: inherit; /* check if all should inherit */
 }
 
+/* *** active NAV-links *** */
+.active {
+  font-weight: bold;
+}
+
+/* *** shared styles on the books-pages *** */
 .books-container {
   display: flex;
   justify-content: center;
@@ -67,6 +73,7 @@ a {
   text-align: center;
 }
 
+/* *** BTNS *** */
 .cart-and-admin-btns-container {
   display: flex;
   gap: 1rem;

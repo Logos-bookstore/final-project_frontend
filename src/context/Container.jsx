@@ -14,7 +14,6 @@ export default function Container({ children }) {
   const [bookToDelete, setBookToDelete] = useState(null);
   const [bookToUpdate, setBookToUpdate] = useState(null);
   const [menuIcon, setMenuIcon] = useState(false);
-  const [activeGenreLink, setActiveGenreLink] = useState('');
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -43,7 +42,6 @@ export default function Container({ children }) {
   const hideUpdateDeleteBookForms = () => {
     setBookToUpdate(null);
     setBookToDelete(null);
-    setActiveGenreLink('');
   };
 
   return (
@@ -74,8 +72,6 @@ export default function Container({ children }) {
           hideUpdateDeleteBookForms,
           menuIcon,
           setMenuIcon,
-          activeGenreLink,
-          setActiveGenreLink
         }}
       >
         {children}

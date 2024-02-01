@@ -12,10 +12,6 @@
   font-size: 1.4rem;
 }
 
-.books-genres-container .books-active {
-  font-weight: bold;
-}
-
 @media only screen and (min-width: 550px) {
   .books-genres-container {
     line-height: 0.1;
