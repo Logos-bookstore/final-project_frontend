@@ -1,6 +1,11 @@
+@media only screen and (max-width: 649px) {
+  .updateBook-container {
+    margin: auto;
+  }
+}
+
 .updateBook-container {
   width: 32rem;
-  margin: auto;
   padding: 1rem;
   padding: 1rem 0;
   line-height: 1.4;
@@ -54,13 +59,7 @@
   color: #f6f5f3;
   color: #7e4e1f;
   padding: 4px 0;
-}
-
-@media only screen and (min-width: 650px) {
-  .updateBook-container {
-    margin-left: 0;
-  }
-}
+}}
 
 @media only screen and (min-width: 768px) {
   .updateBook-container {
