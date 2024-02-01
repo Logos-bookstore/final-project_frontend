@@ -59,16 +59,4 @@
   color: #f6f5f3;
   color: #7e4e1f;
   padding: 4px 0;
-}}
-
-@media only screen and (min-width: 768px) {
-  .updateBook-container {
-    margin-left: 3rem;
-  }
-}
-
-@media only screen and (min-width: 1080px) {
-  .updateBook-container {
-    margin-left: 4rem;
-  }
 }
