@@ -167,7 +167,7 @@ function App() {
                   <li onClick={logout}>
                     <NavLink
                       onClick={() => setMenuIcon(false)}
-                      className='navlink'
+                      className='navlink logos'
                       to='/'
                     >
                       Logout
@@ -249,7 +249,7 @@ function App() {
                 <li onClick={logout}>
                   <NavLink
                     onClick={() => setMenuIcon(false)}
-                    className='navlink'
+                    className='navlink logos'
                     to='/'
                   >
                     Logout
