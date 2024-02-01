@@ -1,6 +1,7 @@
 :root {
   font-size: 62.5%;
   font-family: sans-serif;
+  background-color: rgb(113, 111, 111);
 }
 
 * {
@@ -12,7 +13,7 @@
 body {
   max-width: 1400px;
   margin: auto;
-  background-color: rgb(113, 111, 111);
+  background-color: #e4e2de;
   font-size: 1.4rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
