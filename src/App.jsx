@@ -299,7 +299,7 @@ function App() {
             </div>
           </div>
           <div className='footer-book-store'>
-            <span className='footer-text'>&copy; {currentYear} Book Store</span>
+            <span className='footer-text'>&copy; {currentYear} Logos</span>
           </div>
         </div>
       </footer>
