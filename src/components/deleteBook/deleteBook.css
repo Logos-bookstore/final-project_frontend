@@ -19,3 +19,21 @@
   gap: 1rem;
   margin-top: 2rem;
 }
+
+@media only screen and (min-width: 650px) {
+  .deleteBook-container {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .deleteBook-container {
+    margin-left: 3rem;
+  }
+}
+
+@media only screen and (min-width: 1080px) {
+  .deleteBook-container {
+    margin-left: 4rem;
+  }
+}
