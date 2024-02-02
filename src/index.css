@@ -138,3 +138,7 @@ a {
 .continue-button:hover {
   background-image: linear-gradient(#d0ae94, #4c321d);
 }
+
+select {
+  background-color: #fff;
+}

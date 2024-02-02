@@ -19,3 +19,7 @@
     color: red;
     font-size: 1.2rem;
 }
+
+.login-form input {
+    background-color: #fff;
+}
