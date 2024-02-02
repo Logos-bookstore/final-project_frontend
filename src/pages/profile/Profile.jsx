@@ -15,7 +15,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import './profile.css'
 
 export default function Profile() {
-  const { user, setUser, hideUpdateDeleteBookForms, bookToReview, setBookToReview } = useContext(Context);
+  const { user, setUser, hideUpdateDeleteBookForms, bookToReview, setBookToReview, reviewBtn, setReviewBtn } = useContext(Context);
   const [userOrders, setUserOrders] = useState([]);
   const navigate = useNavigate();
   // states for writing/editing reviews:
@@ -274,7 +274,7 @@ export default function Profile() {
                 <ReEnter />
               </Form>
               <div className='profile-edit-cancel-div'>
-                <button onClick={() => setShowEditProfile(false)}>Cancel</button>
+                <button className='profile-steelblue' onClick={() => setShowEditProfile(false)}>Cancel</button>
               </div>
             </div>
           )}
@@ -301,12 +301,12 @@ export default function Profile() {
                         <button className='delete-order-yes' onClick={() => handleDeleteOrder(item._id)}>
                           Yes
                         </button>
-                        <button onClick={() => setDeleteOrder('')}>No</button>
+                        <button className='profile-steelblue' onClick={() => setDeleteOrder('')}>No</button>
                       </div>
                     </div>
                   ) : (
                     <div className='profile-order-delete-div'>
-                      <button onClick={() => setDeleteOrder(item._id)}>
+                      <button className='profile-steelblue' onClick={() => {setDeleteOrder(item._id); setUpdateItem(''); setDeleteItem(''); setBookToReview(null); setReviewBtn(true)}}>
                         Delete Order
                       </button>
                     </div>
@@ -353,18 +353,8 @@ export default function Profile() {
                           </div>
                         </div>
                         <div className='profile-order-updates'>
-                          <div>
-                            <button
-                              onClick={() =>
-                                {setBookToReview(bookToReview === null ? book : null);
-                                setUpdateItem('');
-                                setDeleteItem('')}
-                              }
-                            >
-                              {userReviews.find((rev) => rev.book === book._id)
-                                ? 'Edit your review'
-                                : 'Write a review'}
-                            </button>
+                          <div className='profile-review-form-container'>
+                            {reviewBtn === book._id ? 
                             <div className='profile-review-form-div'>
                               {bookToReview?._id === book._id && (
                                 <ReviewForm
@@ -375,6 +365,22 @@ export default function Profile() {
                                 />
                               )}
                             </div>
+                            :
+                            <button
+                              className='profile-steelblue'
+                              onClick={() =>
+                                {setBookToReview(book);
+                                setUpdateItem('');
+                                setDeleteItem('');
+                                setReviewBtn(book._id)
+                                setDeleteOrder('');}
+                              }
+                            >
+                              {userReviews.find((rev) => rev.book === book._id)
+                                ? 'Edit your review'
+                                : 'Write a review'}
+                            </button>
+                            }
                           </div>
                           <div className='profile-qty-container'>
                             {updateItem === book._id ? (
@@ -417,17 +423,17 @@ export default function Profile() {
                                       10
                                     </option>
                                   </select>
-                                  <button type='submit'>Submit</button>
+                                  <button className='continue-button' type='submit'>Send</button>
                                 </form>
                                 <div className='profile-qty-cancel-div'>
-                                  <button onClick={() => setUpdateItem('')}>
+                                  <button className='profile-steelblue' onClick={() => setUpdateItem('')}>
                                     Cancel
                                   </button>
                                 </div>
                               </div>
                             ) : (
                               <div>
-                                <button onClick={() => {setUpdateItem(book._id); setBookToReview(null); setDeleteItem('')}}>
+                                <button className='profile-steelblue' onClick={() => {setUpdateItem(book._id); setBookToReview(null); setDeleteItem(''); setReviewBtn(true); setDeleteOrder('')}}>
                                   Update Qty
                                 </button>
                               </div>
@@ -444,20 +450,21 @@ export default function Profile() {
                                 </div>
                                 <div className='profile-delete-item-btns'>
                                   <button
+                                    className='delete-order-yes'
                                     onClick={() =>
                                       handleDeleteItem(book._id, item._id)
                                     }
                                   >
                                     Yes
                                   </button>
-                                  <button onClick={() => setDeleteItem('')}>
+                                  <button className='profile-steelblue' onClick={() => setDeleteItem('')}>
                                     No
                                   </button>
                                 </div>
                               </div>
                             ) : (
                               <div>
-                                <button onClick={() => {setDeleteItem(book._id); setBookToReview(null); setUpdateItem('')}}>
+                                <button className='profile-steelblue' onClick={() => {setDeleteItem(book._id); setBookToReview(null); setUpdateItem(''); setReviewBtn(true); setDeleteOrder('')}}>
                                   Delete Item
                                 </button>
                               </div>
@@ -472,7 +479,7 @@ export default function Profile() {
               );
             })}
               <div className='profile-orders-close'>
-                <button onClick={() => setRenderOrders(false)}>Close</button>
+                <button className='profile-steelblue' onClick={() => setRenderOrders(false)}>Close</button>
               </div>
             </div>
             }
@@ -526,7 +533,7 @@ export default function Profile() {
                       <Image />
                       <Upload />
                       <div className='upload-book-cancel-div'>
-                        <button className='upload-book-cancel-p' onClick={() => setShowBookForm(false)}>Cancel</button>
+                        <button className='upload-book-cancel-p profile-steelblue' onClick={() => setShowBookForm(false)}>Cancel</button>
                       </div>
                     </fieldset>
                   </form>
@@ -563,7 +570,7 @@ export default function Profile() {
               </div>
               <div className='delete-account-btns'>
                 <button className='delete-account-yes' onClick={handleDelete}>Yes</button>
-                <button onClick={() => setReally(false)}>No</button>
+                <button className='profile-steelblue' onClick={() => setReally(false)}>No</button>
               </div>
             </div>
           ) : (
