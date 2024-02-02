@@ -210,7 +210,7 @@ export default function Checkout() {
             <p className='checkout-totalPrice'>Total Price: {totalPrice} €</p>
           </div>
           <div className='checkout-buy-now-div'>
-            <button className='checkout-buy-now' onClick={handleBuy}>
+            <button className='checkout-buy-now continue-button' onClick={handleBuy}>
               Buy now
             </button>
           </div>

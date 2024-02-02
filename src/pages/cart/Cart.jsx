@@ -104,7 +104,7 @@ export default function Cart() {
                 <h3 className='cart-author'>{item?.author}</h3>
                 <p className='cart-price'>{item?.price} €</p>
                 <button
-                  className='cart-delete'
+                  className='cart-delete profile-steelblue'
                   onClick={() => handleDeleteItem(item._id)}
                 >
                   Remove from cart
@@ -163,7 +163,7 @@ export default function Cart() {
         )}
          {shoppingCart.length > 0 && user && (
           <div className='cart-buy-div'>
-            <button className='cart-buy' onClick={handleGoToCashier}>
+            <button className='cart-buy continue-button' onClick={handleGoToCashier}>
               Buy
             </button>
           </div>
