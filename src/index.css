@@ -1,24 +1,16 @@
 @font-face {
   font-family: 'Great_Vibes';
-  src: url('fonts/Great_Vibes/GreatVibes-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
+  src: url('fonts/Great_Vibes/GreatVibes-Regular.ttf');
 }
 
 @font-face {
   font-family: 'Montserrat_Alternates';
-  src: url('fonts/Montserrat_Alternates/MontserratAlternates-Regular.ttf')
-    format('truetype');
-  /*  font-weight: 400;
-  font-style: normal; */
+  src: url('fonts/Montserrat_Alternates/MontserratAlternates-Regular.ttf');
 }
 
 @font-face {
   font-family: 'Space_Grotesk';
   src: url('fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf');
-  /*  format('truetype'); */
-  /*  font-weight: 400;
-  font-style: normal; */
 }
 
 :root {
@@ -74,7 +66,6 @@ a {
   align-items: center;
   margin: auto;
   padding-bottom: 1.5rem;
-  border: 1px solid red;
 }
 
 .update-delete-book-msg {

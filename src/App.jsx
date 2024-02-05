@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import { Context } from './context/Context';
@@ -62,7 +62,7 @@ function App() {
             <li onClick={hideUpdateDeleteBookForms}>
               <NavLink
                 onClick={() => setMenuIcon(false)}
-                className='navlink logos'
+                className='logos shop-logo'
                 to='/'
               >
                 Logos
