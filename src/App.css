@@ -22,9 +22,16 @@ header {
   font-weight: 400;
 }
 
-.logo-ul {
+/* .logo-ul {
   padding-left: 2.5rem;
-}
+  padding-left: 2rem;
+  font-family: 'Great_Vibes';
+  letter-spacing: 1px;
+  font-size: 2.3rem;
+  color: #263238;
+  text-shadow: #90a4ae 1px 0 10px;
+} */
+
 .menu {
   margin-right: 2.5rem;
 }
@@ -58,6 +65,15 @@ header {
   text-decoration: none;
   font-size: 1.6rem;
 }
+.logo-ul {
+  padding-left: 2.5rem;
+  padding-left: 2rem;
+  font-family: 'Great_Vibes';
+  letter-spacing: 1px;
+  font-size: 2.3rem;
+  color: #263238;
+  text-shadow: #90a4ae 1px 0 10px;
+}
 
 .search-btn {
   border: none;
@@ -80,6 +96,16 @@ footer {
   display: flex;
   justify-content: center;
   height: 3rem;
+}
+
+.footer-text {
+  font-family: 'Great_Vibes';
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #263238;
+  text-shadow: #90a4ae 1px 0 10px;
+  margin-left: 0.5rem;
 }
 
 .footer-about-github {
@@ -114,9 +140,11 @@ footer {
   .app-nav-modal {
     display: none;
   }
+  .logo-ul {
+    font-size: 2.6rem;
+    padding-left: 2.5rem;
+  }
   .search-input {
     width: 25rem;
   }
 }
-
-/*BELOW HAS TO BE PUT IN APPROPRIATE CSS FILES*/

@@ -1,3 +1,26 @@
+@font-face {
+  font-family: 'Great_Vibes';
+  src: url('fonts/Great_Vibes/GreatVibes-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat_Alternates';
+  src: url('fonts/Montserrat_Alternates/MontserratAlternates-Regular.ttf')
+    format('truetype');
+  /*  font-weight: 400;
+  font-style: normal; */
+}
+
+@font-face {
+  font-family: 'Space_Grotesk';
+  src: url('fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf');
+  /*  format('truetype'); */
+  /*  font-weight: 400;
+  font-style: normal; */
+}
+
 :root {
   font-size: 62.5%;
   font-family: sans-serif;
@@ -27,7 +50,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: inherit; /* check if all should inherit */
+  color: inherit;
 }
 
 /* *** shared styles on the books-pages *** */
@@ -50,14 +73,9 @@ a {
   flex-direction: column;
   align-items: center;
   margin: auto;
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border: 1px solid red;
 }
-
-/* .bookCard-and-btns-container:hover {
-  transform: scale(1.009);
-  transition: 0.19s ease-in-out;
-}
- */
 
 .update-delete-book-msg {
   padding: 3px 2px 1px 2px;
@@ -81,6 +99,7 @@ a {
 
 .btn-bronze,
 .btn-steelblue {
+  font-family: 'Space_Grotesk';
   border: 0;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.3) 0 5px 15px;
@@ -132,7 +151,7 @@ a {
   color: #f6f5f3;
   cursor: pointer;
   padding: 5px 8px 7px 8px;
-
+  font-family: 'Space_Grotesk';
   background-image: linear-gradient(#d59352, #7e4e1f);
 }
 .continue-button:hover {

@@ -132,7 +132,9 @@ export default function SingleBook() {
                 reviews.map((review) => {
                   return (
                     <div key={review._id}>
-                      <h3>{review?.userId?.firstName}</h3>
+                      <h3 className='singleBook-reviewer'>
+                        {review?.userId?.firstName}
+                      </h3>
                       <ReviewStars rating={review.rating} />
                       <p className='singleBook-review-text'>{review?.text}</p>
                     </div>

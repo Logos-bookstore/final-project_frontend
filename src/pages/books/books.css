@@ -2,15 +2,16 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 5rem;
-  grid-row-gap: 1.1rem;
+  grid-row-gap: 0.5rem;
   margin: 0 1rem;
   padding-top: 2.5rem;
 }
 
 .books-genres-container .books-genre-name {
-  font-weight: normal;
-  font-size: 1.4rem;
-  color: #0a0e10;
+  font-family: 'Space_Grotesk';
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: #263238;
 }
 
 .books-genres-container .books-genre-name:nth-child(odd) {
@@ -20,7 +21,7 @@
 @media only screen and (min-width: 550px) {
   .books-genres-container {
     line-height: 0.1;
-    margin: 0 2rem;
+    margin: 0 2rem 6rem 2rem;
     padding-top: 3rem;
     padding-left: 0;
     display: flex;

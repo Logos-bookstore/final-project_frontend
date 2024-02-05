@@ -299,7 +299,8 @@ function App() {
             </div>
           </div>
           <div className='footer-book-store'>
-            <span className='footer-text'>&copy; {currentYear} Logos</span>
+            &copy; {currentYear}
+            <span className='footer-text'>Logos</span>
           </div>
         </div>
       </footer>
