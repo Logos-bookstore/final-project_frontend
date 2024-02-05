@@ -8,13 +8,19 @@
   line-height: 1.7;
 }
 
+.singleBook-details {
+  margin-top: 4rem;
+}
+
 .singleBook-title {
-  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Montserrat_Alternates';
   font-size: 2rem;
   line-height: 1.4;
 }
 
 .singleBook-heading {
+  font-size: 1.8rem;
   margin-top: 1.2rem;
   margin-bottom: 1rem;
 }
@@ -32,6 +38,10 @@
   padding: 0 2px;
 }
 
+.singleBook-reviewer {
+  font-size: 1.6rem;
+}
+
 .singleBook-review-text {
   margin-bottom: 1.5rem;
 }
@@ -45,7 +55,7 @@
       'forms details'
       'reviews reviews ';
     grid-template-rows: auto auto auto;
-    grid-template-columns: auto auto;
+    grid-template-columns: 55% auto;
     grid-column-gap: 1.5rem;
   }
   .bookcard-and-btns-container {
@@ -59,9 +69,12 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 0;
   }
+
   .singleBook-title {
     margin-top: 0;
+    font-size: 2.1rem;
   }
   .singleBook-reviews {
     grid-area: reviews;
@@ -77,6 +90,7 @@
 
 @media only screen and (min-width: 768px) {
   .singleBook-page {
+    grid-template-columns: 48% auto;
     grid-column-gap: 2.5rem;
   }
   #singleBook-reset-margin {
@@ -89,8 +103,8 @@
 
 @media only screen and (min-width: 1080px) {
   .singleBook-page {
-    grid-template-columns: auto auto;
-    grid-column-gap: 4rem;
+    grid-template-columns: 35% auto;
+    grid-column-gap: 2rem;
   }
   .singleBook-reviews {
     margin: 3rem 5rem;

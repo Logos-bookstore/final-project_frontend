@@ -1,61 +1,64 @@
 .cart-container-complete {
-    min-height: 80vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .cart-empty {
-    padding-top: 15rem;
+  padding-top: 15rem;
 }
 .cart-please {
-    padding-bottom: 2.5rem;
-    width: 80%;
-    margin: 0 auto;
+  padding-bottom: 2.5rem;
+  width: 80%;
+  margin: 0 auto;
 }
 .cart-empty,
 .cart-please {
-    text-align: center;
-    font-size: 1.6rem;
+  text-align: center;
+  font-size: 1.6rem;
 }
 .cart-container {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-    width: fit-content;
-    margin: 0 auto;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+  width: fit-content;
+  margin: 0 auto;
 }
 .cart-item {
-    display: grid;
-    grid-template-columns: auto 1fr; /*repeat(2, 1fr);*/
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 1rem;
-    gap: 1rem;
-    width: fit-content;
+  display: grid;
+  grid-template-columns: auto 1fr; /*repeat(2, 1fr);*/
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  gap: 1rem;
+  width: fit-content;
 }
 .cart-totalPrice {
-    border-top: 1px solid black;
-    width: fit-content;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  border-top: 1px solid black;
+  width: fit-content;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .cart-bookTitle,
 .cart-author,
 .cart-price {
-    padding-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+.cart-bookTitle {
+  font-family: 'Montserrat_Alternates';
 }
 .cart-quantity-div {
-    padding-top: 1rem;
+  padding-top: 1rem;
 }
 .cart-totalPrice,
 .cart-buy-div {
-    margin-left: auto;
+  margin-left: auto;
 }
 .cart-total-price-div,
 .cart-buy-div {
-    padding-right: 1rem;
+  padding-right: 1rem;
 }
 .cart-buy-div {
-    width: fit-content;
+  width: fit-content;
 }
 /*
 @media screen and (min-width: 1000px) {

@@ -100,10 +100,10 @@
 }
 .profile-review-form-div {
   background-color: #fff;
-  padding: 0 .2rem;
+  padding: 0 0.2rem;
 }
 .reviewForm-form {
-  padding-bottom: .2rem;
+  padding-bottom: 0.2rem;
 }
 .reviewForm-existingReview {
   padding: 0.5rem 0;
@@ -170,7 +170,7 @@
 }
 .profile-delete-item-border {
   background-color: #fff;
-  padding-bottom: .2rem;
+  padding-bottom: 0.2rem;
 }
 .profile-delete-account-p {
   color: red;
@@ -183,6 +183,7 @@
   gap: 1rem;
 }
 .delete-account-yes {
+  font-family: 'Space_Grotesk';
   background-color: red;
   color: white;
 }
@@ -203,11 +204,11 @@
   color: #fff;
 }
 .profile-qty-div {
-  padding-top: .2rem;
-  padding-bottom: .2rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
 }
-.reviewForm-form{
-  padding-left: .5rem;
+.reviewForm-form {
+  padding-left: 0.5rem;
 }
 .profile-steelblue {
   border: 0;
@@ -216,10 +217,10 @@
   color: #f6f5f3;
   cursor: pointer;
   padding: 5px 8px 7px 8px;
-
+  font-family: 'Space_Grotesk';
   background-image: linear-gradient(#90a4ae, #263238);
 }
-.profile-steelblue:hover{
+.profile-steelblue:hover {
   background-image: linear-gradient(#abbaca, #0a0e10);
 }
 .delete-order-yes,
