@@ -192,9 +192,9 @@ export default function ReviewForm({
         }
       ></textarea>
       <div className='review-send-cancel'>
-        <button className='continue-button'>Send</button>
+        <button type='submit' className='continue-button' onClick={() => {setTimeout(() => {setBookToReview(null);setReviewBtn(null)}, 50)}}>Send</button>
         <button
-          onClick={() => {setBookToReview(null); setReviewBtn(true)}}
+          onClick={() => {setBookToReview(null); setReviewBtn(null)}}
           className='profile-steelblue'
         >
           Cancel

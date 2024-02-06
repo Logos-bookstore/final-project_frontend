@@ -306,7 +306,7 @@ export default function Profile() {
                     </div>
                   ) : (
                     <div className='profile-order-delete-div'>
-                      <button className='profile-steelblue' onClick={() => {setDeleteOrder(item._id); setUpdateItem(''); setDeleteItem(''); setBookToReview(null); setReviewBtn(true)}}>
+                      <button className='profile-steelblue' onClick={() => {setDeleteOrder(item._id); setUpdateItem(''); setDeleteItem(''); setBookToReview(null); setReviewBtn(null)}}>
                         Delete Order
                       </button>
                     </div>
@@ -433,7 +433,7 @@ export default function Profile() {
                               </div>
                             ) : (
                               <div>
-                                <button className='profile-steelblue' onClick={() => {setUpdateItem(book._id); setBookToReview(null); setDeleteItem(''); setReviewBtn(true); setDeleteOrder('')}}>
+                                <button className='profile-steelblue' onClick={() => {setUpdateItem(book._id); setBookToReview(null); setDeleteItem(''); setReviewBtn(null); setDeleteOrder('')}}>
                                   Update Qty
                                 </button>
                               </div>
@@ -464,7 +464,7 @@ export default function Profile() {
                               </div>
                             ) : (
                               <div>
-                                <button className='profile-steelblue' onClick={() => {setDeleteItem(book._id); setBookToReview(null); setUpdateItem(''); setReviewBtn(true); setDeleteOrder('')}}>
+                                <button className='profile-steelblue' onClick={() => {setDeleteItem(book._id); setBookToReview(null); setUpdateItem(''); setReviewBtn(null); setDeleteOrder('')}}>
                                   Delete Item
                                 </button>
                               </div>
