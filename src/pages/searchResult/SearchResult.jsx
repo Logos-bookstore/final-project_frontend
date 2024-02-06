@@ -18,6 +18,7 @@ export default function SearchResult() {
     currentPage,
     setCurrentPage,
     booksPerPage,
+    updateSuccess,
   } = useContext(Context);
   const queryString = new URLSearchParams(window.location.search);
   const setQueryString = () => {
@@ -29,25 +30,30 @@ export default function SearchResult() {
   };
   const ourUrl = setQueryString().split(' ').join('+');
 
-  useEffect(() => {
-    async function bookSearch() {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_BOOK_SEARCH}${ourUrl}`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success) {
-            setBooksToGenre(data.data);
-            setCurrentPage(1);
-          }
+  const handleSearch = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_BOOK_SEARCH}${ourUrl}`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) {
+          setBooksToGenre(data.data);
+          setCurrentPage(1);
         }
-      } catch (error) {
-        //
       }
+    } catch (error) {
+      //
     }
-    bookSearch();
+  };
+
+  useEffect(() => {
+    handleSearch();
   }, [ourUrl]);
+
+  useEffect(() => {
+    handleSearch();
+  }, [updateSuccess]);
 
   // get current books
   const indexOfLastBook = currentPage * booksPerPage;

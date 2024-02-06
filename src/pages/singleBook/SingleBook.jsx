@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import BookCard from '../../components/bookCard/BookCard';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import CartBtn from '../../components/CartBtn';
 import { ReviewStars } from '../../components/ReviewStars';
 import DeleteBtnAdmin from '../../components/DeleteBtnAdmin';
-import DeleteBook from '../../components/deleteBook/DeleteBook';
 import { Context } from '../../context/Context';
 import UpdateBtnAdmin from '../../components/UpdateBtnAdmin';
 import UpdateBook from '../../components/updateBook/UpdateBook';
@@ -12,10 +11,16 @@ import './singleBook.css';
 
 export default function SingleBook() {
   const [reviews, setReviews] = useState(null);
+  const [deleteMSG, setDeleteMSG] = useState('');
   const [singleBook, setSingleBook] = useState(null);
-  const { user, bookToUpdate, bookToDelete } = useContext(Context);
+  const { user, bookToUpdate, bookToDelete, setBookToDelete, updateSuccess } =
+    useContext(Context);
   const [showBookText, setShowBookText] = useState(false);
   const { id } = useParams();
+
+  const navigate = useNavigate();
+
+  const handleDeleteMode = () => setBookToDelete(null);
 
   const fetchReviews = async () => {
     try {
@@ -48,6 +53,32 @@ export default function SingleBook() {
     fetchReviews();
   }, []);
 
+  useEffect(() => {
+    fetchBook();
+  }, [updateSuccess]);
+
+  const deleteBook = () => {
+    const token = sessionStorage.getItem('token');
+    if (token) {
+      fetch(`${import.meta.env.VITE_DELETE_BOOK}/${singleBook._id}`, {
+        method: 'DELETE',
+        headers: { token: token },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.success) {
+            setDeleteMSG(res.message);
+            setTimeout(() => {
+              navigate('/books/selection');
+              setBookToDelete(null);
+              setDeleteMSG('');
+            }, 2000);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   return (
     <>
       {singleBook && (
@@ -71,7 +102,32 @@ export default function SingleBook() {
             )}
             {bookToDelete?._id === singleBook._id && (
               <div id='singleBook-reset-margin-forms'>
-                <DeleteBook book={singleBook} />
+                <div className='deleteBook-container'>
+                  {deleteMSG && (
+                    <p className='update-delete-book-msg'>{deleteMSG}</p>
+                  )}
+
+                  <p>
+                    Are you sure you want to remove this book from the shop's
+                    database?
+                  </p>
+                  <div className='deleteBook-btns-container'>
+                    {/* deactivated to avoid accidental book removal from the DB */}
+                    <button
+                      className='btn-bronze admin-btn-small'
+                      onClick={deleteBook}
+                    >
+                      Yes
+                    </button>
+                    <button
+                      type='button'
+                      className='btn-steelblue admin-btn-small'
+                      onClick={handleDeleteMode}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </div>

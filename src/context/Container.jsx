@@ -16,6 +16,7 @@ export default function Container({ children }) {
   const [menuIcon, setMenuIcon] = useState(false);
   const [bookToReview, setBookToReview] = useState(null);
   const [reviewBtn, setReviewBtn] = useState(null);
+  const [updateSuccess, setUpdateSuccess] = useState(false);
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -74,8 +75,12 @@ export default function Container({ children }) {
           hideUpdateDeleteBookForms,
           menuIcon,
           setMenuIcon,
-          bookToReview, setBookToReview,
-          reviewBtn, setReviewBtn
+          bookToReview,
+          setBookToReview,
+          reviewBtn,
+          setReviewBtn,
+          updateSuccess,
+          setUpdateSuccess,
         }}
       >
         {children}

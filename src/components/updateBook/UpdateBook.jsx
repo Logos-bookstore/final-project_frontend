@@ -3,7 +3,8 @@ import { Context } from '../../context/Context';
 import './updateBook.css';
 
 export default function UpdateBook({ book }) {
-  const { setBookToUpdate } = useContext(Context);
+  const { setBookToUpdate, updateSuccess, setUpdateSuccess } =
+    useContext(Context);
   const [updateMSGcover, setUpdateMSGcover] = useState('');
   const [updateMSGbookInfo, setUpdateMSGbookInfo] = useState('');
 
@@ -28,9 +29,9 @@ export default function UpdateBook({ book }) {
             if (res.success) {
               setUpdateMSGcover(res.message);
               setTimeout(() => {
-                const refreshPage = () => window.location.reload(false);
+                setBookToUpdate(null);
                 setUpdateMSGcover('');
-                refreshPage();
+                setUpdateSuccess(updateSuccess ? false : true);
               }, 2000);
             }
           })
@@ -82,10 +83,9 @@ export default function UpdateBook({ book }) {
             if (res.success) {
               setUpdateMSGbookInfo(res.message);
               setTimeout(() => {
-                const refreshPage = () => window.location.reload(false);
                 setBookToUpdate(null);
                 setUpdateMSGbookInfo('');
-                refreshPage();
+                setUpdateSuccess(updateSuccess ? false : true);
               }, 2000);
             }
           })
@@ -104,6 +104,7 @@ export default function UpdateBook({ book }) {
         <input type='file' name='image' id='image' onFocus={resetErrorMSGs} />
         <div className='updateBook-btns-container'>
           <button
+            type='button'
             className='btn-steelblue admin-btn-small'
             onClick={handleCancel}
           >
@@ -189,6 +190,7 @@ export default function UpdateBook({ book }) {
         </div>
         <div className='updateBook-btns-container'>
           <button
+            type='button'
             className='btn-steelblue admin-btn-small'
             onClick={handleCancel}
           >
