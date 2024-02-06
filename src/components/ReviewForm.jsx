@@ -43,6 +43,7 @@ export default function ReviewForm({
           if (data.success) {
             toast.success('Review submitted!');
             setBookToReview(null);
+            setReviewBtn(null);
             setReviewsChange(new Date());
           } // maybe add Toaster for 'review submitted successfully' ?
           else {
@@ -91,6 +92,7 @@ export default function ReviewForm({
           if (data.success) {
             toast.success('Review updated!');
             setBookToReview(null);
+            setReviewBtn(null);
           }
         }
       }
@@ -192,7 +194,7 @@ export default function ReviewForm({
         }
       ></textarea>
       <div className='review-send-cancel'>
-        <button type='submit' className='continue-button' onClick={() => {setTimeout(() => {setBookToReview(null);setReviewBtn(null)}, 50)}}>Send</button>
+        <button type='submit' className='continue-button'>Send</button> {/*onClick={() => {setTimeout(() => {setBookToReview(null);setReviewBtn(null)}, 50)}}*/}
         <button
           onClick={() => {setBookToReview(null); setReviewBtn(null)}}
           className='profile-steelblue'
