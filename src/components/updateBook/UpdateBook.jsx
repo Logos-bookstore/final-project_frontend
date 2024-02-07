@@ -104,6 +104,7 @@ export default function UpdateBook({ book }) {
         <input type='file' name='image' id='image' onFocus={resetErrorMSGs} />
         <div className='updateBook-btns-container'>
           <button
+            type='button'
             className='btn-steelblue admin-btn-small'
             onClick={handleCancel}
           >
@@ -189,6 +190,7 @@ export default function UpdateBook({ book }) {
         </div>
         <div className='updateBook-btns-container'>
           <button
+            type='button'
             className='btn-steelblue admin-btn-small'
             onClick={handleCancel}
           >
