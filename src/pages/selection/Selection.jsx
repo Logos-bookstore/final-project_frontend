@@ -4,22 +4,28 @@ import Pagination from '../../components/pagination/Pagination';
 import { useEffect, useContext } from 'react';
 
 export default function Selection() {
-  const { books, setBooks, currentPage, booksPerPage } = useContext(Context);
+  const { books, setBooks, currentPage, booksPerPage, updateSuccess } =
+    useContext(Context);
+
+  const handleBookFetch = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_FETCH_ALL_BOOKS}`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success) setBooks(data.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    async function fetchBooks() {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_FETCH_ALL_BOOKS}`);
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success) setBooks(data.data);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchBooks();
+    handleBookFetch();
   }, []);
+
+  useEffect(() => {
+    handleBookFetch();
+  }, [updateSuccess]);
 
   // get current books
   const indexOfLastBook = currentPage * booksPerPage;

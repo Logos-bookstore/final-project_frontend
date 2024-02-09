@@ -20,9 +20,10 @@ export default function Genre() {
     currentPage,
     setCurrentPage,
     booksPerPage,
+    updateSuccess,
   } = useContext(Context);
 
-  useEffect(() => {
+  const handleBookFetch = () => {
     fetch(`${import.meta.env.VITE_BOOKS_ONE_GENRE}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -36,7 +37,15 @@ export default function Genre() {
         }
       })
       .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    handleBookFetch();
   }, [state]);
+
+  useEffect(() => {
+    handleBookFetch();
+  }, [updateSuccess]);
 
   // get current books
   const indexOfLastBook = currentPage * booksPerPage;

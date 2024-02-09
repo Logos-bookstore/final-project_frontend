@@ -304,7 +304,6 @@ export default function Profile() {
           <p className='profile-orders-history' onClick={handleOrderHistory}>
             Order history
           </p>
-
           {renderOrders && userOrders.length === 0 && <p>No orders yet..</p>}
           {renderOrders && (
             <div>
